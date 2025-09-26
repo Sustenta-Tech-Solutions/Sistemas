@@ -7,6 +7,7 @@ Gabriel Pereira - 01252038
 Kauan Batista - 01252066 
 Nicholas Paiva - 01252113 
 */
+
 CREATE DATABASE sustentaTech;
 
 USE sustentaTech;
@@ -26,9 +27,9 @@ INSERT INTO empresa (nomeEmpresa, responsavelLegal, cnpj, localidade) VALUES
 	('Rancho Jesus', 'Gabriel Jesus', '98765432000155', 'Salvador'),
 	('Fazenda Diamante', 'Luan Cristo', '30210987000177', 'Minas Gerais');
 
-select nomeEmpresa as 'Empresa',
-	cnpj as 'CPNJ'
-    from Empresa;
+SELECT nomeEmpresa AS 'Empresa',
+	cnpj AS 'CPNJ'
+    FROM Empresa;
     
 SELECT concat(responsavelLegal, ' é responsavel da ', nomeEmpresa,  ' com o cnpj ', cnpj) AS Representantes from empresa;
 
@@ -50,17 +51,11 @@ INSERT INTO usuario (email, userName, senha, cargo, telefone) VALUES
 
 
 
-SELECT
-userName,
-senha,
-cargo,
-CASE 
-	WHEN cargo = 'Gerente' Then 'Administrador'
+SELECT userName, senha, cargo, CASE 
+	WHEN cargo = 'Gerente' THEN 'Administrador'
     ELSE 'Usuario'
     END AS 'Perfil'
 	FROM usuario;
-
-
 
 CREATE TABLE sensor(
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -77,74 +72,40 @@ INSERT INTO sensor (temperatura, umidade) VALUES
 	(5, 15);
     
     
-    SELECT 
-    temperatura,
-    umidade,
-    CASE 
-		WHEN umidade >= 13 Then 'Desfavorável'
-		WHEN umidade < 13 Then 'Favoravel'
+SELECT temperatura, umidade, CASE 
+		WHEN umidade >= 13 THEN 'Desfavorável'
+		WHEN umidade < 13 THEN 'Favoravel'
 		WHEN temperatura >= 15 THEN 'Desfavorável'
 		WHEN temperatura < 15 THEN 'Favorável'
         END AS 'Situação'
         FROM sensor;
         
-select umidade as Umidade,
-	case
-	when umidade > 20 then 'Umidade Alta'
-	else 'Umidade Baixa'
-    end as 'Nível da Umidade'
-    from sensor;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+SELECT umidade AS Umidade, CASE
+	WHEN umidade > 20 THEN 'Umidade Alta'
+	ELSE 'Umidade Baixa'
+    END AS 'Nível da Umidade'
+    FROM sensor;
+
+
 -- Exemplo 1
 
-    select nomeEmpresa as 'Empresa',
-	cnpj as 'CPNJ'
-    from empresa;
+    SELECT nomeEmpresa AS 'Empresa',
+	cnpj AS 'CPNJ'
+    FROM empresa;
     
 -- Exemplo 2    
-SELECT
-userName,
-senha,
-cargo,
-CASE 
-	WHEN cargo = 'Gerente' Then 'Administrador'
+SELECT userName, senha, cargo, CASE 
+	WHEN cargo = 'Gerente' THEN 'Administrador'
     ELSE 'Usuario'
     END AS 'Perfil'
 	FROM usuario;
     
 -- Exemplo 3
    
-  SELECT 
-    temperatura,
-    umidade,
-    CASE 
-		WHEN umidade >= 13 Then 'Desfavorável'
-		WHEN umidade < 13 Then 'Favoravel'
+  SELECT temperatura, umidade, CASE 
+		WHEN umidade >= 13 THEN 'Desfavorável'
+		WHEN umidade < 13 THEN 'Favoravel'
 		WHEN temperatura >= 15 THEN 'Desfavorável'
 		WHEN temperatura < 15 THEN 'Favorável'
         END AS 'Situação'
         FROM sensor;
-    
-    
-    
-
-
-    
-
-    
-
-    
