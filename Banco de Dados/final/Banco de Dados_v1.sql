@@ -53,10 +53,10 @@ status VARCHAR(7),
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'medicao' com suas respectivas colunas e restrições
-CREATE TABLE medicao(
-idMedicao BIGINT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE registro(
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 fkSensor INT,
-CONSTRAINT fkMedicaoSensor 
+CONSTRAINT fkRegistroSensor 
 	FOREIGN KEY (fkSensor)
         REFERENCES sensor(idSensor),
 temperatura DECIMAL(5,2),
