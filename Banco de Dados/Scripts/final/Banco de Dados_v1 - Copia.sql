@@ -27,7 +27,7 @@ dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 /* ------------------------------------------------------------------------------------------------------- */
-
+ 
 -- Criação da tabela 'usuario' com suas respectivas colunas e restrições
 CREATE TABLE usuario(
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
