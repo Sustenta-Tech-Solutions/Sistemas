@@ -1,0 +1,26 @@
+/* INICIO CSS - Cadastro */
+body {
+    margin: 0px;
+    background-color: rgb(234, 230, 222);
+}
+
+.navbar {
+    height: 80px;
+    border: 2px dashed black;
+}
+
+.tela-cadastro {
+    height: 550px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-cadastro {
+    width: 600px;
+    height: 480px;
+    border: 1.5px solid rgb(94, 106, 113);
+    border-radius: 15px;
+}
+/* FIM CSS - Cadastro*/
