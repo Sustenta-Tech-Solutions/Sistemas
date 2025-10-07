@@ -1,4 +1,10 @@
-/* INICIO CSS - Cadastro */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'monospace';
+}
+
 body {
     margin: 0px;
     background-color: rgb(234, 230, 222);
@@ -18,9 +24,79 @@ body {
 }
 
 .card-cadastro {
-    width: 600px;
-    height: 480px;
+    width: 550px;
+    height: 500px;
     border: 1.5px solid rgb(94, 106, 113);
-    border-radius: 15px;
+    border-radius: 8px;
 }
-/* FIM CSS - Cadastro*/
+
+.superior {
+    width: 550px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.voltar {
+    margin: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+a > img {
+    width: 30px;
+    height: 30px;
+}
+
+.formulario {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 200px;
+}
+
+p {
+    text-align: center;
+    font-size: 25px;
+}
+.input {
+    font-size: 15px;
+    width: 200px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 10px;
+}
+
+#telefone {
+    width: 455px;
+}
+
+.button-cadastrar {
+    padding: 10px;
+    justify-self: center;
+}
+
+ button {
+    background-color: #6B8E23;
+    color: white;
+    font-size: 15px;
+    width: 300px;
+    height: 35px;
+    border: 0 solid;
+    border-radius: 7px;
+}
+
+button:hover {
+    background-color: #547217;
+    cursor: pointer;
+}
