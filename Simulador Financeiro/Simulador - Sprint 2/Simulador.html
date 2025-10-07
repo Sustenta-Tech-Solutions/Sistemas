@@ -9,43 +9,49 @@
     <title>SustentaTech</title>
 </head>
 
-<body >
+<body>
 
     <nav>
 
         <img width="170" src="essts/HORIZONTAL_SUSTENTATECH_V02.png" alt="">
 
         <ul>
-            <li>Sobre nós</li>
-            <li>Nossos serviços</li>
-            <li>Simulador</li>
-            <li>Contato</li>
-            <li>Login</li>
-            <li>Cadastrar</li>
+            <li><a href="">Sobre nós</a></li>
+            <li><a href="">Nossos serviços </a></li>
+            <li><a href="">Simulador</a></li>
+            <li><a href="">Contato</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Cadastrar</a></li>
         </ul>
     </nav>
 
     <div style="text-align: center;">
         <div>
-            
+
             <h1>Simulador SustentaTech</h1>
         </div>
 
-        <label>
+        <div>
+            <label>Temperatura:<br>
+                <input type="number" id="input_temperatura" placeholder="">
+            </label><br>
 
-            <span></span> <br>
-            <input type="text" id="input_" placeholder="">
+            <label>Umidade :<br>
+                <input type="number" id="input_umidade" placeholder="">
+            </label><br>
 
-        </label> <br> <br>
+            <label>Quantidade armazenada (toneladas):<br>
+                <input type="number" id="input_toneladas" placeholder="">
+            </label><br>
 
-        <label>
+            <label>Preço da saca de soja (R$):<br>
+                <input type="number" id="input_preco_sacas" placeholder="Ex: 120">
+            </label><br><br>
 
-            <span></span> <br>
-            <input type="text" id="input_" placeholder="">
+            <button onclick="simular()">Simular</button> <br>
 
-        </label> <br> <br>
-
-        <button onclick="verificar()">Calcular</button>
+            <div id="div_mensagem"></div>
+        </div>
     </div>
 
     <footer>
@@ -62,7 +68,25 @@
 
 </html>
 <script>
-    function verificar() {
+    function simular() {
 
+        var temperatura = Number(input_temperatura.value);
+        var umidade = Number(input_umidade.value);
+        var toneladas = Number(input_toneladas.value);
+        var precoSacas = Number(input_preco_sacas.value)
+
+
+        var conversaoKilo = toneladas * 1000; // Toneladas convertidas para kilo 
+
+        var totalSacas = conversaoKilo / 60 ; // Total de sacas
+
+        var valorTotal = totalSacas * precoSacas; // Valor total das sacas
+
+        console.log(conversaoKilo);
+        console.log(totalSacas);
+        console.log(valorTotal);
+    
+        div_mensagem.innerHTML = `
+        `;
     }
 </script>
