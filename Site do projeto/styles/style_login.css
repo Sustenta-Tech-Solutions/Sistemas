@@ -28,13 +28,31 @@ body {
     margin-top: 10px;
 }
 
-.tela-login .card-login {
+.card-login {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 700px;
     height: 100px;
+}
+
+.tela-login input {
+    width: 350px;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: #818384;
+}
+
+.tela-login button {
+    width: 355px;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: #6B8E23;
+    background-color: #6B8E23;
+    color: whitesmoke;
 }
 
 
