@@ -11,23 +11,47 @@
     <div class="navbar"></div>
 
     <div class="tela-login">
-        <div class="card-login"></div>
+        <div class="card-login">
             <div class="login-superior">
                 <a href="#" class="voltar">
                     <img src="imagens/icone_voltar.svg" width="50"  height="50" alt="">
                 </a>
                 <img src="imagens/logo_circular_sustentatech.svg" alt="">
             </div>
-            <h2>Login</h2> <br>
+            <p>Login</p>
             <div class="formulario">
-                <input class="input" type="text" id="usuario" placeholder="Usuário"> <br>
-                <input class="input" type="text" id="senha" placeholder="Senha"> <br> <br>
+                <input class="input" type="text" id="ipt_usuario" placeholder="Usuário">
+                <input class="input" type="text" id="ipt_senha" placeholder="Senha"> 
             </div>
+            <div id="div_erroLogin" class="erroLogin">Usuário ou senha incorreta!</div>
             <div class="button-login">
-                <button>Entrar</button> <br> <br>
+                <button onclick="login()"><b>Entrar</b></button> <br> <br>
             </div>
-            <p><u>Cadastrar-se</u></p>
+            <div class="cadastrar-se"> 
+                <p style="color: #6B8E23; font-size: 18px; "><b><u>Cadastrar-se</u></b></p>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    function login() {
+        var usuario = ipt_usuario.value;
+        var senha = ipt_senha.value;
+        var email = "teste@gmail.com";
+        var senhaCadastro = "teste123";
+
+        if (usuario != email || senha != senhaCadastro) {
+            div_erroLogin.style.display = "block";
+            div_erroLogin.style.marginLeft = "75px";
+            ipt_usuario.style.borderColor = "red";
+            ipt_senha.style.borderColor = "red";
+        } else {
+            alert("Usuário logado com sucesso!");
+            div_erroLogin.style.display = "none";
+            ipt_usuario.style.borderColor = "black";
+            ipt_senha.style.borderColor = "black";
+        }
+    }
+</script>

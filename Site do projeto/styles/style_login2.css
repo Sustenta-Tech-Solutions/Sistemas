@@ -7,7 +7,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'monospace';
+    font-family: 'Montserrat';
 }
 
 body {
@@ -58,13 +58,13 @@ a > img {
 }
 
 .formulario {
-    margin: 10px 20px 20px  20px;
+    margin: 0px 20px 0px  20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    height: 200px;
+    height: 140px;
 }
 
 p {
@@ -73,9 +73,9 @@ p {
 }
 
 .input {
-    font-size: 15px;
-    width: 200px;
-    height: 35px;
+    font-size: 20px;
+    width: 400px;
+    height: 45px;
     border: 0.5px solid rgb(94, 106, 113);
     border-radius: 7px;
     background-color: rgb(241, 241, 241);
@@ -88,15 +88,22 @@ p {
     justify-self: center;
 }
 
+.erroLogin {
+    color: red; 
+    display: none;
+}
+
 button {
     margin-top: 15px;
     background-color: #6B8E23;
     color: white;
     font-size: 15px;
     width: 300px;
-    height: 35px;
+    height: 45px;
     border: 0 solid ;
     border-radius: 7px;
+    margin-bottom: 47px;
+    font-size: 20px;
 }
 
 button:hover {
