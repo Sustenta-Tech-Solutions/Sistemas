@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url(../fontes/Montserrat-Regular.ttf);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+html,body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2A2721;
+    color: white;
+}
+
+.container{
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar{
+    background-color: #eae6de;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+.sidebar button{
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;    /* muda o ponteiro quando passa pelo botão */
+    text-align: left;
+    font-size: 0.9rem;  /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
+    transition: background-color 0.2s; /* deixa a transição de pagina mais suave*/
+}
+
+
+/* hover é uma pseudoclasse do CSS que aplica estilos ao elemento quando o cursor está sobre ele*/
+.sidebar button:hover{
+    background-color: #dcd8cf;
+}
+
+.sidebar .logout:hover {
+  background-color: #f8caca;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-content {
+  flex: 1; /* ocupa o restante da largura */
+  padding: 20px;
+  background-color: white;
+}
+
+.card-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.card-grid.top{
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* colunas responsivas */
+}
+
+.card-grid.mid{
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  background-color: #c9c9c9;
+  border-radius: 8px;
+  min-height: 100px;
+}
+
+.kpi {
+  height: 100px;
+}
+
+.graphics {
+  height: 150px;
+}
+
+.alerts {
+  height: 180px;
+}
+
