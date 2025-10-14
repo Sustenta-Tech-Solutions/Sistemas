@@ -32,23 +32,34 @@
         </div>
 
         <div>
-            <label>Temperatura:<br>
-                <input type="number" id="input_temperatura" placeholder="">
-            </label><br>
+            <label>
+                <span>Quantidade de silos que vocë possui:</span> <br>
+                <input type="text" id="input_silo">
+            </label> <br> <br>
 
-            <label>Umidade :<br>
-                <input type="number" id="input_umidade" placeholder="">
-            </label><br>
-
-            
-
-            <label>Quantidade armazenada (toneladas):<br>
+            <label>
+                <span> Quantidade média de soja armazenada em cada silo (em toneladas):</span><br>
                 <input type="number" id="input_toneladas" placeholder="">
-            </label><br>
+            </label> <br> <br>
 
-            <label>Preço da saca de soja (R$):<br>
-                <input type="number" id="input_preco_sacas" placeholder="Ex: 120">
-            </label><br><br>
+            <label>
+                <select  id="select_mes">
+                    <span>Qual o período de safra:</span>
+                    <option disabled selected>Selecione o mês</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+            </label> <br> <br>
 
             <button onclick="simular()">Simular</button> <br>
 
@@ -71,16 +82,14 @@
 </html>
 <script>
     function simular() {
-
-        var temperatura = Number(input_temperatura.value);
-        var umidade = Number(input_umidade.value);
         var toneladas = Number(input_toneladas.value);
-        var precoSacas = Number(input_preco_sacas.value)
+        var precoSacas = Number(input_preco_sacas.value);
+        var mes = select_mes;
 
 
         var conversaoKilo = toneladas * 1000; // Toneladas convertidas para kilo 
 
-        var totalSacas = conversaoKilo / 60 ; // Total de sacas
+        var totalSacas = conversaoKilo / 60; // Total de sacas
 
         var valorTotal = totalSacas * precoSacas; // Valor total das sacas
 
@@ -90,7 +99,7 @@
         var mensagem = ``;
 
        
-    
+
         div_mensagem.innerHTML = mensagem;
     }
 </script>
