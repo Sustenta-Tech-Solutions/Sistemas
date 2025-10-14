@@ -46,18 +46,18 @@
                 <select  id="select_mes">
                     <span>Qual o período de safra:</span>
                     <option disabled selected>Selecione o mês</option>
-                    <option value="1">Janeiro</option>
-                    <option value="2">Fevereiro</option>
-                    <option value="3">Março</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Maio</option>
-                    <option value="6">Junho</option>
-                    <option value="7">Julho</option>
-                    <option value="8">Agosto</option>
-                    <option value="9">Setembro</option>
-                    <option value="10">Outubro</option>
-                    <option value="11">Novembro</option>
-                    <option value="12">Dezembro</option>
+                    <option value="123,0470">Janeiro</option>
+                    <option value="119,1668">Fevereiro</option>
+                    <option value="119,8211">Março</option>
+                    <option value="119,6235">Abril</option>
+                    <option value="116,7650">Maio</option>
+                    <option value="117,7200">Junho</option>
+                    <option value="118,6674">Julho</option>
+                    <option value="122,5153">Agosto</option>
+                    <option value="122,6833">Setembro</option>
+                    <option value="121,0989">Outubro</option>
+                    <option value="130,3556">Novembro</option>
+                    <option value="128,5831">Dezembro</option>
                 </select>
             </label> <br> <br>
 
@@ -83,8 +83,8 @@
 <script>
     function simular() {
         var toneladas = Number(input_toneladas.value);
-        var precoSacas = Number(input_preco_sacas.value);
         var mes = select_mes;
+        //var precoSacas = ;
 
 
         var conversaoKilo = toneladas * 1000; // Toneladas convertidas para kilo 
