@@ -62,8 +62,8 @@ a > img {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap; 
     height: 140px;
 }
 
@@ -88,9 +88,10 @@ p {
     justify-self: center;
 }
 
-.erroLogin {
+.card-login .erroLogin {
     color: red; 
     display: none;
+    font-size: 15px;
 }
 
 button {
@@ -114,7 +115,6 @@ button:hover {
 .cadastrar-se {
     text-align: center;
     font-size: 25px;
-    
 }
 
 

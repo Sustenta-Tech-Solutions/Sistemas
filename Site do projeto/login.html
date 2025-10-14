@@ -21,9 +21,10 @@
             <p>Login</p>
             <div class="formulario">
                 <input class="input" type="text" id="ipt_usuario" placeholder="Usuário">
-                <input class="input" type="text" id="ipt_senha" placeholder="Senha"> 
+                <input class="input" type="text" id="ipt_senha" placeholder="Senha"> <br>
+                <p id="erroLogin" class="erroLogin">Usuário ou senha incorreta!</p>
             </div>
-            <p class="erroLogin">Usuário ou senha incorreta!</p>
+
             <div class="button-login">
                 <button onclick="login()"><b>Entrar</b></button> <br> <br>
             </div>
@@ -43,13 +44,12 @@
         var senhaCadastro = "teste123";
 
         if (usuario != email || senha != senhaCadastro) {
-            div_erroLogin.style.display = "block";
-            div_erroLogin.style.marginLeft = "75px";
+            erroLogin.style.display = "block";
             ipt_usuario.style.borderColor = "red";
             ipt_senha.style.borderColor = "red";
         } else {
             alert("Usuário logado com sucesso!");
-            div_erroLogin.style.display = "none";
+            erroLogin.style.display = "none";
             ipt_usuario.style.borderColor = "black";
             ipt_senha.style.borderColor = "black";
         }
