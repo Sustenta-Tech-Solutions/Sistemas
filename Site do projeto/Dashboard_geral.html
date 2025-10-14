@@ -1,46 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/dash_geral.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="styles/dash_geral.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
     <header>
-        <div class="logo">
-            <img src="imagens/logo_sustentatech_deitado.svg">
-        </div>
-    <div class="user">Olá User</div>
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+      <div class="user">Olá User</div>
     </header>
 
     <div class="container">
-        <nav class="sidebar">
-            <button>Dashboard Geral</button>
-            <button>Dashboard específica</button>
-            <button>Configurações</button>
-            <button class="logout">Sair</button>
-        </nav>
-    
+      <nav class="sidebar">
+        <button>Dashboard Geral</button>
+        <button>Dashboard específica</button>
+        <button>Configurações</button>
+        <button class="logout">Sair</button>
+      </nav>
 
-    <main>
+      <main>
         <div class="card-grid top">
-            <div class="kpi"></div>
-            <div class="kpi"></div>
-            <div class="kpi"></div>
+          <div class="kpi">Temperatura média
+            <div id="div_temp"></div>
+          </div>
+          <div class="kpi">Umidade média
+            <div id="div_umid"></div>
+          </div>
+          <div class="kpi">Quantidade de alertas
+            <div id="div_alertas"></div>
+          </div>
         </div>
 
         <div class="card-grid mid">
-            <div class="graphics"></div>
-            <div class="graphics"></div>
+          <div class="graphics">
+            <canvas class="g1" id="chartTemp"></canvas>
+          </div>
+          <div class="graphics">
+            <canvas class="g2" id="chartUmid"></canvas>
+          </div>
         </div>
 
-        <div class="alerts"></div>
-    </main>
+        <div class="alerts">
+          <div class="alerts-header">
+            <h3>Últimos Alertas</h3>
+          </div>
 
+          <!-- table - estrutura de tabela , thead - titulo das colunas , tr - linhas da tabela, 
+           th - cabeçalho da tabela, tbody - corpo da tabela -->
+           
+          <table class="alerts-table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Horário</th>
+                <th>Duração</th>
+                <th>Sensor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="alert-info">
+                    <div class="alert-icon temp"></div>
+                    <div>
+                      <strong>Temperatura alta</strong><br />
+                      <span>Silo 03</span>
+                    </div>
+                  </div>
+                </td>
+                <td>14/10/2025 - 14:32</td>
+                <td>15 min</td>
+                <td>Sensor 1 Topo</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="alert-info">
+                    <div class="alert-icon hum"></div>
+                    <div>
+                      <strong>Umidade baixa</strong><br />
+                      <span>Silo 01</span>
+                    </div>
+                  </div>
+                </td>
+                <td>14/10/2025 - 13:20</td>
+                <td>8 min</td>
+                <td>Sensor 2 Central</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
     </div>
-
-
-</body>
+  </body>
 </html>
+<script>
+  const ctxTemp = document.getElementById("chartTemp");
+  const ctxUmid = document.getElementById("chartUmid");
+
+  new Chart(ctxTemp, {
+    type: "line",
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [
+        {
+          label: "Temperatura (°C)",
+          data: [12, 19, 3, 5, 2, 3],
+          borderColor: "#ff6b35", // cor da linha
+          backgroundColor: "#ff6b35", // cor dos pontos
+          pointRadius: 4, // tamanho dos pontos
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3, // curva suavizada
+          borderWidth: 1,
+          fill: false, // sem preenchimento abaixo da linha
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: "top",
+          labels: {
+            color: "#333",
+            font: {
+              size: 14,
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: "#333",
+          },
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#333",
+          },
+          grid: {
+            color: "#e0e0e0",
+          },
+        },
+      },
+    },
+  });
+
+  new Chart(ctxUmid, {
+    type: "line",
+    data: {
+      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      datasets: [
+        {
+          label: "Umidade (%)",
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+          borderColor: "#3d9ca8",
+          backgroundColor: "#3d9ca8",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: "top",
+          labels: {
+            color: "#333",
+            font: {
+              size: 14,
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: "#333",
+          },
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: "#333",
+          },
+          grid: {
+            color: "#e0e0e0",
+          },
+        },
+      },
+    },
+  });
+</script>
