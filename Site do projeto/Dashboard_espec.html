@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/dash_espec.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+      <div class="user">Olá User</div>
+    </header>
+
+    <div class="container">
+      <nav class="sidebar">
+        <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
+        <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
+        <a href="configuracao.html" class="button">Configurações</a>
+        <button class="logout" onclick="logout()">Sair</button>
+      </nav>
+
+      <main>
+        <div id="div_sensor">
+          <h3 id="silo_num">Silo</h3>
+          <div>
+            <select id="select_sensor">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="silo1" class="silo1">
+          <div class="card-grid top">
+            <div class="kpi">
+              Temperatura média
+              <div id="div_temp"></div>
+            </div>
+            <div class="kpi">
+              Umidade média
+              <div id="div_umid"></div>
+            </div>
+            <div class="kpi">
+              Quantidade de alertas
+              <div id="div_alertas"></div>
+            </div>
+          </div>
+
+          <div class="card-grid mid">
+            <div class="graphics">
+              <canvas class="g1" id="chartTemp"></canvas>
+            </div>
+            <div class="graphics">
+              <canvas class="g2" id="chartUmid"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div id="silo2" class="silo2">
+          <div class="card-grid top">
+            <div class="kpi">
+              Temperatura média
+              <div id="div_temp"></div>
+            </div>
+            <div class="kpi">
+              Umidade média
+              <div id="div_umid"></div>
+            </div>
+            <div class="kpi">
+              Quantidade de alertas
+              <div id="div_alertas"></div>
+            </div>
+          </div>
+
+          <div class="card-grid mid">
+            <div class="graphics">
+              <canvas class="g1" id="chartTemp"></canvas>
+            </div>
+            <div class="graphics">
+              <canvas class="g2" id="chartUmid"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div id="silo3" class="silo3">
+          <div class="card-grid top">
+            <div class="kpi">
+              Temperatura média
+              <div id="div_temp"></div>
+            </div>
+            <div class="kpi">
+              Umidade média
+              <div id="div_umid"></div>
+            </div>
+            <div class="kpi">
+              Quantidade de alertas
+              <div id="div_alertas"></div>
+            </div>
+          </div>
+
+          <div class="card-grid mid">
+            <div class="graphics">
+              <canvas class="g1" id="chartTemp"></canvas>
+            </div>
+            <div class="graphics">
+              <canvas class="g2" id="chartUmid"></canvas>
+            </div>
+          </div>
+        </div>
+
+
+      </main>
+    </div>
+  </body>
+</html>

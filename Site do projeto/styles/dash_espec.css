@@ -101,11 +101,10 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* colunas responsivas */
 }
 
-.card-grid.mid{
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.card-grid.mid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 blocos por linha */
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   width: 100%;
 }
 
@@ -120,6 +119,7 @@ main {
   border: 2px solid #c9c9c9;
   border-radius: 8px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 
@@ -142,67 +142,14 @@ main {
   justify-content: center;
 }
 
-.alerts {
-  height: 180px;
-  border: 1px solid #c9c9c9;
-  flex: 1;               /* ocupa todo o espaço livre */
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
+.silo1{
+    display: block;
 }
 
-.alerts-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+.silo2{
+    display: none;
 }
 
-.alerts-header h3 {
-  font-size: 1rem;
-  color: #333;
+.silo3{
+    display: none;
 }
-
-.alerts-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-.alerts-table thead th {
-  text-align: left;
-  color: #555;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.alerts-table tbody td {
-  padding: 10px 8px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.alert-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.alert-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.alert-icon.temp {
-  background-color: #ff6b6b; /* vermelho para temperatura */
-}
-
-.alert-icon.hum {
-  background-color: #3bb2b8; /* azul para umidade */
-}
-
-
-

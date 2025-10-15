@@ -17,10 +17,10 @@
 
     <div class="container">
       <nav class="sidebar">
-        <button>Dashboard Geral</button>
-        <button>Dashboard específica</button>
-        <button>Configurações</button>
-        <button class="logout">Sair</button>
+        <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
+        <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
+        <a href="configuracao.html" class="button">Configurações</a>
+        <button class="logout" onclick="logout()">Sair</button>
       </nav>
 
       <main>
@@ -100,75 +100,48 @@
   </body>
 </html>
 <script>
+
+
+
+  // Graficos
   const ctxTemp = document.getElementById("chartTemp");
   const ctxUmid = document.getElementById("chartUmid");
 
   new Chart(ctxTemp, {
     type: "line",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: [
+        "8:00:00 AM", "8:15:00 AM", "8:30:00 AM", "8:45:00 AM",
+        "9:00:00 AM", "9:15:00 AM", "9:30:00 AM",
+      ],
       datasets: [
         {
-          label: "Temperatura (°C)",
-          data: [12, 19, 3, 5, 2, 3],
-          borderColor: "#ff6b35", // cor da linha
-          backgroundColor: "#ff6b35", // cor dos pontos
-          pointRadius: 4, // tamanho dos pontos
+          label: "Silo A",
+          data: [11.5, 11.3, 11.1, 11.0, 11.8, 13.5, 13],
+          borderColor: "#005a9e",
+          backgroundColor: "#005a9e",
+          pointRadius: 4,
           pointHoverRadius: 6,
           borderWidth: 2,
-          tension: 0.3, // curva suavizada
-          borderWidth: 1,
-          fill: false, // sem preenchimento abaixo da linha
+          tension: 0.3,
+          fill: false,
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          display: true,
-          position: "top",
-          labels: {
-            color: "#333",
-            font: {
-              size: 14,
-            },
-          },
-        },
-      },
-      scales: {
-        x: {
-          ticks: {
-            color: "#333",
-          },
-          grid: {
-            display: false,
-          },
-        },
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: "#333",
-          },
-          grid: {
-            color: "#e0e0e0",
-          },
-        },
-      },
-    },
-  });
-
-  new Chart(ctxUmid, {
-    type: "line",
-    data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-      datasets: [
         {
-          label: "Umidade (%)",
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1,
-          borderColor: "#3d9ca8",
-          backgroundColor: "#3d9ca8",
+          label: "Silo B",
+          data: [31, 33, 32, 34, 36, 40, 38],
+          borderColor: "#f76b1c",
+          backgroundColor: "#f76b1c",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: "Silo C",
+          data: [25, 24, 23, 25, 26, 25, 24],
+          borderColor: "#2e8b57",
+          backgroundColor: "#2e8b57",
           pointRadius: 4,
           pointHoverRadius: 6,
           borderWidth: 2,
@@ -182,31 +155,130 @@
       plugins: {
         legend: {
           display: true,
-          position: "top",
+          position: "bottom",
           labels: {
-            color: "#333",
             font: {
               size: 14,
             },
+          },
+        },
+        title: {
+          display: true,
+          text: "Temperatura média por silo",
+          font: {
+            size: 18,
           },
         },
       },
       scales: {
         x: {
           ticks: {
-            color: "#333",
+            maxRotation: 45,
+            minRotation: 45,
           },
           grid: {
             display: false,
           },
         },
         y: {
-          beginAtZero: true,
+          beginAtZero: false,
+          suggestedMin: 0,
+          suggestedMax: 45,
+          grid: {
+            color: "#0074D9",
+            lineWidth: 1,
+          },
           ticks: {
-            color: "#333",
+            stepSize: 5,
+          },
+        },
+      },
+    },
+  });
+
+  new Chart(ctxUmid, {
+    type: "line",
+    data: {
+      labels: [
+        "8:00:00 AM", "8:15:00 AM", "8:30:00 AM", "8:45:00 AM",
+        "9:00:00 AM", "9:15:00 AM", "9:30:00 AM",
+      ],
+      datasets: [
+        {
+          label: "Silo A",
+          data: [60, 64, 69 , 67, 71, 75, 66],
+          borderColor: "#005a9e",
+          backgroundColor: "#005a9e",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: "Silo B",
+          data: [59, 63, 65, 68, 73, 75 , 78],
+          borderColor: "#f76b1c",
+          backgroundColor: "#f76b1c",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3,
+          fill: false,
+        },
+        {
+          label: "Silo C",
+          data: [57, 63, 65, 66, 59, 67, 70],
+          borderColor: "#2e8b57",
+          backgroundColor: "#2e8b57",
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          tension: 0.3,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: "bottom",
+          labels: {
+            font: {
+              size: 14,
+            },
+          },
+        },
+        title: {
+          display: true,
+          text: "Umidade média por silo",
+          font: {
+            size: 18,
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            maxRotation: 45,
+            minRotation: 45,
           },
           grid: {
-            color: "#e0e0e0",
+            display: false,
+          },
+        },
+        y: {
+          beginAtZero: false,
+          suggestedMin: 50,
+          suggestedMax: 90,
+          grid: {
+            color: "#0074D9",
+            lineWidth: 1,
+          },
+          ticks: {
+            stepSize: 5,
           },
         },
       },
