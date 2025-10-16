@@ -1,68 +1,94 @@
 @font-face {
-    font-family: 'Montserrat';
-    src: url(../fontes/Montserrat-Regular.ttf);
+  font-family: "Montserrat";
+  src: url(../fontes/Montserrat-Regular.ttf);
 }
 
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Montserrat';
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Montserrat";
 }
 
-html,body {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #2A2721;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2a2721;
+  color: white;
 }
 
-.container{
-    display: flex;
-    min-height: 100vh;
+.container {
+  display: flex;
+  min-height: 100vh;
 }
 
-.sidebar{
-    background-color: #eae6de;
-    width: 200px;
-    display: flex;
+.sidebar {
+  background-color: #eae6de;
+  width: 200px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
-    gap: 20px;
-    padding: 20px 10px;
-}
+  }
 
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .button,
+  .logout {
+    text-align: center;
+    width: auto;
+    margin: 0;
+  }
+}
 
 .button {
   display: block;
-  background-color: #FFA000;
+  background-color: #ffa000;
   color: white;
   padding: 10px 15px;
   margin: 5px 0;
   text-decoration: none;
   text-align: left; /* ou center, se quiser */
-  font-size: 0.9rem;  /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
+  font-size: 0.9rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
   border: none;
   border-radius: 6px;
-  cursor: pointer;  /* muda o ponteiro quando passa pelo botão */
+  cursor: pointer; /* muda o ponteiro quando passa pelo botão */
   transition: background-color 0.2s; /* deixa a transição de pagina mais suave*/
+  background-color: #ff8f00;
+  border-left: 5px solid #2a2721;
 }
 
+.button.active {
+  background-color: #ffb300;
+  border-left: 8px solid #2a2721;
+}
 
 /* hover é uma pseudoclasse do CSS que aplica estilos ao elemento quando o cursor está sobre ele*/
 .button:hover {
-  background-color: #FF8F00;
+  background-color: #ff8f00;
 }
 
 .logout {
-  background-color: #d9534f;  /* vermelho */
+  background-color: #d9534f; /* vermelho */
   color: white;
   padding: 10px 15px;
   margin-top: 15px;
@@ -77,13 +103,12 @@ header {
   background-color: #c9302c;
 }
 
-
 main {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .main-content {
@@ -93,19 +118,83 @@ main {
 }
 
 .card-grid {
-    display: grid;
-    gap: 20px;
-}
-
-.card-grid.top{
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* colunas responsivas */
-}
-
-.card-grid.mid{
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.silos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.silo-box {
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #f7f4f3;
+  text-align: center;
+  padding: 10px;
+}
+
+.silo-box h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.silo-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.silo-box th {
+  font-size: 0.85rem;
+  padding: 4px;
+  border-bottom: 1px solid #000;
+}
+
+.silo-box td {
+  padding: 4px;
+  font-size: 0.9rem;
+}
+
+.silo-box .temp {
+  color: #0a7cff; /* azul */
+  font-weight: bold;
+}
+
+.silo-box .umid {
+  color: #008000; /* verde */
+  font-weight: bold;
+}
+
+.alert-count-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #f7f4f3;
+  padding: 10px;
+}
+
+.alert-count-box h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.alert-count-box .alert-number {
+  font-size: 2.5rem;
+  color: red;
+  font-weight: bold;
+}
+
+.card-grid.mid {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: grid;
+  gap: 20px;
   width: 100%;
 }
 
@@ -115,24 +204,16 @@ main {
   min-height: 100px;
 }
 
-.kpi {
-  height: 100px;
-  border: 2px solid #c9c9c9;
-  border-radius: 8px;
-  text-align: center;
-}
-
-
 .graphics canvas {
-  width: 100% !important;    /* garante que ocupe toda a largura do card */
-  height: 100% !important;   /* se adapta ao tamanho do container */
+  width: 100% !important; /* garante que ocupe toda a largura do card */
+  height: 100% !important; /* se adapta ao tamanho do container */
 }
 
 .graphics {
-  background: #F7F4F3;
+  background: #f7f4f3;
   border-radius: 8px;
   padding: 15px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   min-height: 400px;
   height: 45vh;
   max-width: 100%;
@@ -145,11 +226,11 @@ main {
 .alerts {
   height: 180px;
   border: 1px solid #c9c9c9;
-  flex: 1;               /* ocupa todo o espaço livre */
+  flex: 1; /* ocupa todo o espaço livre */
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -203,6 +284,3 @@ main {
 .alert-icon.hum {
   background-color: #3bb2b8; /* azul para umidade */
 }
-
-
-
