@@ -15,11 +15,6 @@ body {
     background-color: #eae6de;
 }
 
-.navbar {
-    height: 80px;
-    border: 2px dashed black;
-}
-
 .tela-cadastro {
     height: 550px;
     width: 100%;

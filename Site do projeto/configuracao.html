@@ -1,26 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/dash_geral.css">
-</head>
-<body>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurações de Conta</title>
+    <link rel="stylesheet" href="styles/dash_geral.css" />
+    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+    <link rel="stylesheet" href="styles/config.css" />
+  </head>
+  <body>
+    <!-- Navbar superior -->
     <header>
       <div class="logo">
-        <img src="imagens/logo_sustentatech_deitado.svg" />
+        <img
+          src="imagens/logo_sustentatech_deitado.svg"
+          alt="Logo SustentaTech"
+        />
       </div>
-      <div class="user">Olá User</div>
+      <div class="user">Olá, User</div>
     </header>
 
     <div class="container">
+      <!-- Menu lateral -->
       <nav class="sidebar">
         <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
-        <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
-        <a href="configuracao.html" class="button">Configurações</a>
+        <a href="Dashboard_espec.html" class="button">Dashboard Específica</a>
+        <a href="configuracao.html" class="button active">Configurações</a>
         <button class="logout" onclick="logout()">Sair</button>
       </nav>
-    
-</body>
+
+      <!-- Conteúdo principal -->
+      <main class="config-container">
+        <h1>Configurações da Conta</h1>
+
+        <!-- Seção Perfil -->
+        <section class="config-section">
+          <h2>Perfil</h2>
+          <div class="profile-group">
+            <div class="photo-box">
+              <img
+                id="profile-photo"
+                src="https://via.placeholder.com/100"
+                alt="Foto de perfil"
+              />
+              <label for="photo-upload" class="photo-upload-btn">Alterar</label>
+              <input type="file" id="photo-upload" accept="image/*" hidden />
+            </div>
+
+            <div class="profile-fields">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" placeholder="Seu nome" />
+
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="seuemail@exemplo.com"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção Segurança -->
+        <section class="config-section">
+          <h2>Segurança</h2>
+          <div class="security-fields">
+            <label for="senha-atual">Senha Atual</label>
+            <input
+              type="password"
+              id="senha-atual"
+              placeholder="Digite sua senha atual"
+            />
+
+            <label for="nova-senha">Nova Senha</label>
+            <input
+              type="password"
+              id="nova-senha"
+              placeholder="Digite a nova senha"
+            />
+          </div>
+        </section>
+
+        <!-- Botões -->
+        <div class="button-group">
+          <button class="btn salvar">Salvar Alterações</button>
+          <button class="btn cancelar" type="reset">Cancelar</button>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      function logout() {
+        window.location.href = "login.html";
+      }
+
+      // Pré-visualização da imagem de perfil
+      var photoUpload = document.getElementById("photo-upload");
+      var profilePhoto = document.getElementById("profile-photo");
+
+      photoUpload.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = (event) => {
+            profilePhoto.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
 </html>

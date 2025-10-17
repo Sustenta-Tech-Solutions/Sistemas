@@ -160,12 +160,12 @@ main {
 }
 
 .silo-box .temp {
-  color: #0a7cff; /* azul */
+  color: #0a7cff;
   font-weight: bold;
 }
 
 .silo-box .umid {
-  color: #008000; /* verde */
+  color: #008000;
   font-weight: bold;
 }
 

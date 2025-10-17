@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard_espec</title>
     <link rel="stylesheet" href="styles/dash_espec.css" />
+    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -12,7 +13,7 @@
       <div class="logo">
         <img src="imagens/logo_sustentatech_deitado.svg" />
       </div>
-      <div class="user">Olá User</div>
+      <div class="user">Olá, User</div>
     </header>
 
     <div class="container">
@@ -64,23 +65,23 @@
                   <tr>
                     <td>Mín:</td>
                     <td class="temp">20°C</td>
-                    <td class="umid">1</td>
+                    <td>1</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
                     <td class="temp">22°C</td>
-                    <td class="umid">2</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
                     <td class="temp">19°C</td>
-                    <td class="umid">3</td>
+                    <td>3</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="kpi-box">
-              Umidade média<br />
+              Umidade nas ultimas horas<br />
               <table>
                 <thead>
                   <tr>
@@ -92,18 +93,18 @@
                 <tbody>
                   <tr>
                     <td>Mín:</td>
-                    <td class="temp">60%</td>
-                    <td class="umid">2</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
-                    <td class="temp">66%</td>
-                    <td class="umid">3</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
-                    <td class="temp">75%</td>
-                    <td class="umid">1</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
                   </tr>
                 </tbody>
               </table>
@@ -142,17 +143,17 @@
                   <tr>
                     <td>Mín:</td>
                     <td class="temp">20°C</td>
-                    <td class="umid">1</td>
+                    <td>1</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
                     <td class="temp">22°C</td>
-                    <td class="umid">2</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
                     <td class="temp">19°C</td>
-                    <td class="umid">3</td>
+                    <td>3</td>
                   </tr>
                 </tbody>
               </table>
@@ -170,18 +171,18 @@
                 <tbody>
                   <tr>
                     <td>Mín:</td>
-                    <td class="temp">60%</td>
-                    <td class="umid">2</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
-                    <td class="temp">66%</td>
-                    <td class="umid">3</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
-                    <td class="temp">75%</td>
-                    <td class="umid">1</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
                   </tr>
                 </tbody>
               </table>
@@ -220,17 +221,17 @@
                   <tr>
                     <td>Mín:</td>
                     <td class="temp">20°C</td>
-                    <td class="umid">1</td>
+                    <td>1</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
                     <td class="temp">22°C</td>
-                    <td class="umid">2</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
                     <td class="temp">19°C</td>
-                    <td class="umid">3</td>
+                    <td>3</td>
                   </tr>
                 </tbody>
               </table>
@@ -248,18 +249,18 @@
                 <tbody>
                   <tr>
                     <td>Mín:</td>
-                    <td class="temp">60%</td>
-                    <td class="umid">2</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
                   </tr>
                   <tr>
                     <td>Med:</td>
-                    <td class="temp">66%</td>
-                    <td class="umid">3</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
                   </tr>
                   <tr>
                     <td>Máx:</td>
-                    <td class="temp">75%</td>
-                    <td class="umid">1</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
                   </tr>
                 </tbody>
               </table>
@@ -275,13 +276,18 @@
 
     <script src="Scripts/graphics_espec.JS"></script>
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    trocar();
-  });
-</script>
+      document.addEventListener("DOMContentLoaded", function () {
+        trocar();
+      });
+    </script>
   </body>
 </html>
 <script>
+  function logout() {
+    window.location.href = "login.html";
+  }
+
+  // Função para troca de dashboard(silo)
   function trocar() {
     var selecao = select_sensor.value;
 
@@ -297,4 +303,36 @@
     var siloNum = document.getElementById("silo_num");
     siloNum.textContent = "Silo " + selecao;
   }
+
+  // Função para atualizar as cores das temperaturas e umidades
+  function atualizarCoresTabela() {
+    var tempCelas = document.querySelectorAll(".temp");
+    var umidCelas = document.querySelectorAll(".umid");
+
+    tempCelas.forEach((cel) => {
+      // Extrai o número, ex: "22°C" → 22
+      var valor = parseFloat(cel.textContent);
+      if (valor < 20) {
+        cel.style.color = "blue";
+      } else if (valor <= 28) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+
+    umidCelas.forEach((cel) => {
+      // Extrai o número, ex: "75%" → 75
+      var valor = parseFloat(cel.textContent);
+      if (valor < 50) {
+        cel.style.color = "orange";
+      } else if (valor <= 70) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+  }
+  // Chama a função ao carregar a página
+  atualizarCoresTabela();
 </script>
