@@ -14,17 +14,103 @@ body {
 .main {
     height: 90%;
     width: 100%;
+    padding: 70px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 .main .title {
-    /*height: 100%;*/
+    height: 20%;
     width: 100%;
-    
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     font-size: x-large;
     color: #6B8E23;
+    border: 1px solid black;
+}
+
+.main .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0;
+    border: 1px solid black;
+}
+
+.main .container .box {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .container .campo {
+
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    
+}
+
+.main .container .campo-select {
+
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.box input {
+    height: 35px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 0 0 0 10px;
+}
+
+.box span {
+
+    font-size: large;
+    text-align: start;
+}
+
+.campo-select select {
+    width: 30%; 
+    height: 25px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    background: #6B8E23;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .container button {
+
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 10px 0 0 0;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 300px;
+    color: white;
+    background: black;
 }

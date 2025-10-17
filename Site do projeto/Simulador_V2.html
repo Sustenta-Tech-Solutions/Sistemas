@@ -51,34 +51,38 @@
         </div>
 
         <div class="container">
-            <label class="box">
-                Informe quantos silos você possui: <br>
-                <input type="number" id="ipt_silo"> <br> <br>
-            </label>
 
-            <label class="box">
-                Informe a capacidade máxima em toneladas de cada silo: <br>
-                <input type="number" id="ipt_capacidade"> <br> <br>
-            </label>
+            <div class="box">
+                <label class="campo">
+                    <span>Informe quantos silos você possui: </span> <br>
+                    <input type="number" id="ipt_silo" placeholder="Informe aqui"> <br>
+                </label>
 
-            <label class="box">
-                Qual mês para definir o preço médio da saca: <br>
-                <select id="select_mes">
-                    <option value="#" selected disabled>Selecione o mês</option>
-                    <option value="123">Janeiro</option>
-                    <option value="119">Fevereiro</option>
-                    <option value="119">Março</option>
-                    <option value="119">Abril</option>
-                    <option value="116">Maio</option>
-                    <option value="117">Junho</option>
-                    <option value="118">Julho</option>
-                    <option value="122">Agosto</option>
-                    <option value="122">Setembro</option>
-                    <option value="121">Outubro</option>
-                    <option value="130">Novembro</option>
-                    <option value="128">Dezembro</option>
-                </select> <br> <br>
-            </label>
+                <label class="campo">
+                    <span>Informe a capacidade máxima em toneladas de cada silo:</span> <br>
+                    <input type="number" id="ipt_capacidade" placeholder="Informe aqui"> <br>
+                </label>
+
+                <label class="campo-select">
+                    <span>Qual mês para definir o preço médio da saca:</span> <br>
+                    <select id="select_mes">
+                        <option value="#" selected disabled>Selecione o mês</option>
+                        <option value="123">Janeiro</option>
+                        <option value="119">Fevereiro</option>
+                        <option value="119">Março</option>
+                        <option value="119">Abril</option>
+                        <option value="116">Maio</option>
+                        <option value="117">Junho</option>
+                        <option value="118">Julho</option>
+                        <option value="122">Agosto</option>
+                        <option value="122">Setembro</option>
+                        <option value="121">Outubro</option>
+                        <option value="130">Novembro</option>
+                        <option value="128">Dezembro</option>
+                    </select> <br> <br>
+                </label>
+            </div>
+
 
             <button onclick="simular()">Simular</button> <br>
 
