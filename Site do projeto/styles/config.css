@@ -116,3 +116,9 @@
 .btn.cancelar:hover {
   background-color: #bbb;
 }
+
+.erroLogin {
+    color: red; 
+    display: none;
+    font-size: 15px;
+}

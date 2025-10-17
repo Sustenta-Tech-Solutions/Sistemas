@@ -25,7 +25,7 @@
       <nav class="sidebar">
         <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
         <a href="Dashboard_espec.html" class="button">Dashboard Específica</a>
-        <a href="configuracao.html" class="button active">Configurações</a>
+        <a href="configuracao.html" class="button">Configurações</a>
         <button class="logout" onclick="logout()">Sair</button>
       </nav>
 
@@ -65,25 +65,28 @@
         <section class="config-section">
           <h2>Segurança</h2>
           <div class="security-fields">
-            <label for="senha-atual">Senha Atual</label>
+            <label for="senha_atual">Senha Atual</label>
             <input
               type="password"
-              id="senha-atual"
+              id="senha_atual"
               placeholder="Digite sua senha atual"
             />
 
-            <label for="nova-senha">Nova Senha</label>
+            <label for="nova_senha">Nova Senha</label>
             <input
               type="password"
-              id="nova-senha"
+              id="nova_senha"
               placeholder="Digite a nova senha"
             />
+            <p id="erroLogin" class="erroLogin">Senha atual incorreta!</p>
           </div>
         </section>
 
         <!-- Botões -->
         <div class="button-group">
-          <button class="btn salvar">Salvar Alterações</button>
+          <button onclick="salvar()" class="btn salvar">
+            Salvar Alterações
+          </button>
           <button class="btn cancelar" type="reset">Cancelar</button>
         </div>
       </main>
@@ -111,3 +114,20 @@
     </script>
   </body>
 </html>
+<script>
+  function salvar() {
+    var senhaAtual = senha_atual.value;
+    var senhaNova = nova_senha.value;
+
+    if (senhaAtual != "teste123") {
+      erroLogin.style.display = "block";
+      senha_atual.style.borderColor = "red";
+    } else {
+      alert("Senha alterada com sucesso!");
+      erroLogin.style.display = "none";
+      senha_atual.style.borderColor = "black";
+      senha_atual.value = "";
+      nova_senha.value = "";
+    }
+  }
+</script>
