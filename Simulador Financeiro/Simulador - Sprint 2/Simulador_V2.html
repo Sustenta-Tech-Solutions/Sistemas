@@ -28,41 +28,38 @@
 
     <div style="text-align: center;">
         <div>
-
-            <h1>Simulador SustentaTech</h1>
-
-            <p>responsavel pela por 1 a 2 por cento,</p>
+            <h1>Simulador Financeiro</h1>
         </div>
 
         <div>
             <label>
-                <span>Quantidade de silos que vocë possui:</span> <br>
-                <input type="text" id="input_silo">
-            </label> <br> <br>
+                Informe quantos silos você possui: <br>
+                <input type="number" id="ipt_silo"> <br> <br>
+            </label>
 
             <label>
-                <span> Capacidade maxima de armazenamento (em toneladas):</span><br>
-                <input type="number" id="input_toneladas" placeholder="">
-            </label> <br> <br>
+                Informe a capacidade máxima em toneladas de cada silo: <br>
+                <input type="number" id="ipt_capacidade"> <br> <br>
+            </label>
 
-            <label> <!--https://www.agrolink.com.br/cotacoes/historico/go/soja-em-grao-sc-60kg-->
-                <select  id="select_mes">
-                    <span>Qual o período de safra:</span>
-                    <option disabled selected>Selecione o mês</option>
-                    <option value="123,0470">Janeiro</option>
-                    <option value="119,1668">Fevereiro</option>
-                    <option value="119,8211">Março</option>
-                    <option value="119,6235">Abril</option>
-                    <option value="116,7650">Maio</option>
-                    <option value="117,7200">Junho</option>
-                    <option value="118,6674">Julho</option>
-                    <option value="122,5153">Agosto</option>
-                    <option value="122,6833">Setembro</option>
-                    <option value="121,0989">Outubro</option>
-                    <option value="130,3556">Novembro</option>
-                    <option value="128,5831">Dezembro</option>
-                </select>
-            </label> <br> <br>
+            <label>
+                Qual mês para definir o preço médio da saca: <br>
+                <select id="select_mes">
+                <option value="#" selected disabled>Selecione o mês</option>
+                <option value="123">Janeiro</option>
+                <option value="119">Fevereiro</option>
+                <option value="119">Março</option>
+                <option value="119">Abril</option>
+                <option value="116">Maio</option>
+                <option value="117">Junho</option>
+                <option value="118">Julho</option>
+                <option value="122">Agosto</option>
+                <option value="122">Setembro</option>
+                <option value="121">Outubro</option>
+                <option value="130">Novembro</option>
+                <option value="128">Dezembro</option>
+                </select> <br> <br>
+            </label>
 
             <button onclick="simular()">Simular</button> <br>
 
@@ -85,24 +82,37 @@
 </html>
 <script>
     function simular() {
-        var toneladas = Number(input_toneladas.value);
-        var mes = select_mes;
-        //var precoSacas = ;
+        var silo = Number(ipt_silo.value); 
+        var capacidade = Number(ipt_capacidade.value); 
+        var mes = Number(select_mes.value);
+        var capacidadeTotal = capacidade * silo;
 
+        if (silo == "") {
+            div_mensagem.innerHTML = "A quantidade de silos não pode estar vazia.";
+            ipt_silo.focus();
+        } else if (capacidade == "") {
+            div_mensagem.innerHTML = "A capacidade máxima não pode estar vazia.";
+            ipt_capacidade,focus();
+        } else if (mes == "#") {
+            div_mensagem.innerHTML = "Selecione um mês.";
+            select_mes.focus();
+        } else { // Cálculos principais
+            var sacaTotal = Math.floor(capacidadeTotal / 0.06); // Quantidade total de sacas que os silos podem armazenar
+            var receita = mes * sacaTotal // Valor total da venda de todas as sacas pelo preço unitário do mês escolhido
+            var prejuizo = receita * 0.02 // Valor do prejuizo de 2% da venda total causado pela condensação
 
-        var conversaoKilo = toneladas * 1000; // Toneladas convertidas para kilo 
-
-        var totalSacas = conversaoKilo / 60; // Total de sacas
-
-        var valorTotal = totalSacas * precoSacas; // Valor total das sacas
-
-        console.log(conversaoKilo);
-        console.log(totalSacas);
-        console.log(valorTotal);
-        var mensagem = ``;
-
-       
-
-        div_mensagem.innerHTML = mensagem;
+            // Mensagem ao usuário
+            div_mensagem.innerHTML = `
+            <b>Quantidade de silos:</b> ${silo}<br>
+            <b>Capacidade total armazenada:</b> ${capacidadeTotal.toLocaleString()} toneladas<br>
+            <b>Total estimado em sacas de soja:</b> ${sacaTotal.toLocaleString()} (60 kg cada)<br>
+            <b>Preço médio da saca:</b> ${mes.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
+            <p>Devido o problema da condensação dentro dos silos, podem surgir pragas, fungos e insetos, 
+            que geram uma perda estimada de 2% do armazenamento.<br>
+            <b>Prejuízo estimado:</b> R$ ${prejuizo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
+            <p>Com o nosso sistema de controle de temperatura e umidade, 
+            é possível evitar esse prejuízo.<br>
+            `;
+        }
     }
 </script>
