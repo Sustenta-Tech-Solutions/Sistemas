@@ -28,6 +28,7 @@ body {
     height: 500px;
     border: 1.5px solid rgb(94, 106, 113);
     border-radius: 8px;
+    box-shadow: 0.5px 0.5px 5px black;
 }
 
 .superior {
@@ -77,8 +78,9 @@ p {
     padding: 10px;
 }
 
-#telefone {
-    width: 455px;
+select {
+    color: #838383;
+
 }
 
 .button-cadastrar {

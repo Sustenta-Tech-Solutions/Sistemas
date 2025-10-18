@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sustenta Tech</title>
     <link rel="stylesheet" href="styles/style_cadastro.css">
+    <link rel="stylesheet" href="styles/nav_footer.css">
     <link rel="shortcut icon" href="imagens/logo_circular_sustentatech.svg" type="image/x-icon">
 </head>
 <body>
     <!-- INICIO ESTRUTURA CABEÇALHO -->
-    <div class="navbar">
-
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+            <img src="imagens/logo_sustentatech_deitado.svg">
+        </div>
+        <ul class="navbar">
+            <li class="agora"><a href="#">Inicial</a></li>
+            <li><a href="#">Sobre nós</a></li>
+            <li><a href="#">Nossos serviços</a></li>
+            <li><a href="#">Simulador</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Cadastrar</a></li>
+        </ul>
+      </div>
+    </div>
     </div>
     <!-- FIM ESTRUTURA CABEÇALHO -->
 
@@ -25,13 +40,21 @@
             </div>
             <p>Crie seu cadastro</p>
             <div class="formulario">
-                <input class="input" type="text" id="nome" placeholder="Nome">
-                <input class="input" type="text" id="sobrenome" placeholder="Sobrenome">
-                <input class="input" type="text" id="telefone" placeholder="(DDD) Telefone">
-                <input class="input" type="text" id="empresa" placeholder="Empresa">
-                <input class="input" type="text" id="cargo" placeholder="Cargo">
-                <input class="input" type="text" id="email" placeholder="E-mail">
-                <input class="input" type="text" id="senha" placeholder="Senha">
+                <input class="input" type="text" id="nome" placeholder="Nome" required>
+                <!-- <small class="erro" id="erroNome">Nome incorreto</small> -->
+                <input class="input" type="text" id="sobrenome" placeholder="Sobrenome" required>
+                <select name="" id="" class="input" style="padding: 0px; padding-left: 10px;" required>
+                    <option selected disabled value="">Empresa</option>
+                    <option value="1">Atos</option>
+                    <option value="2">Bradesco</option>
+                    <option value="3">SPTech</option>
+                    <option value="4">Safra</option>
+                </select>
+                <input class="input" type="date" id="dtnascimento" placeholder="Data de nascimento" style="color: #838383;" required>
+                <input class="input" type="text" id="email" placeholder="E-mail" required>
+                <input class="input" type="text" id="senha" placeholder="Senha" required>
+                <input class="input" type="text" id="telefoneCelular" placeholder="Telefone Celular" required>
+                <input class="input" type="text" id="telfoneFixo" placeholder="Telefone Fixo" required>
             </div>
             <div class="button-cadastrar">
                 <button>Cadastrar</button>
@@ -42,7 +65,22 @@
     <!-- FIM ESTRUTURA CENTRAL -->
 
     <!-- INICIO ESTRUTURA RODAPE -->
-
+    <div class="footer">
+      <!--<br>-->
+      <div class="container">
+        <div class="hr1">
+          <hr>
+        </div>
+        <div class="logo">
+          <img src="imagens/logo_sustentatech_deitado.svg">
+        </div>
+        <!--<br>-->
+        <div class="hr2">
+          <hr>
+        </div>
+        
+      </div>
+    </div>
     <!-- FIM ESTRUTURA RODAPE -->
 </body>
 </html>
