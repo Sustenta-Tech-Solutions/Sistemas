@@ -12,12 +12,7 @@
 
 body {
     margin: 0px;
-    background-color: rgb(234, 230, 222);
-}
-
-.navbar {
-    height: 80px;
-    border: 2px dashed black;
+    background-color: #eae6de;
 }
 
 .tela-cadastro {

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="essts/ICONE_SUSTENTATECH_V02.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/44fdb15698.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/nav_footer.css">
+    <title>SustentaTech</title>
+</head>
+
+<body>
+
+
+    <nav>
+
+        <img width="170" src="essts/HORIZONTAL_SUSTENTATECH_V02.png" alt="">
+
+        <ul>
+            <li><a href="">Sobre nós</a></li>
+            <li><a href="">Nossos serviços </a></li>
+            <li><a href="">Simulador</a></li>
+            <li><a href="">Contato</a></li>
+            <li><a href="">Login</a></li>
+            <li><a href="">Cadastrar</a></li>
+        </ul>
+    </nav>
+
+    <div style="text-align: center;">
+        <div>
+            <h1>Simulador Financeiro</h1>
+        </div>
+
+        <div>
+            <label>
+                Informe quantos silos você possui: <br>
+                <input type="number" id="ipt_silo"> <br> <br>
+            </label>
+
+            <label>
+                Informe a capacidade máxima em toneladas de cada silo: <br>
+                <input type="number" id="ipt_capacidade"> <br> <br>
+            </label>
+
+            <label>
+                Qual mês para definir o preço médio da saca: <br>
+                <select id="select_mes">
+                <option value="#" selected disabled>Selecione o mês</option>
+                <option value="123">Janeiro</option>
+                <option value="119">Fevereiro</option>
+                <option value="119">Março</option>
+                <option value="119">Abril</option>
+                <option value="116">Maio</option>
+                <option value="117">Junho</option>
+                <option value="118">Julho</option>
+                <option value="122">Agosto</option>
+                <option value="122">Setembro</option>
+                <option value="121">Outubro</option>
+                <option value="130">Novembro</option>
+                <option value="128">Dezembro</option>
+                </select> <br> <br>
+            </label>
+
+            <button onclick="simular()">Simular</button> <br>
+
+            <div id="div_mensagem"></div>
+        </div>
+    </div>
+
+    <footer>
+        <img width="170" src="essts/HORIZONTAL_SUSTENTATECH_V02.png" alt="">
+
+        <ul>
+            <li><i class="fa-solid fa-location-dot"></i>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</li>
+            <li><i class="fa-solid fa-phone"></i>(11) 4228-8982</li>
+            <li><i class="fa-brands fa-whatsapp"></i>(11) 97323-9898</li>
+        </ul>
+
+    </footer>
+</body>
+
+</html>
+<script>
+    function simular() {
+        var silo = Number(ipt_silo.value); 
+        var capacidade = Number(ipt_capacidade.value); 
+        var mes = Number(select_mes.value);
+        var capacidadeTotal = capacidade * silo;
+
+        if (silo == "") {
+            div_mensagem.innerHTML = "A quantidade de silos não pode estar vazia.";
+            ipt_silo.focus();
+        } else if (capacidade == "") {
+            div_mensagem.innerHTML = "A capacidade máxima não pode estar vazia.";
+            ipt_capacidade,focus();
+        } else if (mes == "#") {
+            div_mensagem.innerHTML = "Selecione um mês.";
+            select_mes.focus();
+        } else { // Cálculos principais
+            var sacaTotal = Math.floor(capacidadeTotal / 0.06); // Quantidade total de sacas que os silos podem armazenar
+            var receita = mes * sacaTotal // Valor total da venda de todas as sacas pelo preço unitário do mês escolhido
+            var prejuizo = receita * 0.02 // Valor do prejuizo de 2% da venda total causado pela condensação
+
+            // Mensagem ao usuário
+            div_mensagem.innerHTML = `
+            <b>Quantidade de silos:</b> ${silo}<br>
+            <b>Capacidade total armazenada:</b> ${capacidadeTotal.toLocaleString()} toneladas<br>
+            <b>Total estimado em sacas de soja:</b> ${sacaTotal.toLocaleString()} (60 kg cada)<br>
+            <b>Preço médio da saca:</b> ${mes.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
+            <p>Devido o problema da condensação dentro dos silos, podem surgir pragas, fungos e insetos, 
+            que geram uma perda estimada de 2% do armazenamento.<br>
+            <b>Prejuízo estimado:</b> R$ ${prejuizo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}<br>
+            <p>Com o nosso sistema de controle de temperatura e umidade, 
+            é possível evitar esse prejuízo.<br>
+            `;
+        }
+    }
+</script>

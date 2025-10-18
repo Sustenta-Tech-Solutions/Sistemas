@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard_geral</title>
+    <link rel="stylesheet" href="styles/dash_geral.css" />
+    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+      <div class="user">Olá, User</div>
+    </header>
+
+    <div class="container">
+      <nav class="sidebar">
+        <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
+        <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
+        <a href="configuracao.html" class="button">Configurações</a>
+        <button class="logout" onclick="logout()">Sair</button>
+      </nav>
+
+      <main>
+        <div class="silos-grid">
+          <!-- Bloco Silo 1 -->
+          <div class="silo-box">
+            <h3>Silo 1</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Temperatura</th>
+                  <th>Umidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="temp">30°C</td>
+                  <td class="umid">80%</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="temp">22°C</td>
+                  <td class="umid">66%</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="temp">18°C</td>
+                  <td class="umid">64%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bloco Silo 2 -->
+          <div class="silo-box">
+            <h3>Silo 2</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Temperatura</th>
+                  <th>Umidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="temp">28°C</td>
+                  <td class="umid">85%</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="temp">25°C</td>
+                  <td class="umid">70%</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="temp">16°C</td>
+                  <td class="umid">56%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Bloco Silo 3 -->
+          <div class="silo-box">
+            <h3>Silo 3</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sensor</th>
+                  <th>Temperatura</th>
+                  <th>Umidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="temp">28°C</td>
+                  <td class="umid">88%</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="temp">24°C</td>
+                  <td class="umid">66%</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="temp">20°C</td>
+                  <td class="umid">70%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Quantidade de alertas -->
+          <div class="alert-count-box">
+            <h3>Quantidade de alertas</h3>
+            <div class="alert-number">5</div>
+          </div>
+        </div>
+
+        <div class="card-grid mid">
+          <div class="graphics">
+            <canvas class="g1" id="chartTemp"></canvas>
+          </div>
+          <div class="graphics">
+            <canvas class="g2" id="chartUmid"></canvas>
+          </div>
+        </div>
+
+        <div class="alerts">
+          <div class="alerts-header">
+            <h3>Últimos Alertas</h3>
+          </div>
+
+          <!-- table - estrutura de tabela , thead - titulo das colunas , tr - linhas da tabela, 
+           th - cabeçalho da tabela, tbody - corpo da tabela -->
+
+          <table class="alerts-table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Horário</th>
+                <th>Duração</th>
+                <th>Sensor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="alert-info">
+                    <div class="alert-icon temp"></div>
+                    <div>
+                      <strong>Temperatura alta</strong><br />
+                      <span>Silo 03</span>
+                    </div>
+                  </div>
+                </td>
+                <td>14/10/2025 - 14:32</td>
+                <td>15 min</td>
+                <td>Sensor 1 Topo</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="alert-info">
+                    <div class="alert-icon hum"></div>
+                    <div>
+                      <strong>Umidade baixa</strong><br />
+                      <span>Silo 01</span>
+                    </div>
+                  </div>
+                </td>
+                <td>14/10/2025 - 13:20</td>
+                <td>8 min</td>
+                <td>Sensor 2 Central</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="Scripts/graphics.JS"></script>
+  </body>
+</html>
+<script>
+  function logout() {
+    window.location.href = "login.html";
+  }
+  // Função para atualizar as cores das temperaturas e umidades
+  function atualizarCoresTabela() {
+    var tempCelas = document.querySelectorAll(".temp");
+    var umidCelas = document.querySelectorAll(".umid");
+
+    tempCelas.forEach((cel) => {
+      // Extrai o número, ex: "22°C" → 22
+      var valor = parseFloat(cel.textContent);
+      if (valor < 20) {
+        cel.style.color = "blue";
+      } else if (valor <= 28) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+
+    umidCelas.forEach((cel) => {
+      // Extrai o número, ex: "75%" → 75
+      var valor = parseFloat(cel.textContent);
+      if (valor < 50) {
+        cel.style.color = "orange";
+      } else if (valor <= 70) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+  }
+  // Chama a função ao carregar a página
+  atualizarCoresTabela();
+</script>

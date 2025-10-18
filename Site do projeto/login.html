@@ -1,57 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles/style_login2.css">
-</head>
-<body>
-
-    <div class="navbar"></div>
+    <link rel="stylesheet" href="styles/nav_footer.css" />
+    <link rel="stylesheet" href="styles/style_login2.css" />
+    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+          <img src="imagens/logo_sustentatech_deitado.svg" />
+        </div>
+        <ul class="navbar">
+          <li class="agora">
+            <a href="nav_footer.html">Inicial</a>
+          </li>
+          <li>
+            <a href="sobre.html">Sobre nós</a>
+          </li>
+          <li>
+            <a href="serviços.html">Nossos serviços</a>
+          </li>
+          <li>
+            <a href="Simulador_V2.html">Simulador</a>
+          </li>
+          <li>
+            <a href="contato.html">Contato</a>
+          </li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li>
+            <a href="cadastro.html">Cadastrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
     <div class="tela-login">
-        <div class="card-login">
-            <div class="login-superior">
-                <a href="#" class="voltar">
-                    <img src="imagens/icone_voltar.svg" width="50"  height="50" alt="">
-                </a>
-                <img src="imagens/logo_circular_sustentatech.svg" alt="">
-            </div>
-            <p>Login</p>
-            <div class="formulario">
-                <input class="input" type="text" id="ipt_usuario" placeholder="Usuário">
-                <input class="input" type="text" id="ipt_senha" placeholder="Senha"> 
-            </div>
-            <p class="erroLogin">Usuário ou senha incorreta!</p>
-            <div class="button-login">
-                <button onclick="login()"><b>Entrar</b></button> <br> <br>
-            </div>
-            <div class="cadastrar-se"> 
-                <a style="color: #6B8E23; font-size: 18px; "><b><u>Cadastrar-se</u></b></a>
-            </div>
+      <div class="card-login">
+        <div class="login-superior">
+          <a href="#" class="voltar">
+            <img src="imagens/icone_voltar.svg" width="50" height="50" alt="" />
+          </a>
+          <img src="imagens/logo_circular_sustentatech.svg" alt="" />
         </div>
+        <p>Login</p>
+        <div class="formulario">
+          <input
+            class="input"
+            type="text"
+            id="ipt_usuario"
+            placeholder="Usuário"
+          />
+          <input class="input" type="password" id="ipt_senha" placeholder="Senha" />
+          <br />
+          <p id="erroLogin" class="erroLogin">Usuário ou senha incorreta!</p>
+        </div>
+
+        <div class="button-login">
+          <button onclick="login()"><b>Entrar</b></button> <br />
+          <br />
+        </div>
+        <div class="cadastrar-se">
+          <a href="cadastro.html" style="color: #6b8e23; font-size: 18px"
+            ><b><u>Cadastrar-se</u></b></a
+          >
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
 
 <script>
-    function login() {
-        var usuario = ipt_usuario.value;
-        var senha = ipt_senha.value;
-        var email = "teste@gmail.com";
-        var senhaCadastro = "teste123";
+  function login() {
+    var usuario = ipt_usuario.value;
+    var senha = ipt_senha.value;
+    var email = "teste@gmail.com";
+    var senhaCadastro = "teste123";
 
-        if (usuario != email || senha != senhaCadastro) {
-            div_erroLogin.style.display = "block";
-            div_erroLogin.style.marginLeft = "75px";
-            ipt_usuario.style.borderColor = "red";
-            ipt_senha.style.borderColor = "red";
-        } else {
-            alert("Usuário logado com sucesso!");
-            div_erroLogin.style.display = "none";
-            ipt_usuario.style.borderColor = "black";
-            ipt_senha.style.borderColor = "black";
-        }
+    if (usuario != email || senha != senhaCadastro) {
+      erroLogin.style.display = "block";
+      ipt_usuario.style.borderColor = "red";
+      ipt_senha.style.borderColor = "red";
+    } else {
+      alert("Usuário logado com sucesso!");
+      erroLogin.style.display = "none";
+      ipt_usuario.style.borderColor = "black";
+      ipt_senha.style.borderColor = "black";
+      window.location.href = "Dashboard_geral.html";
     }
+  }
+
+  // Executa o botão login ao clicar a tecla ENTER
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      login();
+    }
+  });
 </script>
