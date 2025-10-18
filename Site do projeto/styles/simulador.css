@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
+    background:  rgb(241, 241, 241);;
 }
 
 * {
@@ -12,35 +13,35 @@ body {
 }
 
 .main {
-    height: 90%;
+    height: 120%;
     width: 100%;
     padding: 70px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
 }
 
 .main .title {
-    height: 20%;
+    height: 3 0%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     font-size: x-large;
     color: #6B8E23;
-    border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 .main .container {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 10px 0;
-    border: 1px solid black;
+    margin: 20px 0 0 0;
+   
 }
 
 .main .container .box {
@@ -60,7 +61,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    
+
 }
 
 .main .container .campo-select {
@@ -71,7 +72,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
+
 }
 
 .box input {
@@ -90,7 +91,7 @@ body {
 }
 
 .campo-select select {
-    width: 30%; 
+    width: 30%;
     height: 25px;
     font-size: 14px;
     text-align: center;
@@ -107,10 +108,19 @@ body {
     border: 1px solid black;
     border-radius: 6px;
     margin: 10px 0 0 0;
-    height: 40px;
+    height: 100px;
     font-size: 16px;
     font-weight: bold;
-    width: 300px;
+    width: 200px;
     color: white;
     background: black;
+}
+
+.main .container #div_mensagem {
+
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    margin: 0 0 10px 0;
+    
 }
