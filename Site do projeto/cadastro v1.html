@@ -40,27 +40,25 @@
             </div>
             <p>Crie seu cadastro</p>
             <div class="formulario">
-                <input class="input" type="text" id="nome" placeholder="Nome" required>
-                <!-- <small class="erro" id="erroNome">Nome incorreto</small> -->
-                <input class="input" type="text" id="sobrenome" placeholder="Sobrenome" required>
-                <select name="" id="" class="input" style="padding: 0px; padding-left: 10px;" required>
+                <input class="input" type="text" id="input_nome" placeholder="Nome" autocomplete="off">
+                <input class="input" type="text" id="input_sobrenome" placeholder="Sobrenome" autocomplete="off">
+                <select class="input" id="input_empresa" style="padding: 0px; padding-left: 5px;">
                     <option selected disabled value="">Empresa</option>
                     <option value="1">Atos</option>
                     <option value="2">Bradesco</option>
                     <option value="3">SPTech</option>
                     <option value="4">Safra</option>
                 </select>
-                <input class="input" type="date" id="dtnascimento" placeholder="Data de nascimento" style="color: #838383;" required>
-                <input class="input" type="text" id="email" placeholder="E-mail" required>
-                <input class="input" type="text" id="senha" placeholder="Senha" required>
-                <input class="input" type="text" id="telefoneCelular" placeholder="Telefone Celular" required>
-                <input class="input" type="text" id="telfoneFixo" placeholder="Telefone Fixo" required>
+                <input class="input" type="date" id="input_dtNascimento" placeholder="Data de nascimento" style="color: #838383;" autocomplete="off">
+                <input class="input" type="text" id="input_email" placeholder="E-mail" autocomplete="off">
+                <input class="input" type="password" id="input_senha" placeholder="Senha" autocomplete="off">
+                <input class="input" type="text" id="input_telCelular" placeholder="Telefone Celular" autocomplete="off">
+                <input class="input" type="text" id="input_telFixo" placeholder="Telefone Fixo" autocomplete="off">
             </div>
             <div class="button-cadastrar">
-                <button>Cadastrar</button>
+                <button onclick="cadastrar()">Cadastrar</button>
             </div>
         </div>
-
     </div>
     <!-- FIM ESTRUTURA CENTRAL -->
 
@@ -84,3 +82,45 @@
     <!-- FIM ESTRUTURA RODAPE -->
 </body>
 </html>
+<script>
+
+    function cadastrar() {
+        var nome = input_nome.value,
+            sobrenome = input_sobrenome.value,
+            empresa = Number(input_empresa.value),
+            dtNascimento = new Date(input_dtNascimento.value + "T00:00:00"),
+            email = input_email.value,
+            senha = input_senha.value,
+            telCelular = input_telCelular.value,
+            telFixo = input_telFixo.value;
+          
+        var dtAtual = new Date();
+
+        if (nome.length <= 1) {
+          alert(`O nome não pode estar vazio ou ter 1 caractere!`);
+          return
+        } else if (sobrenome.length <= 1) {
+          alert(`O sobrenome não pode estar vazio ou ter 1 caractere!`);
+          return
+        } else if (!empresa) {
+          alert(`Selecione uma empresa válida!`);
+          return;
+        } else if (!dtNascimento || dtNascimento >= dtAtual) {
+          alert("Informe uma data de nascimento válida!");
+          return;
+        } else if (email == "" || !email.includes("@") || !email.includes(".com")) {
+          alert("Insira um e-mail válido!");
+          return;
+        } else if (senha.length < 6) {
+          alert("A senha deve ter pelo menos 6 caracteres!");
+          return;
+        } else if (telCelular == "" || telCelular.length < 11) {
+          alert("Telefone celular inválido!");
+          return;
+        } else if (telFixo !== "" && telFixo.length < 10) {
+          alert("Telefone fixo inválido!");
+          return;
+        }
+        alert("Cadastro realizado com sucesso!")
+    }
+</script>
