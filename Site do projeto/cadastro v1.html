@@ -105,7 +105,7 @@
         } else if (!empresa) {
           alert(`Selecione uma empresa válida!`);
           return;
-        } else if (!dtNascimento || dtNascimento >= dtAtual) {
+        } else if (!dtNascimento || dtNascimento >= dtAtual) { // Arrumar validação da data de nascimento
           alert("Informe uma data de nascimento válida!");
           return;
         } else if (email == "" || !email.includes("@") || !email.includes(".com")) {
