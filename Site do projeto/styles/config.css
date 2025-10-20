@@ -1,0 +1,124 @@
+.config-container {
+  flex: 1;
+  padding: 30px;
+  background: #f7f4f3;
+}
+
+.config-container h1 {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.config-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.config-section h2 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+.profile-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.photo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-box img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  margin-bottom: 8px;
+}
+
+.photo-upload-btn {
+  background: #007BFF;
+  color: white;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-fields label,
+.security-fields label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.profile-fields input,
+.security-fields input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.security-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+}
+
+.btn.salvar {
+  background-color: #007BFF;
+  color: white;
+}
+
+.btn.salvar:hover {
+  background-color: #0056b3;
+}
+
+.btn.cancelar {
+  background-color: #ddd;
+  color: #333;
+}
+
+.btn.cancelar:hover {
+  background-color: #bbb;
+}
+
+.erroLogin {
+    color: red; 
+    display: none;
+    font-size: 15px;
+}

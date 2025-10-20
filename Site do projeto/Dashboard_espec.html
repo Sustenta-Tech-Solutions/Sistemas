@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard_espec</title>
     <link rel="stylesheet" href="styles/dash_espec.css" />
+    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -12,7 +13,7 @@
       <div class="logo">
         <img src="imagens/logo_sustentatech_deitado.svg" />
       </div>
-      <div class="user">Olá User</div>
+      <div class="user">Olá, User</div>
     </header>
 
     <div class="container">
@@ -23,11 +24,13 @@
         <button class="logout" onclick="logout()">Sair</button>
       </nav>
 
-      <main>
+      <main class="silo1">
         <div id="div_sensor">
           <h3 id="silo_num">Silo</h3>
-          <div>
-            <select id="select_sensor">
+          <hr class="line" />
+          <div id="div_select">
+            Selecione um silo
+            <select id="select_sensor" class="select" onchange="trocar()">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -35,86 +38,301 @@
           </div>
         </div>
 
-        <div id="silo1" class="silo1">
-          <div class="card-grid top">
-            <div class="kpi">
-              Temperatura média
-              <div id="div_temp"></div>
+        <div id="dashboard-row1" class="dashboard-row">
+          <div class="charts-area">
+            <div class="chart-container">
+              <h2>Temperatura (°C)</h2>
+              <canvas class="g1" id="chartTemp1"></canvas>
             </div>
-            <div class="kpi">
-              Umidade média
-              <div id="div_umid"></div>
-            </div>
-            <div class="kpi">
-              Quantidade de alertas
-              <div id="div_alertas"></div>
+            <div class="chart-container">
+              <h2>Umidade (%)</h2>
+              <canvas class="g2" id="chartUmid1"></canvas>
             </div>
           </div>
 
-          <div class="card-grid mid">
-            <div class="graphics">
-              <canvas class="g1" id="chartTemp"></canvas>
+          <div class="kpi-column">
+            <div class="kpi-box">
+              Temperatura nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="temp">12°C</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="temp">22°C</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="temp">35°C</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="graphics">
-              <canvas class="g2" id="chartUmid"></canvas>
+            <div class="kpi-box">
+              Umidade nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="kpi-box">
+              Alertas<br />
+              <span id="alertas1">3</span>
             </div>
           </div>
         </div>
 
-        <div id="silo2" class="silo2">
-          <div class="card-grid top">
-            <div class="kpi">
-              Temperatura média
-              <div id="div_temp"></div>
+        <div id="dashboard-row2" class="dashboard-row" style="display: none">
+          <div class="charts-area">
+            <div class="chart-container">
+              <h2>Temperatura (°C)</h2>
+              <canvas class="g1" id="chartTemp2"></canvas>
             </div>
-            <div class="kpi">
-              Umidade média
-              <div id="div_umid"></div>
-            </div>
-            <div class="kpi">
-              Quantidade de alertas
-              <div id="div_alertas"></div>
+            <div class="chart-container">
+              <h2>Umidade (%)</h2>
+              <canvas class="g2" id="chartUmid2"></canvas>
             </div>
           </div>
 
-          <div class="card-grid mid">
-            <div class="graphics">
-              <canvas class="g1" id="chartTemp"></canvas>
+          <div class="kpi-column">
+            <div class="kpi-box">
+              Temperatura nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="temp">20°C</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="temp">22°C</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="temp">28°C</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="graphics">
-              <canvas class="g2" id="chartUmid"></canvas>
+            <div class="kpi-box">
+              Umidade nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="kpi-box">
+              Alertas<br />
+              <span id="alertas1">3</span>
             </div>
           </div>
         </div>
 
-        <div id="silo3" class="silo3">
-          <div class="card-grid top">
-            <div class="kpi">
-              Temperatura média
-              <div id="div_temp"></div>
+        <div id="dashboard-row3" class="dashboard-row" style="display: none">
+          <div class="charts-area">
+            <div class="chart-container">
+              <h2>Temperatura (°C)</h2>
+              <canvas class="g1" id="chartTemp3"></canvas>
             </div>
-            <div class="kpi">
-              Umidade média
-              <div id="div_umid"></div>
-            </div>
-            <div class="kpi">
-              Quantidade de alertas
-              <div id="div_alertas"></div>
+            <div class="chart-container">
+              <h2>Umidade (%)</h2>
+              <canvas class="g2" id="chartUmid3"></canvas>
             </div>
           </div>
 
-          <div class="card-grid mid">
-            <div class="graphics">
-              <canvas class="g1" id="chartTemp"></canvas>
+          <div class="kpi-column">
+            <div class="kpi-box">
+              Temperatura nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="temp">20°C</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="temp">22°C</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="temp">30°C</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="graphics">
-              <canvas class="g2" id="chartUmid"></canvas>
+            <div class="kpi-box">
+              Umidade nas ultimas horas<br />
+              <table>
+                <thead>
+                  <tr>
+                    <th>Variação</th>
+                    <th>Temperatura</th>
+                    <th>Sensor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Mín:</td>
+                    <td class="umid">60%</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>Med:</td>
+                    <td class="umid">66%</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>Máx:</td>
+                    <td class="umid">75%</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="kpi-box">
+              Alertas<br />
+              <span id="alertas1">3</span>
             </div>
           </div>
         </div>
-
-
       </main>
     </div>
+
+    <script src="Scripts/graphics_espec.JS"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        trocar();
+      });
+    </script>
   </body>
 </html>
+<script>
+  function logout() {
+    window.location.href = "login.html";
+  }
+
+  // Função para troca de dashboard(silo)
+  function trocar() {
+    var selecao = select_sensor.value;
+
+    document.querySelectorAll(".dashboard-row").forEach((div) => {
+      div.style.display = "none";
+    });
+
+    var bloco = document.getElementById(`dashboard-row${selecao}`);
+    if (bloco) {
+      bloco.style.display = "block";
+    }
+
+    var siloNum = document.getElementById("silo_num");
+    siloNum.textContent = "Silo " + selecao;
+  }
+
+  // Função para atualizar as cores das temperaturas e umidades
+  function atualizarCoresTabela() {
+    var tempCelas = document.querySelectorAll(".temp");
+    var umidCelas = document.querySelectorAll(".umid");
+
+    tempCelas.forEach((cel) => {
+      // Extrai o número, ex: "22°C" → 22
+      var valor = parseFloat(cel.textContent);
+      if (valor < 20) {
+        cel.style.color = "blue";
+      } else if (valor <= 28) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+
+    umidCelas.forEach((cel) => {
+      // Extrai o número, ex: "75%" → 75
+      var valor = parseFloat(cel.textContent);
+      if (valor < 50) {
+        cel.style.color = "orange";
+      } else if (valor <= 70) {
+        cel.style.color = "green";
+      } else {
+        cel.style.color = "red";
+      }
+    });
+  }
+  // Chama a função ao carregar a página
+  atualizarCoresTabela();
+</script>

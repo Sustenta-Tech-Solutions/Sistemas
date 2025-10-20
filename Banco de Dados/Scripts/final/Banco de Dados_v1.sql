@@ -38,7 +38,6 @@ CONSTRAINT fkUsuarioEmpresa
 	FOREIGN KEY (fkEmpresa)
 		REFERENCES empresa(idEmpresa),
 email VARCHAR(60) NOT NULL,
-userName VARCHAR(30) NOT NULL UNIQUE,
 senha VARCHAR(50) NOT NULL,
 nivelUsuario CHAR(3) NOT NULL
     CHECK( nivelUsuario IN('ADM', 'SUB')),
