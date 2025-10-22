@@ -29,6 +29,7 @@ body {
     height: 500px;
     border: 1.5px solid rgb(94, 106, 113);
     border-radius: 8px;
+    box-shadow: 0.5px 0.5px 5px black;;
 }
 
 .login-superior {
