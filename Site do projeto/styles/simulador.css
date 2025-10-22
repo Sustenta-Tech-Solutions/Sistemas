@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background:  rgb(241, 241, 241);;
+    background:  rgb(241, 241, 241);
 }
 
 * {
@@ -18,21 +18,25 @@ body {
     padding: 20px;
     display: flex;
     justify-content: flex-start;
-    align-items: space-evenly;
     flex-direction: row;
-    gap: 100px;
+    gap: 38vh;
+    background-image: url(../imagens/ilustração_fazendeiro.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
 .main .container {
-    height: 800px;
-    width: 800px;
+    height: 80vh;
+    width: 80vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     border: 3px solid black;
     border-radius: 15px;
+    background:  rgb(241, 241, 241);
 }
 
 .container .title {
@@ -116,10 +120,11 @@ body {
 
 .main .resposta {
     border: 3px solid black;
-    width: 740px;
-    height: 800px;
+    width: 74vh;
+    height: 80vh;
     border-radius: 15px;
     overflow-wrap: break-word;
+    background-color:  rgba(241, 241, 241, 0.95);
 }
 
 .main .container .resposta #div_mensagem {

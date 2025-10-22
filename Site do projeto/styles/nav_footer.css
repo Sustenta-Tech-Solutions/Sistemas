@@ -73,6 +73,11 @@
   margin: 0 6px;
 }
 
+.footer p {
+    text-align: center;
+    font-size: 14px;
+}
+
 .footer a:hover {
   color: white;
 }
