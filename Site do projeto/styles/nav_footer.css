@@ -91,6 +91,8 @@
 
 .footer .container hr{
     width: 90%;
+    border: 0;
+    background-color: #fff;
 }
 
 .footer .container .footer_navegacao{
