@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="imagens/logo_circular_sustentatech.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/44fdb15698.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/nav_footer.css">
-    <link rel="stylesheet" href="./styles/simulador.css">
+    <link rel="stylesheet" href="./styles/simulador copy.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <title>SustentaTech</title>
 </head>
@@ -21,25 +21,25 @@
             </div>
             <ul class="navbar">
                 <li>
-                    <a href="nav_footer.html">Inicial</a>
+                    <a href="index.html">Inicial</a>
                 </li>
                 <li>
-                    <a href="sobre.html">Sobre nós</a>
+                    <a href="index.html#sobre_nos">Sobre nós</a>
                 </li>
                 <li>
-                    <a href="serviços.html">Nossos serviços</a>
+                    <a href="index.html#servicos">Nossos serviços</a>
                 </li>
                 <li class="agora">
                     <a href="Simulador_V2.html">Simulador</a>
                 </li>
                 <li>
-                    <a href="contato.html">Contato</a>
+                    <a href="#contato">Contato</a>
                 </li>
                 <li>
                     <a href="login.html">Login</a>
                 </li>
                 <li>
-                    <a href="cadastro.html">Cadastrar</a>
+                    <a href="cadastro v1.html">Cadastrar</a>
                 </li>
             </ul>
         </div>
@@ -87,8 +87,8 @@
 
         </div>
 
-        <div class="resposta">
-            <div id="div_mensagem"></div>
+        <div class="resposta" id="div_resposta">
+            <div id="div_mensagem" class="box-resposta"></div>
         </div>
     </div>
 
@@ -184,17 +184,20 @@
             var prejuizo = faturamento * 0.02 // Valor do prejuizo de 2% da venda total causado pela condensação
 
             // Mensagem ao usuário
+            div_resposta.style.backgroundColor = 'rgba(241, 241, 241, 0.9)';
+            div_resposta.style.boxShadow = '2px 2px 2px black';
             div_mensagem.innerHTML = `
-            <b>Quantidade de silos:</b> ${silo}<br> <br>
-            <b>Capacidade total armazenada:</b> ${capacidadeTotal.toLocaleString()} toneladas<br> <br>
-            <b>Total estimado em sacas de soja:</b> ${sacaTotal.toLocaleString()} (60 kg cada)<br> <br>
-            <b>Preço médio da saca:</b> ${mes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}<br> <br>
-            <b>Faturamento total estimado:</b> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} <br> <br>
-            <p>Devido o problema da condensação dentro dos silos, podem surgir pragas, fungos e insetos, 
-            que geram uma perda estimada de 2% do armazenamento.<br> <br>
-            <b>Prejuízo estimado:</b> R$ ${prejuizo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}<br> <br>
-            <p>Com o nosso sistema de controle de temperatura e umidade, 
-            é possível evitar esse prejuízo.<br> <br>
+            <h1>Resultado</h1>
+            <b><p>Quantidade de silos:</b>  ${silo} </p> 
+            <b><p>Capacidade total armazenada:</b> ${capacidadeTotal.toLocaleString()} toneladas</p> 
+            <b><p>Total estimado em sacas de soja:</b> ${sacaTotal.toLocaleString()} (60 kg cada) 
+            <b><p>Preço médio da saca:</b> ${mes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p> 
+            <b><p>Faturamento total estimado:</b> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </p> 
+            <p><i>*Devido o problema da condensação dentro dos silos, podem surgir pragas, fungos e insetos, 
+            que geram uma perda estimada de 2% do armazenamento.</i></p> 
+            <b style="color: #C0392B"><p>Prejuízo estimado:</b> ${prejuizo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p> 
+            Com o nosso sistema de controle de temperatura e umidade, 
+            é possível mitigar esse prejuízo.</p>  
             `;
         }
     }
