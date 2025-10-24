@@ -83,6 +83,8 @@
                 </label>
             </div>
 
+            <div id="div_erro" style="display: none; color: #C0392B;"></div>
+
             <button onclick="simular()">Simular</button> <br>
 
         </div>
@@ -170,13 +172,16 @@
         var capacidadeTotal = capacidade * silo;
 
         if (silo == "") {
-            div_mensagem.innerHTML = "A quantidade de silos não pode estar vazia.";
+            div_erro.style.display = "block";
+            div_erro.innerHTML = "A quantidade de silos não pode estar vazia.";
             ipt_silo.focus();
         } else if (capacidade == "") {
-            div_mensagem.innerHTML = "A capacidade máxima não pode estar vazia.";
-            ipt_capacidade, focus();
-        } else if (mes == "#") {
-            div_mensagem.innerHTML = "Selecione um mês.";
+            div_erro.style.display = "block";
+            div_erro.innerHTML = "A capacidade máxima não pode estar vazia.";
+            ipt_capacidade.focus();
+        } else if (isNaN(mes)) {
+            div_erro.style.display = "block";
+            div_erro.innerHTML = "Selecione um mês.";
             select_mes.focus();
         } else { // Cálculos principais
             var sacaTotal = Math.floor(capacidadeTotal / 0.06); // Quantidade total de sacas que os silos podem armazenar
@@ -184,6 +189,7 @@
             var prejuizo = faturamento * 0.02 // Valor do prejuizo de 2% da venda total causado pela condensação
 
             // Mensagem ao usuário
+            div_erro.style.display = "none";
             div_resposta.style.backgroundColor = 'rgba(241, 241, 241, 0.9)';
             div_resposta.style.boxShadow = '2px 2px 2px black';
             div_mensagem.innerHTML = `
@@ -194,7 +200,7 @@
             <b><p>Preço médio da saca:</b> ${mes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p> 
             <b><p>Faturamento total estimado:</b> ${faturamento.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} </p> 
             <p><i>*Devido o problema da condensação dentro dos silos, podem surgir pragas, fungos e insetos, 
-            que geram uma perda estimada de 2% do armazenamento.</i></p> 
+            que geram uma perda estimada de 2% do armazenamento.</i></p>
             <b style="color: #C0392B"><p>Prejuízo estimado:</b> ${prejuizo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p> 
             Com o nosso sistema de controle de temperatura e umidade, 
             é possível mitigar esse prejuízo.</p>  
