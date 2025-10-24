@@ -16,10 +16,11 @@ body {
     height: 100%;
     width: 100%;
     padding: 20px;
+    align-items: flex-start;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-direction: row;
-    gap: 38vh;
+    gap: 5vh;
     background-image: url(https://images.pexels.com/photos/31226932/pexels-photo-31226932.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -29,21 +30,20 @@ body {
 
 .main .container {
     height: 80vh;
-    width: 80vh;
+    width: 50vw;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 15px;
-    background:  rgb(241, 241, 241);
+    background:  rgb(241, 241, 241, 0.9);
+    box-shadow:2px 2px 2px black;
 }
 
 .container .title {
-    height: 3 0%;
-    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     font-size: x-large;
     color: #6B8E23;
 }
@@ -115,25 +115,45 @@ body {
     background: #6B8E23;
 }
 
-
-
 .main .resposta {
-    border: 3px solid black;
-    width: 74vh;
+    display: flex;
     height: 80vh;
+    width: 50vw;    
     border-radius: 15px;
     overflow-wrap: break-word;
-    background-color:  rgba(241, 241, 241, 0.95);
+    padding: 0 0 10px 30px;
+    flex-direction: column;
+    background-color:  rgba(192, 169, 169, 0);
+    font-size: 24px;
 }
 
-.main .container .resposta #div_mensagem {
+.main .container .resposta .box-resposta {
+    display: flex;
     height: 100%;
     width: 100%;
     padding: 5px;
-    margin: 0 0 10px 0;
+    text-align: center;
 }
 
 .resposta b {
     color: #6B8E23;
+    font-size: 24px;
+}
+
+.resposta p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.resposta i {
     font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.resposta h1 {
+    margin-top: 45px;
+    margin-bottom: 50px;
+    color: #6B8E23;
+    font-size: 45px;
+    text-align: center;
 }
