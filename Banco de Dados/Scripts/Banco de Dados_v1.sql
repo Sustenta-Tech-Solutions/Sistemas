@@ -51,20 +51,6 @@ status VARCHAR(7),
 
 /* ------------------------------------------------------------------------------------------------------- */
 
--- Criação da tabela 'medicao' com suas respectivas colunas e restrições
-CREATE TABLE registro(
-idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-fkSensor INT,
-CONSTRAINT fkRegistroSensor 
-	FOREIGN KEY (fkSensor)
-        REFERENCES sensor(idSensor),
-temperatura DECIMAL(5,2),
-umidade DECIMAL(5,2),
-dtHora DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
-/* ------------------------------------------------------------------------------------------------------- */
-
 -- Criação da tabela 'sensor' com suas respectivas colunas e restrições
 CREATE TABLE sensor(
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
@@ -77,3 +63,18 @@ CONSTRAINT fkSensorEmpresa
 		REFERENCES empresa(idEmpresa)
 );
 
+/* ------------------------------------------------------------------------------------------------------- */
+
+-- Criação da tabela 'registro' com suas respectivas colunas e restrições
+CREATE TABLE registro(
+idRegistro INT AUTO_INCREMENT,
+fkSensor INT,
+CONSTRAINT fkRegistroSensor 
+	FOREIGN KEY (fkSensor)
+        REFERENCES sensor(idSensor),
+CONSTRAINT pkComposta
+	PRIMARY KEY (idRegistro, fkSensor),
+temperatura DECIMAL(5,2),
+umidade DECIMAL(5,2),
+dtHora DATETIME DEFAULT CURRENT_TIMESTAMP
+);
