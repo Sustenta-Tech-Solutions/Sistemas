@@ -165,7 +165,7 @@ function cadastrar() {
     if (nome.length <= 1) {
         input_nome.style.border = "1px solid red";
         input_nome.focus();
-        mensagem_erro.innerHTML = "O nome deve ter pelo menos 2 caracteres.";
+        mensagem_erro.innerHTML = "O nome pode estar vazio!";
         mensagem_erro.style.opacity = "1";
         return;
     } else {
@@ -177,7 +177,7 @@ function cadastrar() {
     if (sobrenome.length <= 1) {
         input_sobrenome.style.border = "1px solid red";
         input_sobrenome.focus();
-        mensagem_erro.innerHTML = "O sobrenome deve ter pelo menos 2 caracteres.";
+        mensagem_erro.innerHTML = "O sobrenome não pode estar vazio!";
         mensagem_erro.style.opacity = "1";
         return;
     } else {
