@@ -1,88 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style_cadastro.css" />
-    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
-    <link rel="stylesheet" href="styles/nav_footer.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustenta Tech</title>
+    <link rel="stylesheet" href="styles/style_cadastro.css">
+    <link rel="stylesheet" href="styles/nav_footer.css">
+    <link rel="shortcut icon" href="imagens/logo_circular_sustentatech.svg" type="image/x-icon">
+</head>
+<body>
+    <!-- INICIO ESTRUTURA CABEÇALHO -->
     <div class="header">
       <div class="container">
         <div class="logo">
-          <img src="imagens/logo_sustentatech_deitado.svg" />
+            <img src="imagens/logo_sustentatech_deitado.svg">
         </div>
         <ul class="navbar">
-          <li class="agora">
-            <a href="index.html">Inicial</a>
-          </li>
-          <li>
-            <a href="index.html">Sobre nós</a>
-          </li>
-          <li>
-            <a href="serviços.html">Nossos serviços</a>
-          </li>
-          <li>
-            <a href="Simulador_V2.html">Simulador</a>
-          </li>
-          <li>
-            <a href="contato.html">Contato</a>
-          </li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastrar</a>
-          </li>
+            <li class="agora"><a href="index.html">Inicial</a></li>
+            <li><a href="index.html#sobre_nos">Sobre nós</a></li>
+            <li><a href="index.html#servicos">Nossos serviços</a></li>
+            <li><a href="Simulador_V2.html">Simulador</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cadastro v1.html">Cadastrar</a></li>
         </ul>
       </div>
     </div>
-    <div class="tela-cadastro">
-      <!-- Espaço central entre navbar e footer-->
-      <div class="card-cadastro">
-        <!-- Card de cadastro -->
-        <div class="superior">
-          <a href="#" class="voltar">
-            <img src="imagens/icone_voltar.svg" width="50" height="50" alt="" />
-          </a>
-          <img src="imagens/logo_circular_sustentatech.svg" alt="" />
-        </div>
-        <p>Crie seu cadastro</p>
-        <div class="formulario">
-          <input class="input" type="text" id="nome" placeholder="Nome" />
-          <input
-            class="input"
-            type="text"
-            id="sobrenome"
-            placeholder="Sobrenome"
-          />
-          <input
-            class="input"
-            type="text"
-            id="telefone"
-            placeholder="(DDD) Telefone"
-          />
-          <input class="input" type="text" id="empresa" placeholder="Empresa" />
-          <input class="input" type="text" id="cargo" placeholder="Cargo" />
-          <input class="input" type="text" id="email" placeholder="E-mail" />
-          <input class="input" type="text" id="senha" placeholder="Senha" />
-        </div>
-        <div class="button-cadastrar">
-          <button>Cadastrar</button>
-        </div>
-      </div>
     </div>
-  </body>
+    <!-- FIM ESTRUTURA CABEÇALHO -->
+
+    <!-- INICIO ESTRUTURA CENTRAL -->
+    <div class="tela-cadastro">
+        <div class="card-cadastro">
+            <div class="superior">
+                <a href="index.html" class="voltar">
+                    <img src="imagens/icone_voltar.svg" width="50"  height="50" alt="">
+                </a>
+                <img src="imagens/logo_circular_sustentatech.svg" alt="">
+            </div>
+            <p class="title">Crie seu cadastro</p>
+            <div class="formulario">
+
+              <!-- INPUT NOME -->
+              <input class="input" type="text" id="input_nome" placeholder="Nome" autocomplete="off">
+
+              <!-- INPUT SOBRENOME -->
+              <input class="input" type="text" id="input_sobrenome" placeholder="Sobrenome" autocomplete="off">
+
+              <!-- INPUT EMPRESA -->
+              <select class="input" id="input_empresa" style="padding: 0px; padding-left: 5px;">
+                <option selected disabled value="#">Empresa</option>
+                <option value="1">Atos</option>
+                <option value="2">Bradesco</option>
+                <option value="3">SPTech</option>
+                <option value="4">Safra</option>
+              </select>
+
+              <!-- INPUT DATA DE NASCIMENTO -->
+              <input class="input" type="date" id="input_dtNascimento" placeholder="Data de nascimento" style="color: #838383;" autocomplete="off">
+
+              <!-- INPUT EMAIL -->
+              <input class="input" type="text" id="input_email" placeholder="E-mail" autocomplete="off">
+
+              <!-- INPUT SENHA -->
+              <input class="input" type="password" id="input_senha" placeholder="Senha" autocomplete="off">
+
+              <!-- INPUT TEL CELULAR -->
+              <input class="input" type="text" id="input_telCelular" placeholder="Telefone Celular" autocomplete="off">
+
+              <!-- INPUT TEL FIXO -->
+              <input class="input" type="text" id="input_telFixo" placeholder="Telefone Fixo" autocomplete="off">
+            </div>
+            <p id="mensagem_erro">Mensagem de erro</p>
+            <div class="button-cadastrar">
+                <button onclick="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+    <!-- FIM ESTRUTURA CENTRAL -->
+
+    <!-- INICIO ESTRUTURA RODAPE -->
+        <div id="contato" class="footer">
+      <div class="container">
+        <div class="hr1">
+          <hr>
+        </div>
+
+        <div class="logo">
+          <img src="imagens/logo_sustentatech_deitado.svg">
+        </div>
+
+        <div class="info_endereco">
+          <img src="imagens/logo_mapa.svg">
+          <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
+        </div>
+
+        <div class="info_contato">
+          <div class="img_tel">
+            <img src="imagens/logo_telefone.svg">
+          </div>
+          <div class="img_whts">
+            <img src="imagens/logo_whatsapp.svg">
+          </div>
+          <p>(11) 4228-8982</p>
+        </div>
+
+        <div class="sociais">
+          <div class="img_facebook">
+            <img src="imagens/logo_facebook.svg">
+          </div>
+          <div class="img_x">
+            <img src="imagens/loog_x.svg">
+          </div>
+
+          <div class="img_linkedin">
+            <img src="imagens/logo_linkedin.svg">
+          </div>
+
+          <div class="img_youtube">
+            <img src="imagens/logo_youtube.svg">
+          </div>
+        </div>
+
+          <div class="footer_navegacao">
+              <ul class="navegacao">
+            <!--<li class="agora">
+              <a href="#">Inicial</a>
+            </li> -->
+            <li>
+              <a href="#sobre_nos">Sobre nós</a>
+            </li>
+            <li>
+              <a href="#servicos">Nossos serviços</a>
+            </li>
+            <li>
+              <a href="Simulador_V2.html">Simulador</a>
+            </li>
+            <li>
+              <a href="#contato">Contato</a>
+            </li>
+          </ul>
+        </div>
+        <div class="hr2">
+          <hr>
+        </div>
+        
+      </div>
+    <!-- FIM ESTRUTURA RODAPE -->
+</body>
 </html>
 <script>
 
+function cadastrar() {
+    var nome = input_nome.value,
+        sobrenome = input_sobrenome.value,
+        empresa = Number(input_empresa.value),
+        dtNascimento = input_dtNascimento.value,
+        email = input_email.value,
+        senha = input_senha.value,
+        telCelular = input_telCelular.value,
+        telFixo = input_telFixo.value;
 
-      // Executa o botão login ao clicar a tecla ENTER
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      login();
+    // Validação do nome
+    if (nome.length <= 1) {
+        input_nome.style.border = "1px solid red";
+        input_nome.focus();
+        mensagem_erro.innerHTML = "O nome deve ter pelo menos 2 caracteres.";
+        mensagem_erro.style.opacity = "1";
+        return;
+    } else {
+        input_nome.style.border = "";
+        mensagem_erro.style.opacity = "0";
     }
-  });
+
+    // Validação do sobrenome
+    if (sobrenome.length <= 1) {
+        input_sobrenome.style.border = "1px solid red";
+        input_sobrenome.focus();
+        mensagem_erro.innerHTML = "O sobrenome deve ter pelo menos 2 caracteres.";
+        mensagem_erro.style.opacity = "1";
+        return;
+    } else {
+        input_sobrenome.style.border = "";
+        mensagem_erro.style.opacity = "0";
+    }
+
+    // Validação da empresa
+    if (empresa == "#") {
+        input_sobrenome.style.border = "1px solid red";
+        input_sobrenome.focus();
+        mensagem_erro.innerHTML = "Selecione uma empresa válida!";
+        mensagem_erro.style.opacity = "1";
+        return;
+    } else {
+        input_sobrenome.style.border = "";
+        mensagem_erro.style.opacity = "0";
+    }
+        
+    /* if (nome.length <= 1) {
+      alert(`O nome não pode estar vazio ou ter 1 caractere!`);
+      return
+    } else if () {
+      alert(`O sobrenome não pode estar vazio ou ter 1 caractere!`);
+      return
+    } else if (!empresa) {
+      alert(`Selecione uma empresa válida!`);
+      return;
+    } else if (!dtNascimento || dtNascimento >= dtAtual) { // Arrumar validação da data de nascimento
+      alert("Informe uma data de nascimento válida!");
+      return;
+    } else if (email == "" || !email.includes("@") || !email.endsWith(".com")) {
+      alert("Insira um e-mail válido!");
+      return;
+    } else if (senha.length < 6) {
+      alert("A senha deve ter pelo menos 6 caracteres!");
+      return;
+    } else if (telCelular == "" || telCelular.length < 11) {
+      alert("Telefone celular inválido!");
+      return;
+    } else if (telFixo !== "" && telFixo.length < 10) {
+      alert("Telefone fixo inválido!");
+      return;
+    }
+    alert("Cadastro realizado com sucesso!") */
+}
 </script>
