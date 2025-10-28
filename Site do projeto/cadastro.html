@@ -155,73 +155,104 @@ function cadastrar() {
     var nome = input_nome.value,
         sobrenome = input_sobrenome.value,
         empresa = Number(input_empresa.value),
-        dtNascimento = input_dtNascimento.value,
+        // dtNascimento = input_dtNascimento.value,
         email = input_email.value,
         senha = input_senha.value,
         telCelular = input_telCelular.value,
-        telFixo = input_telFixo.value;
+        telFixo = input_telFixo.value,
+        caract_especiais = [];
+      
+    var partesData = input_dtNascimento.value.split("-");
+    var ano = parseInt(partesData[0]);
+    var mes = parseInt(partesData[1]) - 1; // meses começam em 0 no JS
+    var dia = parseInt(partesData[2]);
+
+    // Cria a data corretamente no fuso local
+    var dtNascimento = new Date(ano, mes, dia);
+    var dtAtual = new Date();
+
+    // Calcula idade
+    var diff = dtAtual - dtNascimento;
+    var idade = diff / (1000 * 60 * 60 * 24 * 365.25);
 
     // Validação do nome
     if (nome.length <= 1) {
-        input_nome.style.border = "1px solid red";
-        input_nome.focus();
-        mensagem_erro.innerHTML = "O nome pode estar vazio!";
-        mensagem_erro.style.opacity = "1";
-        return;
-    } else {
-        input_nome.style.border = "";
-        mensagem_erro.style.opacity = "0";
-    }
+      input_nome.style.border = "1px solid red";
 
-    // Validação do sobrenome
-    if (sobrenome.length <= 1) {
+      mensagem_erro.innerHTML = "O nome pode estar vazio!";
+      mensagem_erro.style.opacity = "1";
+
+    } else {
+      input_nome.style.border = "0.5px solid rgb(94, 106, 113)";
+
+      // Validação do sobrenome
+      if (sobrenome.length <= 1) {
         input_sobrenome.style.border = "1px solid red";
-        input_sobrenome.focus();
+
         mensagem_erro.innerHTML = "O sobrenome não pode estar vazio!";
         mensagem_erro.style.opacity = "1";
-        return;
-    } else {
-        input_sobrenome.style.border = "";
-        mensagem_erro.style.opacity = "0";
-    }
 
-    // Validação da empresa
-    if (empresa == "#") {
-        input_sobrenome.style.border = "1px solid red";
-        input_sobrenome.focus();
-        mensagem_erro.innerHTML = "Selecione uma empresa válida!";
-        mensagem_erro.style.opacity = "1";
-        return;
-    } else {
-        input_sobrenome.style.border = "";
-        mensagem_erro.style.opacity = "0";
+      } else {
+        input_sobrenome.style.border = "0.5px solid rgb(94, 106, 113)";
+
+        // Validação da empresa
+        if (empresa == "#") {
+          input_empresa.style.border = "1px solid red";
+
+          mensagem_erro.innerHTML = "Selecione uma empresa válida!";
+          mensagem_erro.style.opacity = "1";
+
+        } else {
+          input_empresa.style.border = "0.5px solid rgb(94, 106, 113)";
+
+          // Validação da idade
+          if (idade) {
+            input_dtNascimento.style.border = "1px solid red";
+
+            mensagem_erro.innerHTML = "Usuário precisa ser maior de idade!";
+            mensagem_erro.style.opacity = "1";
+          } else {
+            input_dtNascimento.style.border = "0.5px solid rgb(94, 106, 113)";
+
+            // Validação do email
+            if (email == "" || 
+                email.includes(' ') || 
+                !email.includes('@') || 
+                (!email.endsWith(".com") && !email.endsWith(".br"))) {
+
+              input_email.style.border = "1px solid red";
+
+              mensagem_erro.innerHTML = "Digite um email válido!";
+              mensagem_erro.style.opacity = "1";
+            } else {
+              input_email.style.border = "0.5px solid rgb(94, 106, 113)";
+
+              // Validação da senha
+              if (senha.length <= 8) {
+                input_senha.style.border = "1px solid red";
+
+                mensagem_erro.innerHTML = "A senha precisa ter no minimo 8 caracteres";
+                mensagem_erro.style.opacity = "1";
+              } else {
+                input_senha.style.border = "0.5px solid rgb(94, 106, 113)";
+
+                // Validação do telCelular
+                if ((telCelular == "" || telCelular.length < 11) || (telFixo == "" || telFixo < 10)) {
+                  input_telCelular.style.border = "1px solid red";
+                  input_telFixo.style.border = "1px solid red";
+
+                  mensagem_erro.innerHTML = "Digite um telefone válido!";
+                  mensagem_erro.style.opacity = "1";
+                } else {
+                  input_telCelular.style.border = "0.5px solid rgb(94, 106, 113)";
+
+                  alert('Cadastro Realizado com Sucesso!');
+                }
+              }
+            }
+          }
+        }
+      }
     }
-        
-    /* if (nome.length <= 1) {
-      alert(`O nome não pode estar vazio ou ter 1 caractere!`);
-      return
-    } else if () {
-      alert(`O sobrenome não pode estar vazio ou ter 1 caractere!`);
-      return
-    } else if (!empresa) {
-      alert(`Selecione uma empresa válida!`);
-      return;
-    } else if (!dtNascimento || dtNascimento >= dtAtual) { // Arrumar validação da data de nascimento
-      alert("Informe uma data de nascimento válida!");
-      return;
-    } else if (email == "" || !email.includes("@") || !email.endsWith(".com")) {
-      alert("Insira um e-mail válido!");
-      return;
-    } else if (senha.length < 6) {
-      alert("A senha deve ter pelo menos 6 caracteres!");
-      return;
-    } else if (telCelular == "" || telCelular.length < 11) {
-      alert("Telefone celular inválido!");
-      return;
-    } else if (telFixo !== "" && telFixo.length < 10) {
-      alert("Telefone fixo inválido!");
-      return;
-    }
-    alert("Cadastro realizado com sucesso!") */
-}
+  }
 </script>
