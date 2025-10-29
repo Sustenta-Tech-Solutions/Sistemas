@@ -16,11 +16,14 @@ body {
 }
 
 .tela-cadastro {
-    height: 565px;
+    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(../imagens/cadastro.jpeg);
+    background-position: center;
+    background-size: cover;
 }
 
 .card-cadastro {
@@ -29,6 +32,7 @@ body {
     border: 1.5px solid rgb(94, 106, 113);
     border-radius: 8px;
     box-shadow: 0.5px 0.5px 5px black;
+    background-color: rgb(234,	230, 222, 0.90);
 }
 
 .superior {
