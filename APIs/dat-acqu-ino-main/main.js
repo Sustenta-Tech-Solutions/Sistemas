@@ -22,7 +22,7 @@ const serial = async (
             host: 'localhost',
             user: 'aluno',
             password: 'Sptech#2024',
-            database: 'sustentatech',
+            database: 'sustentaTech',
             port: 3307
         }
     ).promise();
@@ -67,7 +67,26 @@ const serial = async (
                 [sensorAnalogico, sensorDigital]
             );
             console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
-
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (2, ?, ?)',
+                [sensorAnalogico - 10, sensorDigital - 15]
+            );
+            console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (3, ?, ?)',
+                [sensorAnalogico + 6, sensorDigital + 25]
+            );
+            console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (4, ?, ?)',
+                [sensorAnalogico + 3, sensorDigital + 8]
+            );
+            console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (5, ?, ?)',
+                [sensorAnalogico + 10, sensorDigital + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorAnalogico + ", " + sensorDigital);
         }
 
     });
