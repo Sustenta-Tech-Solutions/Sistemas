@@ -48,16 +48,7 @@
               <input class="input" type="text" id="input_sobrenome" placeholder="Sobrenome" autocomplete="off">
 
               <!-- INPUT EMPRESA -->
-              <select class="input" id="input_empresa" style="padding: 0px; padding-left: 5px;">
-                <option selected disabled value="#">Empresa</option>
-                <option value="1">Atos</option>
-                <option value="2">Bradesco</option>
-                <option value="3">SPTech</option>
-                <option value="4">Safra</option>
-              </select>
-
-              <!-- INPUT DATA DE NASCIMENTO -->
-              <input class="input" type="date" id="input_dtNascimento" placeholder="Data de nascimento" style="color: #838383;" autocomplete="off">
+               <input class="input" type="text" id="input_empresa" placeholder="Token da Empresa" maxlength="6" maxlength="6" autocomplete="off">
 
               <!-- INPUT EMAIL -->
               <input class="input" type="text" id="input_email" placeholder="E-mail" autocomplete="off">
@@ -66,10 +57,7 @@
               <input class="input" type="password" id="input_senha" placeholder="Senha" autocomplete="off">
 
               <!-- INPUT TEL CELULAR -->
-              <input class="input" type="text" id="input_telCelular" placeholder="Telefone Celular" autocomplete="off">
-
-              <!-- INPUT TEL FIXO -->
-              <input class="input" type="text" id="input_telFixo" placeholder="Telefone Fixo" autocomplete="off">
+              <input class="input" type="text" id="input_telCelular" placeholder="Telefone" autocomplete="off">
             </div>
             <p id="mensagem_erro">Mensagem de erro</p>
             <div class="button-cadastrar">
@@ -155,27 +143,11 @@ function cadastrar() {
     var nome = input_nome.value,
         sobrenome = input_sobrenome.value,
         empresa = input_empresa.value,
-        dtNascimento = input_dtNascimento.value,
         email = input_email.value,
         senha = input_senha.value,
         telCelular = input_telCelular.value,
-        telFixo = input_telFixo.value,
         caract_especiais = [];
-      
-    var partesData = input_dtNascimento.value.split("-");
-    var ano = parseInt(partesData[0]);
-    var mes = parseInt(partesData[1]) - 1; // meses começam em 0 no JS
-    var dia = parseInt(partesData[2]);
-
-    console.log(dtNascimento)
-
-    // Cria a data corretamente no fuso local
-    var dtNascimento = new Date(ano, mes, dia);
-    var dtAtual = new Date();
-
-    // Calcula idade
-    var diff = dtAtual - dtNascimento;
-    var idade = diff / (1000 * 60 * 60 * 24 * 365.25);
+    
 
     // Validação do nome
     if (nome.length <= 1) {
@@ -198,23 +170,14 @@ function cadastrar() {
         input_sobrenome.style.border = "0.5px solid rgb(94, 106, 113)";
 
         // Validação da empresa
-        if (empresa == "#") {
+        if (empresa == "" || empresa.length < 6) {
           input_empresa.style.border = "1px solid red";
 
-          mensagem_erro.innerHTML = "Selecione uma empresa válida!";
+          mensagem_erro.innerHTML = "Insira um token válido!";
           mensagem_erro.style.opacity = "1";
 
         } else {
           input_empresa.style.border = "0.5px solid rgb(94, 106, 113)";
-
-          // Validação da idade
-          if (idade < 18) {
-            input_dtNascimento.style.border = "1px solid red";
-
-            mensagem_erro.innerHTML = "Usuário precisa ser maior de idade!";
-            mensagem_erro.style.opacity = "1";
-          } else {
-            input_dtNascimento.style.border = "0.5px solid rgb(94, 106, 113)";
 
             // Validação do email
             if (email == "" || 
@@ -239,9 +202,8 @@ function cadastrar() {
                 input_senha.style.border = "0.5px solid rgb(94, 106, 113)";
 
                 // Validação do telCelular
-                if ((telCelular == "" || telCelular.length < 11) || (telFixo == "" || telFixo < 10)) {
+                if ((telCelular == "" || telCelular.length < 11)) {
                   input_telCelular.style.border = "1px solid red";
-                  input_telFixo.style.border = "1px solid red";
 
                   mensagem_erro.innerHTML = "Digite um telefone válido!";
                   mensagem_erro.style.opacity = "1";
@@ -256,5 +218,4 @@ function cadastrar() {
         }
       }
     }
-  }
 </script>

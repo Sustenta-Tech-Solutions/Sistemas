@@ -171,11 +171,11 @@
         var mes = Number(select_mes.value);
         var capacidadeTotal = capacidade * silo;
 
-        if (silo == "") {
+        if (silo == "" || silo <= 0) {
             div_erro.style.display = "block";
             div_erro.innerHTML = "A quantidade de silos não pode estar vazia.";
             ipt_silo.focus();
-        } else if (capacidade == "") {
+        } else if (capacidade == "" || capacidade <= 0) {
             div_erro.style.display = "block";
             div_erro.innerHTML = "A capacidade máxima não pode estar vazia.";
             ipt_capacidade.focus();
