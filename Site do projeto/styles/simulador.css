@@ -59,22 +59,8 @@ body {
   overflow-wrap: break-word;
   text-align: left;
   background-color: rgba(192, 169, 169, 0);
-}
-
-/*.main .resposta {
-  flex: 1 1 400px;
-  display: flex;
-  height: 80vh;
-  max-width: 700px;
-  min-width: 480px;
   border-radius: 15px;
-  overflow-wrap: break-word;
-  padding: 40px;
-  flex-direction: column;
-  background-color: rgba(192, 169, 169, 0);
-  font-size: 1.2rem;
-  overflow-wrap: break-word;
-}*/
+}
 
 .container .title {
   display: flex;
