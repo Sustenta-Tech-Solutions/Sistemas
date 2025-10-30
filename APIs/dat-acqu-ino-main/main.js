@@ -117,10 +117,10 @@ const servidor = (
     });
 
     // define os endpoints da API para cada tipo de sensor
-    app.get('/sensores/analogico', (_, response) => {
+    app.get('/sensores/sensorTemperatura', (_, response) => {
         return response.json(valoresSensorTemperatura);
     });
-    app.get('/sensores/digital', (_, response) => {
+    app.get('/sensores/sensorUmidade', (_, response) => {
         return response.json(valoresSensorUmidade);
     });
 }
