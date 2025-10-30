@@ -139,6 +139,7 @@ main {
   background-position: right 12px center;
   background-size: 10px 5px;
   transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px;
 }
 
 .select:hover {

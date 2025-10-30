@@ -230,7 +230,7 @@ function cadastrar() {
               input_email.style.border = "0.5px solid rgb(94, 106, 113)";
 
               // Validação da senha
-              if (senha.length <= 8) {
+              if (senha.length < 8) {
                 input_senha.style.border = "1px solid red";
 
                 mensagem_erro.innerHTML = "A senha precisa ter no minimo 8 caracteres";

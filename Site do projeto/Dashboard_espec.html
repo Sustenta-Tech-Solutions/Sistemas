@@ -111,7 +111,7 @@
             </div>
             <div class="kpi-box">
               Alertas<br />
-              <span id="alertas1">3</span>
+              <span id="alertas1">1</span>
             </div>
           </div>
         </div>
@@ -267,7 +267,7 @@
             </div>
             <div class="kpi-box">
               Alertas<br />
-              <span id="alertas1">3</span>
+              <span id="alertas1">0</span>
             </div>
           </div>
         </div>
@@ -312,8 +312,8 @@
     tempCelas.forEach((cel) => {
       // Extrai o número, ex: "22°C" → 22
       var valor = parseFloat(cel.textContent);
-      if (valor < 20) {
-        cel.style.color = "blue";
+      if (valor < 15) {
+        cel.style.color = "orange";
       } else if (valor <= 28) {
         cel.style.color = "green";
       } else {

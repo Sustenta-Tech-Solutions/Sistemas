@@ -12,6 +12,7 @@ CREATE DATABASE sustentaTech;
 -- Seleção do banco de dados
 USE sustentaTech;
 
+
 -- Criação da tabela 'endereço' com suas respectivas colunas e restrições
 CREATE TABLE endereco (
 idEndereco INT PRIMARY KEY AUTO_INCREMENT,
@@ -27,16 +28,16 @@ INSERT INTO endereco (cep, logradouro, cidade, estado, numero) VALUES
     ('04578-000', 'Av. das Nações Unidas', 'São Paulo', 'SP', '12901'),
     ('01414-001', 'Rua Haddock Lobo', 'São Paulo', 'SP', '595');
     
-SELECT * FROM empresa;
+SELECT * FROM endereco;
 
 -- Criação da tabela 'empresa' com suas respectivas colunas e restrições
 CREATE TABLE empresa(
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nomeEmpresa VARCHAR(60) NOT NULL,
 cnpj CHAR(18) UNIQUE,
-telFixo VARCHAR(14),
-telCelular VARCHAR(14),
+telefone VARCHAR(14),
 dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+token CHAR(6) UNIQUE NOT NULL,
 fkEndereco INT,
 	CONSTRAINT fkEndereco
 		FOREIGN KEY (fkEndereco)
@@ -44,10 +45,10 @@ fkEndereco INT,
 );
 
 
-INSERT INTO empresa (nomeEmpresa, cnpj, telFixo, telCelular) VALUES
-	('Banco Safra', '58.160.789/0001-28', '(11)9868-7033', '(11)99334-2697'),
-    ('Atos', '31.259.291/4613-03', '(25)6158-4507', '(94)99701-7259'),
-    ('SPTech', '04.726.609/5142-02', '(11)9763-3071','(44)99238-1547');
+INSERT INTO empresa (nomeEmpresa, cnpj, telefone, token) VALUES
+	('Banco Safra', '58.160.789/0001-28', '(11)99334-2697', 'S4F8R1'),
+    ('Atos', '31.259.291/4613-03', '(94)99701-7259', 'A7T0X2'),
+    ('SPTech', '04.726.609/5142-02', '(44)99238-1547', 'A1K7W8');
     
 UPDATE empresa SET fkEndereco = 1
 	WHERE idEmpresa = 1;
@@ -67,23 +68,31 @@ email VARCHAR(60) NOT NULL,
 senha VARCHAR(50) NOT NULL,
 nivelUsuario CHAR(3) NOT NULL
     CHECK( nivelUsuario IN('ADM', 'SUB')),
-dtNascimento DATE NOT NULL,
-telFixo VARCHAR(14),
-telCelular VARCHAR(14),
+telefone VARCHAR(14),
 dtCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-status VARCHAR(7),
-	CHECK ( status IN('ATIVO','INATIVO')),
-fkEmpresa INT,
-CONSTRAINT fkUsuarioEmpresa 
-	FOREIGN KEY (fkEmpresa)
-		REFERENCES empresa(idEmpresa),
+fkToken CHAR(6),
+CONSTRAINT fkTokenEmpresa 
+	FOREIGN KEY (fkToken)
+		REFERENCES empresa(token),
 CONSTRAINT pkCompostaEmpresa
-	PRIMARY KEY (idUsuario, fkEmpresa)
+	PRIMARY KEY (idUsuario, fkToken)
 );
 
-INSERT INTO usuario (nome, sobrenome, email, senha, nivelUsuario, dtNascimento, telCelular, fkEmpresa) VALUES
-	('Lucas', 'Peres', 'lucas.peres@sptech.school', 'Lucas@2020', 'ADM', '2006-01-13', '(11)97323-9898', 2),
-    ('Felipe', 'Patrocionio', 'felipe.patrocionio@sptech.school', 'Felipe@2020', 'ADM', '2006-06-15', '(11)99999-9999', 1);
+INSERT INTO usuario (nome, sobrenome, email, senha, nivelUsuario, telefone, fkToken) VALUES
+	('Lucas', 'Peres', 'lucas.peres@sptech.school', 'Lucas@2020', 'ADM', '(11)97323-9898', 'A7T0X2'),
+    ('Felipe', 'Patrocionio', 'felipe.patrocionio@sptech.school', 'Felipe@2020', 'ADM', '(11)99999-9999', 'S4F8R1');
+    
+    select * from usuario;
+    
+SELECT usuario.nome AS 'Usuario',
+		usuario.email AS 'Email',
+		nivelUsuario AS 'Nivel de acesso',
+        usuario.telefone AS 'Contato do usuario',
+        fkToken AS 'Token da Empresa',
+        nomeEmpresa AS 'Empresa',
+        empresa.telefone AS 'Contato da empresa'
+        FROM usuario JOIN empresa
+        ON fkToken = token;
 
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -104,6 +113,13 @@ INSERT INTO sensor (fkEmpresa, silo, status) VALUES
 	(1, 1, 'ATIVO'),
     (1, 2, 'ATIVO'),
     (2, 1, 'ATIVO');
+    
+INSERT INTO sensor (fkEmpresa, silo, status) VALUES
+	(1, 3, 'ATIVO'),
+    (2, 2, 'ATIVO'),
+    (2, 3, 'ATIVO');
+    
+SELECT * FROM sensor;
 
 /* ------------------------------------------------------------------------------------------------------- */
 
@@ -121,3 +137,14 @@ umidade DECIMAL(5,2),
 dtHora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+SELECT idSensor AS 'Identificação do sensor',
+		fkEmpresa AS 'Empresa do sensor',
+        silo AS 'Silo do sensor',
+        status AS 'Status do sensor',
+        temperatura AS 'Medição de Temperatura',
+        umidade AS 'Medição de Umidade',
+        dtHora AS 'Hora da medição'
+        FROM sensor JOIN empresa 
+        ON fkEmpresa = idEmpresa
+        JOIN registro 
+        ON fkSensor = idSensor;

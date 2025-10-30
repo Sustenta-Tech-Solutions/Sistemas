@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td class="temp">18°C</td>
+                  <td class="temp">13°C</td>
                   <td class="umid">64%</td>
                 </tr>
               </tbody>
@@ -81,7 +81,7 @@
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td class="temp">16°C</td>
+                  <td class="temp">14°C</td>
                   <td class="umid">56%</td>
                 </tr>
               </tbody>
@@ -112,7 +112,7 @@
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td class="temp">20°C</td>
+                  <td class="temp">36°C</td>
                   <td class="umid">70%</td>
                 </tr>
               </tbody>
@@ -203,8 +203,8 @@
     tempCelas.forEach((cel) => {
       // Extrai o número, ex: "22°C" → 22
       var valor = parseFloat(cel.textContent);
-      if (valor < 20) {
-        cel.style.color = "blue";
+      if (valor < 15) {
+        cel.style.color = "orange";
       } else if (valor <= 28) {
         cel.style.color = "green";
       } else {
