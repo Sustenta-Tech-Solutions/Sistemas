@@ -122,7 +122,7 @@
           <!-- Quantidade de alertas -->
           <div class="alert-count-box">
             <h3>Quantidade de alertas</h3>
-            <div class="alert-number">5</div>
+            <div class="alert-number">6</div>
           </div>
         </div>
 
@@ -195,14 +195,16 @@
   function logout() {
     window.location.href = "login.html";
   }
+
   // Função para atualizar as cores das temperaturas e umidades
   function atualizarCoresTabela() {
     var tempCelas = document.querySelectorAll(".temp");
     var umidCelas = document.querySelectorAll(".umid");
 
-    tempCelas.forEach((cel) => {
-      // Extrai o número, ex: "22°C" → 22
+    for (var i = 0; i < tempCelas.length; i++) {
+      var cel = tempCelas[i];
       var valor = parseFloat(cel.textContent);
+
       if (valor < 15) {
         cel.style.color = "orange";
       } else if (valor <= 28) {
@@ -210,20 +212,20 @@
       } else {
         cel.style.color = "red";
       }
-    });
+    }
 
-    umidCelas.forEach((cel) => {
-      // Extrai o número, ex: "75%" → 75
+    for (var i = 0; i < umidCelas.length; i++) {
+      var cel = umidCelas[i];
       var valor = parseFloat(cel.textContent);
-      if (valor < 50) {
+
+      if (valor < 55) {
         cel.style.color = "orange";
-      } else if (valor <= 70) {
+      } else if (valor <= 74) {
         cel.style.color = "green";
       } else {
         cel.style.color = "red";
       }
-    });
+    }
   }
-  // Chama a função ao carregar a página
   atualizarCoresTabela();
 </script>

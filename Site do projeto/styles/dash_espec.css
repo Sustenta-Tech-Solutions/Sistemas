@@ -41,7 +41,6 @@ header {
   padding: 20px 10px;
 }
 
-
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -88,9 +87,8 @@ header {
   background-color: #ff8f00;
 }
 
-
 .logout {
-  background-color: #d9534f;  /* vermelho */
+  background-color: #d9534f; /* vermelho */
   color: white;
   padding: 10px 15px;
   margin-top: 15px;
@@ -105,24 +103,23 @@ header {
   background-color: #c9302c;
 }
 
-
 main {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-#div_select{
+#div_select {
   margin-top: 10px;
   font-size: 16px;
   font-weight: 500;
   color: #333;
 }
 
-.select{
-  border: 2px solid #FFA000;
+.select {
+  border: 2px solid #ffa000;
   border-radius: 6px;
   width: 150px;
   padding: 8px 12px;
@@ -143,12 +140,12 @@ main {
 }
 
 .select:hover {
-  border-color: #FF8F00;
+  border-color: #ff8f00;
 }
 
 .select:focus {
   outline: none;
-  border-color: #FF8F00;
+  border-color: #ff8f00;
   box-shadow: 0 0 0 3px rgba(255, 160, 0, 0.3);
 }
 
@@ -185,12 +182,12 @@ canvas {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .chart-container {
- background: #ffffff;
+  background: #ffffff;
   border: 2px solid #000;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
@@ -204,7 +201,6 @@ canvas {
   justify-content: space-between;
   margin-bottom: 10px;
 }
-
 
 .chart-container h2 {
   text-align: center;
@@ -239,6 +235,38 @@ canvas {
   min-width: 250px;
 }
 
+.alerts {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 900px; /* controla a largura total do grupo */
+}
+
+.kpi-box-alert {
+  flex: 1 1 250px; /* base flexível e responsiva */
+  max-width: 400px;
+  background-color: #f9f6f4;
+  border: 2px solid #000;
+  border-radius: 8px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 25px 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.kpi-box-alert span {
+  display: block;
+  font-size: 3rem;
+  color: #d13b3b;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
 .kpi-box span {
   font-size: 20px;
   font-weight: 700;
@@ -253,26 +281,22 @@ canvas {
   margin-bottom: 2px;
 }
 
-.line{
+.line {
   height: 2px;
   background-color: #333;
   border: none;
 }
 
-.silo1{
+.silo1 {
   display: block;
 }
 
-.silo2{
+.silo2 {
   display: none;
 }
 
-.silo3{
-  display: none;;
+.silo3 {
+  display: none;
 }
 
-#alertas1{
-  font-size: 2.5rem;
-  color: red;
-  font-weight: bold;
-}
+

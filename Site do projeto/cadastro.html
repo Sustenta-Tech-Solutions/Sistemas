@@ -48,7 +48,7 @@
               <input class="input" type="text" id="input_sobrenome" placeholder="Sobrenome" autocomplete="off">
 
               <!-- INPUT EMPRESA -->
-               <input class="input" type="text" id="input_empresa" placeholder="Token da Empresa" maxlength="6" maxlength="6" autocomplete="off">
+               <input class="input" type="text" id="input_empresa" placeholder="Token da Empresa" maxlength="6" minlength="6" autocomplete="off">
 
               <!-- INPUT EMAIL -->
               <input class="input" type="text" id="input_email" placeholder="E-mail" autocomplete="off">
@@ -57,7 +57,7 @@
               <input class="input" type="password" id="input_senha" placeholder="Senha" autocomplete="off">
 
               <!-- INPUT TEL CELULAR -->
-              <input class="input" type="text" id="input_telCelular" placeholder="Telefone" autocomplete="off">
+              <input class="input" type="tel" id="input_telCelular" placeholder="Telefone" maxlength="11" autocomplete="off">
             </div>
             <p id="mensagem_erro">Mensagem de erro</p>
             <div class="button-cadastrar">
@@ -148,7 +148,6 @@ function cadastrar() {
         telCelular = input_telCelular.value,
         caract_especiais = [];
     
-
     // Validação do nome
     if (nome.length <= 1) {
       input_nome.style.border = "1px solid red";
@@ -201,15 +200,15 @@ function cadastrar() {
               } else {
                 input_senha.style.border = "0.5px solid rgb(94, 106, 113)";
 
-                // Validação do telCelular
-                if ((telCelular == "" || telCelular.length < 11)) {
+                // Validação do telefone
+                if ((telCelular == "" || telCelular.length < 10)) {
                   input_telCelular.style.border = "1px solid red";
 
                   mensagem_erro.innerHTML = "Digite um telefone válido!";
                   mensagem_erro.style.opacity = "1";
                 } else {
                   input_telCelular.style.border = "0.5px solid rgb(94, 106, 113)";
-
+                  window.location.href = "login.html";
                   alert('Cadastro Realizado com Sucesso!');
                 }
               }
@@ -218,4 +217,11 @@ function cadastrar() {
         }
       }
     }
+
+    // Executa o botão login ao clicar a tecla ENTER
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      cadastrar();
+    }
+  });
 </script>
