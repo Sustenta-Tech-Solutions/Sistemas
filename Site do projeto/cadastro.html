@@ -21,11 +21,10 @@
           <li><a href="index.html#servicos">Nossos serviços</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="Simulador_V2.html">Simulador</a></li>
-          <li><a href="#cadastro v1.html">Cadastrar</a></li>
+          <li><a href="#cadastro.html">Cadastrar</a></li>
           <li><a href="login.html">Login</a></li>
         </ul>
       </div>
-    </div>
     </div>
     <!-- FIM ESTRUTURA CABEÇALHO -->
 
@@ -51,7 +50,7 @@
                <input class="input" type="text" id="input_empresa" placeholder="Token da Empresa" maxlength="6" minlength="6" autocomplete="off">
 
               <!-- INPUT EMAIL -->
-              <input class="input" type="text" id="input_email" placeholder="E-mail" autocomplete="off">
+              <input class="input" type="email" id="input_email" placeholder="E-mail" autocomplete="off">
 
               <!-- INPUT SENHA -->
               <input class="input" type="password" id="input_senha" placeholder="Senha" autocomplete="off">
@@ -135,92 +134,136 @@
         
       </div>
     <!-- FIM ESTRUTURA RODAPE -->
+        </div>
 </body>
 </html>
 <script>
+  var nomeProibido = 0;
+  var sobrenomeProibido = 0;
+  var letrasPermitidas = [
+    "a","b","c","d","e","f","g","h","i","j","k","l","m",
+    "n","o","p","q","r","s","t","u","v","w","x","y","z",
+    "A","B","C","D","E","F","G","H","I","J","K","L","M",
+    "N","O","P","Q","R","S","T","U","V","W","X","Y","Z",
+    "á","à","ã","â","ä","é","è","ê","ë","í","ì","î","ï",
+    "ó","ò","õ","ô","ö","ú","ù","û","ü","ç",
+    "Á","À","Ã","Â","Ä","É","È","Ê","Ë","Í","Ì","Î","Ï",
+    "Ó","Ò","Õ","Ô","Ö","Ú","Ù","Û","Ü","Ç"," "
+  ];
 
-function cadastrar() {
-    var nome = input_nome.value,
-        sobrenome = input_sobrenome.value,
-        empresa = input_empresa.value,
-        email = input_email.value,
-        senha = input_senha.value,
-        telCelular = input_telCelular.value,
-        caract_especiais = [];
-    
-    // Validação do nome
+
+  function validarTexto(texto, letrasPermitidas, tipo) {
+    for (var i = 0; i < texto.length; i++) {
+      var charAtual = texto[i].toLowerCase();
+      var permitido = false;
+
+      for (var j = 0; j < letrasPermitidas.length; j++) {
+        if (charAtual === letrasPermitidas[j]) {
+          permitido = true;
+        }
+      }
+
+      if (!permitido) {
+        if (tipo === "nome") nomeProibido++;
+        if (tipo === "sobrenome") sobrenomeProibido++;
+      }
+    }
+  }
+
+  function cadastrar() {
+    var nome = input_nome.value;
+    var sobrenome = input_sobrenome.value;
+    var empresa = input_empresa.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
+    var telCelular = input_telCelular.value;
+
+    nomeProibido = 0;
+    sobrenomeProibido = 0;
+
+    validarTexto(nome, letrasPermitidas, "nome");
+    validarTexto(sobrenome, letrasPermitidas, "sobrenome");
+
+    // Validações de nome
     if (nome.length <= 1) {
       input_nome.style.border = "1px solid red";
-
-      mensagem_erro.innerHTML = "O nome pode estar vazio!";
+      mensagem_erro.innerHTML = "O nome não pode estar vazio!";
       mensagem_erro.style.opacity = "1";
+
+    } else if (nomeProibido > 0) {
+      mensagem_erro.innerHTML = "O nome deve conter apenas letras";
+      mensagem_erro.style.opacity = "1";
+      input_nome.style.border = "1px solid red";
 
     } else {
       input_nome.style.border = "0.5px solid rgb(94, 106, 113)";
 
-      // Validação do sobrenome
+      // Validações de sobrenome
       if (sobrenome.length <= 1) {
         input_sobrenome.style.border = "1px solid red";
-
         mensagem_erro.innerHTML = "O sobrenome não pode estar vazio!";
         mensagem_erro.style.opacity = "1";
+
+      } else if (sobrenomeProibido > 0) {
+        mensagem_erro.innerHTML = "O sobrenome deve conter apenas letras";
+        mensagem_erro.style.opacity = "1";
+        input_sobrenome.style.border = "1px solid red";
 
       } else {
         input_sobrenome.style.border = "0.5px solid rgb(94, 106, 113)";
 
-        // Validação da empresa
+        // Empresa
         if (empresa == "" || empresa.length < 6) {
           input_empresa.style.border = "1px solid red";
-
           mensagem_erro.innerHTML = "Insira um token válido!";
           mensagem_erro.style.opacity = "1";
 
         } else {
           input_empresa.style.border = "0.5px solid rgb(94, 106, 113)";
 
-            // Validação do email
-            if (email == "" || 
-                email.includes(' ') || 
-                !email.includes('@') || 
-                (!email.endsWith(".com") && !email.endsWith(".br"))) {
+          // Email
+          if (
+            email == "" ||
+            email.includes(' ') ||
+            !email.includes('@') ||
+            (!email.endsWith(".com") && !email.endsWith(".br"))
+          ) {
+            input_email.style.border = "1px solid red";
+            mensagem_erro.innerHTML = "Digite um email válido!";
+            mensagem_erro.style.opacity = "1";
 
-              input_email.style.border = "1px solid red";
+          } else {
+            input_email.style.border = "0.5px solid rgb(94, 106, 113)";
 
-              mensagem_erro.innerHTML = "Digite um email válido!";
+            // Senha
+            if (senha.length < 8) {
+              input_senha.style.border = "1px solid red";
+              mensagem_erro.innerHTML = "A senha precisa ter no mínimo 8 caracteres";
               mensagem_erro.style.opacity = "1";
+
             } else {
-              input_email.style.border = "0.5px solid rgb(94, 106, 113)";
+              input_senha.style.border = "0.5px solid rgb(94, 106, 113)";
 
-              // Validação da senha
-              if (senha.length < 8) {
-                input_senha.style.border = "1px solid red";
-
-                mensagem_erro.innerHTML = "A senha precisa ter no minimo 8 caracteres";
+              // Telefone
+              if (telCelular == "" || telCelular.length < 10) {
+                input_telCelular.style.border = "1px solid red";
+                mensagem_erro.innerHTML = "Digite um telefone válido!";
                 mensagem_erro.style.opacity = "1";
               } else {
-                input_senha.style.border = "0.5px solid rgb(94, 106, 113)";
-
-                // Validação do telefone
-                if ((telCelular == "" || telCelular.length < 10)) {
-                  input_telCelular.style.border = "1px solid red";
-
-                  mensagem_erro.innerHTML = "Digite um telefone válido!";
-                  mensagem_erro.style.opacity = "1";
-                } else {
-                  input_telCelular.style.border = "0.5px solid rgb(94, 106, 113)";
-                  window.location.href = "login.html";
-                  alert('Cadastro Realizado com Sucesso!');
-                }
+                input_telCelular.style.border = "0.5px solid rgb(94, 106, 113)";
+                alert("Cadastro realizado com sucesso!");
+                window.location.href = "login.html";
               }
             }
           }
         }
       }
     }
+  }
 
-    // Executa o botão login ao clicar a tecla ENTER
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
+  // Permite usar Enter para cadastrar
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
       cadastrar();
     }
   });

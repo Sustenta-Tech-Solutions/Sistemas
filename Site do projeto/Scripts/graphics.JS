@@ -196,4 +196,3 @@ new Chart(ctxUmid, {
   },
 });
 
-

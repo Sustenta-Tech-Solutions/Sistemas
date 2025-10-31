@@ -187,9 +187,9 @@ canvas {
 }
 
 .chart-container {
-  background: #ffffff;
+  background: linear-gradient(180deg, #fff, #f7f4f3);
   border: 2px solid #000;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   box-sizing: border-box;
   padding: 20px;
@@ -200,6 +200,12 @@ canvas {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+  box-shadow: 0px 5px 18px rgba(42, 39, 33, 0.25);
+  transform: translateY(-3px);
 }
 
 .chart-container h2 {
@@ -298,5 +304,3 @@ canvas {
 .silo3 {
   display: none;
 }
-
-

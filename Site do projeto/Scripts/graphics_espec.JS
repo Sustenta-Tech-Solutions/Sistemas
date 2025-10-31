@@ -566,3 +566,4 @@ new Chart(ctxUmid3, {
     },
   },
 });
+

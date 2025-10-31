@@ -191,7 +191,6 @@ main {
   font-weight: bold;
 }
 
-
 .card-grid.mid {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   display: grid;
@@ -210,6 +209,7 @@ main {
   height: 100% !important; /* se adapta ao tamanho do container */
 }
 
+/*
 .graphics {
   background: #ffffff;
   border-radius: 8px;
@@ -223,7 +223,38 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
+
+.graphics:hover {
+  box-shadow: 0px 5px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}*/
+
+.graphics {
+  background: linear-gradient(180deg, #fff, #f7f4f3);
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid #2a2721;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.graphics:hover {
+  box-shadow: 0px 5px 18px rgba(42, 39, 33, 0.25);
+  transform: translateY(-3px);
+}
+
+.graphics canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
 
 .alerts {
   height: 180px;
