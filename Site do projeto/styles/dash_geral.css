@@ -121,7 +121,7 @@ main {
 .metricas{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
   align-items: center;
   background-color: #f7f4f3;
   /*width: ;*/
@@ -130,25 +130,30 @@ main {
 .metricaTemperatura{
   display: flex;
   text-align: center;
+  align-items: center;
   justify-content: center;
-  width: 400px;
-  /*margin-right: 0px;*/
+  width: 500px;
+  margin-left: 50px;
 }
 
 .metricaUmidade{
   display: flex;
   text-align: center;
   justify-content: center;
-  width: 400px;
+  align-items: center;
+  width: 500px;
+  margin-left: 50px;
 }
 
-/*.metricaTemperatura .intervalos{
-  display: flex;
-  flex-direction: row;
-}*/
+.metricas span{
+  margin-left: 20px;
+}
+.metricas .metricaTemperatura p{
+  padding-right: 20px;
+}
 
-.metricas p{
-  align-self: center;
+.metricas .metricaUmidade p{
+  padding-right: 20px;
 }
 
 
