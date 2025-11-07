@@ -346,9 +346,9 @@ main {
 }
 
 .alert-icon.temp {
-  background-color: #ff6b6b; /* vermelho para temperatura */
+  background-color: #ff6b6b; 
 }
 
 .alert-icon.hum {
-  background-color: #3bb2b8; /* azul para umidade */
+  background-color: #3bb2b8;
 }
