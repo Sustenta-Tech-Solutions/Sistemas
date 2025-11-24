@@ -17,7 +17,7 @@ USE sustentaTech;
 CREATE TABLE endereco (
 idEndereco INT PRIMARY KEY AUTO_INCREMENT,
 cep CHAR(9),
-logradouro VARCHAR(60),
+logradouro VARCHAR(100),
 cidade VARCHAR(60),
 estado CHAR (2),
 numero VARCHAR(7)
@@ -35,9 +35,9 @@ CREATE TABLE empresa(
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nomeEmpresa VARCHAR(60) NOT NULL,
 cnpj CHAR(18) UNIQUE,
+token CHAR(6) UNIQUE NOT NULL,
 telefone VARCHAR(14),
 dtCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-token CHAR(6) UNIQUE NOT NULL,
 fkEndereco INT,
 	CONSTRAINT fkEndereco
 		FOREIGN KEY (fkEndereco)
@@ -66,16 +66,14 @@ nome VARCHAR(50) NOT NULL,
 sobrenome VARCHAR(50) NOT NULL,
 email VARCHAR(60) NOT NULL,
 senha VARCHAR(50) NOT NULL,
-nivelUsuario CHAR(3) NOT NULL
-    CHECK( nivelUsuario IN('ADM', 'SUB')),
 telefone VARCHAR(14),
 dtCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-fkToken CHAR(6),
-CONSTRAINT fkTokenEmpresa 
-	FOREIGN KEY (fkToken)
-		REFERENCES empresa(token),
+fkEmpresa INT,
+CONSTRAINT fkEmpresaUsuario
+	FOREIGN KEY (fkEmpresa)
+		REFERENCES empresa(idEmpresa),
 CONSTRAINT pkCompostaEmpresa
-	PRIMARY KEY (idUsuario, fkToken)
+	PRIMARY KEY (idUsuario, fkEmpresa)
 );
 
 INSERT INTO usuario (nome, sobrenome, email, senha, nivelUsuario, telefone, fkToken) VALUES
@@ -99,11 +97,13 @@ SELECT usuario.nome AS 'Usuario',
 -- Criação da tabela 'sensor' com suas respectivas colunas e restrições
 CREATE TABLE sensor(
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-fkEmpresa INT,
-silo INT,
-status VARCHAR(10)
-	CHECK( status IN('ATIVO','INATIVO','MANUTENCAO')),
 dtInstalacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+posicao VARCHAR(10),
+fkSilo INT,
+fkEmpresa INT,
+CONSTRAINT fkSensorSilo
+	FOREIGN KEY (fkSilo)
+		REFERENCES silo(idSilo),
 CONSTRAINT fkSensorEmpresa 
 	FOREIGN KEY (fkEmpresa)
 		REFERENCES empresa(idEmpresa)
@@ -121,20 +121,37 @@ INSERT INTO sensor (fkEmpresa, silo, status) VALUES
     
 SELECT * FROM sensor;
 
+
+/* ------------------------------------------------------------------------------------------------------- */
+
+-- Criação da tabela 'silo' com suas respectivas colunas e restrições
+
+CREATE TABLE silo(
+idSilo INT, 
+numero INT,
+fkEmpresa INT,
+CONSTRAINT fkSiloEmpresa
+	FOREIGN KEY (fkEmpresa)
+		REFERENCES empresa(idEmpresa),
+CONSTRAINT pkComposta
+	PRIMARY KEY (idSilo, fkEmpresa)
+);
+
 /* ------------------------------------------------------------------------------------------------------- */
 
 -- Criação da tabela 'registro' com suas respectivas colunas e restrições
 CREATE TABLE registro(
 idRegistro INT AUTO_INCREMENT,
+temperatura DECIMAL(5,2),
+umidade DECIMAL(5,2),
+dtHora DATETIME DEFAULT CURRENT_TIMESTAMP,
 fkSensor INT,
 CONSTRAINT fkRegistroSensor 
 	FOREIGN KEY (fkSensor)
         REFERENCES sensor(idSensor),
 CONSTRAINT pkComposta
-	PRIMARY KEY (idRegistro, fkSensor),
-temperatura DECIMAL(5,2),
-umidade DECIMAL(5,2),
-dtHora DATETIME DEFAULT CURRENT_TIMESTAMP
+	PRIMARY KEY (idRegistro, fkSensor)
+
 );
 
 SELECT idSensor AS 'Identificação do sensor',
@@ -148,3 +165,6 @@ SELECT idSensor AS 'Identificação do sensor',
         ON fkEmpresa = idEmpresa
         JOIN registro 
         ON fkSensor = idSensor;
+        
+        
+show tables;
