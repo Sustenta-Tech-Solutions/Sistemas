@@ -30,8 +30,7 @@
       <div class="metricas">
         <span>MÉTRICAS</span>
         <div class="metricaTemperatura">
-          <img style="width: 20%"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmdI9KRKW9oVCvlRJ3OJkAMTbYPgKpFJKTXQ&s" alt="">
+          <img style="width: 20%" src="imagens/termometro-removebg-preview.png" alt="">
           <p>Temperatura</p>
           <div class="intervalos">
             <p style="color:green">Ideal: 14° a 24°</p>
@@ -41,9 +40,7 @@
         </div>
 
         <div class="metricaUmidade">
-          <img style="width: 20%"
-            src="https://static.vecteezy.com/ti/vetor-gratis/p1/30343218-umidade-icone-simbolo-projeto-ilustracao-vetor.jpg"
-            alt="">
+          <img style="width: 20%" src="imagens/umidade-removebg-preview.png" alt="">
           <p>Umidade</p>
           <div class="intervalos">
             <p style="color:green">Ideal: 60% a 70%</p>
@@ -53,115 +50,15 @@
 
         </div>
       </div>
-      <div class="silos-grid">
-        <!-- Bloco Silo 1 -->
-        <div class="silo-box">
-          <h3>Silo 1</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Sensor</th>
-                <th>Temperatura</th>
-                <th>Umidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td class="temp">30°C</td>
-                <td class="umid">80%</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td class="temp">22°C</td>
-                <td class="umid">66%</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td class="temp">13°C</td>
-                <td class="umid">64%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <!-- Bloco Silo 2 -->
-        <div class="silo-box">
-          <h3>Silo 2</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Sensor</th>
-                <th>Temperatura</th>
-                <th>Umidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td class="temp">28°C</td>
-                <td class="umid">85%</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td class="temp">25°C</td>
-                <td class="umid">70%</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td class="temp">14°C</td>
-                <td class="umid">56%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Bloco Silo 3 -->
-        <div class="silo-box">
-          <h3>Silo 3</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Sensor</th>
-                <th>Temperatura</th>
-                <th>Umidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td class="temp">28°C</td>
-                <td class="umid">88%</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td class="temp">24°C</td>
-                <td class="umid">66%</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td class="temp">36°C</td>
-                <td class="umid">70%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Quantidade de alertas -->
+      <div>
         <div class="alert-count-box">
           <h3>Quantidade de alertas</h3>
           <div class="alert-number">6</div>
         </div>
       </div>
 
-      <div class="card-grid mid">
-        <div class="graphics">
-          <canvas class="g1" id="chartTemp"></canvas>
-        </div>
-        <div class="graphics">
-          <canvas class="g2" id="chartUmid"></canvas>
-        </div>
-      </div>
+      <div id="silosContainer" class="silos-grid"></div>
 
       <div class="alerts">
         <div class="alerts-header">
@@ -188,13 +85,13 @@
                   <div class="alert-icon temp"></div>
                   <div>
                     <strong>Temperatura alta</strong><br />
-                    <span>Silo 03</span>
+                    <span>Silo 3</span>
                   </div>
                 </div>
               </td>
               <td>14/10/2025 - 14:32</td>
               <td>Temperatura: 40°C</td>
-              <td>Sensor 1 Topo</td>
+              <td>Sensor topo</td>
             </tr>
             <tr>
               <td>
@@ -202,13 +99,13 @@
                   <div class="alert-icon hum"></div>
                   <div>
                     <strong>Umidade baixa</strong><br />
-                    <span>Silo 01</span>
+                    <span>Silo 1</span>
                   </div>
                 </div>
               </td>
               <td>14/10/2025 - 13:20</td>
               <td>Umidade: 16%</td>
-              <td>Sensor 2 Central</td>
+              <td>Sensor meio</td>
             </tr>
           </tbody>
         </table>
@@ -225,36 +122,66 @@
     window.location.href = "login.html";
   }
 
-  // Função para atualizar as cores das temperaturas e umidades
-  function atualizarCoresTabela() {
-    var tempCelas = document.querySelectorAll(".temp");
-    var umidCelas = document.querySelectorAll(".umid");
+  const silos = [
+    { id: 1, temp: 30, umid: 80 },
+    { id: 2, temp: 24, umid: 65 },
+    { id: 3, temp: 36, umid: 90 },
+    { id: 4, temp: 18, umid: 70 },
+    { id: 5, temp: 11, umid: 45 },
+    { id: 6, temp: 11, umid: 45 },
+    { id: 7, temp: 11, umid: 45 },
+    { id: 8, temp: 11, umid: 45 },
+    { id: 9, temp: 11, umid: 45 },
+    { id: 10, temp: 11, umid: 45 },
+    { id: 11, temp: 11, umid: 45 },
+    { id: 12, temp: 11, umid: 45 },
+    { id: 13, temp: 11, umid: 45 },
+    { id: 14, temp: 11, umid: 11 }
+  ];
 
-    for (var i = 0; i < tempCelas.length; i++) {
-      var cel = tempCelas[i];
-      var valor = parseFloat(cel.textContent);
-
-      if (valor < 15) {
-        cel.style.color = "orange";
-      } else if (valor <= 28) {
-        cel.style.color = "green";
-      } else {
-        cel.style.color = "red";
-      }
+  function getStatus(temp, umid) {
+    if (temp >= 28 || umid >= 75) {
+      return "alert";
+    }else if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
+      return "attention";
+    } else {
+      return "ok";
     }
 
-    for (var i = 0; i < umidCelas.length; i++) {
-      var cel = umidCelas[i];
-      var valor = parseFloat(cel.textContent);
+  }
 
-      if (valor < 55) {
-        cel.style.color = "orange";
-      } else if (valor <= 74) {
-        cel.style.color = "green";
-      } else {
-        cel.style.color = "red";
-      }
+  function carregarSilos() {
+    const container = document.getElementById("silosContainer");
+
+    for (let i = 0; i < silos.length; i++) {
+
+      let silo = silos[i];
+      let status = getStatus(silo.temp, silo.umid);
+
+      const card = document.createElement("div");
+      card.classList.add("silo-card");
+
+      const icon = document.createElement("div");
+      icon.classList.add("silo-icon", status);
+
+      const name = document.createElement("div");
+      name.classList.add("silo-name");
+      name.textContent = "Silo " + silo.id;
+
+      card.appendChild(icon);
+      card.appendChild(name);
+
+      card.onclick = function () {
+        alert(
+          "Silo " + silo.id +
+          "\nTemperatura: " + silo.temp + "°C" +
+          "\nUmidade: " + silo.umid + "%"
+        );
+      };
+
+      container.appendChild(card);
     }
   }
-  atualizarCoresTabela();
+
+  carregarSilos();
 </script>
