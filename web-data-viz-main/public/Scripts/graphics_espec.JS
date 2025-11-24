@@ -17,7 +17,7 @@ new Chart(ctxTemp1, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [11.5, 11.3, 11.1, 11.0, 11.8, 13.5, 13],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -28,7 +28,7 @@ new Chart(ctxTemp1, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [31, 33, 32, 34, 36, 40, 38],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -39,7 +39,7 @@ new Chart(ctxTemp1, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [25, 24, 23, 25, 26, 25, 24],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",
@@ -109,7 +109,7 @@ new Chart(ctxUmid1, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [60, 64, 69, 67, 71, 75, 66],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -120,7 +120,7 @@ new Chart(ctxUmid1, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [59, 63, 65, 68, 73, 75, 78],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -131,7 +131,7 @@ new Chart(ctxUmid1, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [57, 63, 65, 66, 59, 67, 70],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",
@@ -207,7 +207,7 @@ new Chart(ctxTemp2, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [11.5, 16, 14, 12, 18, 19, 25],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -218,7 +218,7 @@ new Chart(ctxTemp2, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [31, 33, 32, 34, 36, 40, 38],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -229,7 +229,7 @@ new Chart(ctxTemp2, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [25, 24, 23, 25, 26, 25, 24],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",
@@ -299,7 +299,7 @@ new Chart(ctxUmid2, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [61, 64, 69, 67, 71, 75, 79],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -310,7 +310,7 @@ new Chart(ctxUmid2, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [55, 57, 59, 60, 62, 57, 54],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -321,7 +321,7 @@ new Chart(ctxUmid2, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [64, 68, 70, 77, 74, 77, 80],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",
@@ -397,7 +397,7 @@ new Chart(ctxTemp3, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [11.5, 16, 14, 12, 18, 19, 25],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -408,7 +408,7 @@ new Chart(ctxTemp3, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [31, 33, 32, 34, 36, 40, 38],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -419,7 +419,7 @@ new Chart(ctxTemp3, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [25, 24, 23, 25, 26, 25, 24],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",
@@ -489,7 +489,7 @@ new Chart(ctxUmid3, {
     ],
     datasets: [
       {
-        label: "Sensor 1",
+        label: "Sensor topo",
         data: [55, 53, 50, 40, 37, 60, 58],
         borderColor: "#005a9e",
         backgroundColor: "#005a9e",
@@ -500,7 +500,7 @@ new Chart(ctxUmid3, {
         fill: false,
       },
       {
-        label: "Sensor 2",
+        label: "Sensor meio",
         data: [60, 66, 68, 63, 69, 70, 65],
         borderColor: "#f76b1c",
         backgroundColor: "#f76b1c",
@@ -511,7 +511,7 @@ new Chart(ctxUmid3, {
         fill: false,
       },
       {
-        label: "Sensor 3",
+        label: "Sensor base",
         data: [74, 78, 80, 87, 84, 87, 90],
         borderColor: "#2e8b57",
         backgroundColor: "#2e8b57",

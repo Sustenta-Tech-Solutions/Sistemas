@@ -26,7 +26,7 @@
 
       <main class="silo1">
         <div id="div_sensor">
-          <h3 id="silo_num">Silo </h3><select id="select_sensor" class="select" onchange="trocar()">
+          <h3 style="margin-top: 7px;" id="silo_num">Silo </h3><select id="select_sensor" class="select" onchange="trocar()">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -74,7 +74,7 @@
 
           <div class="kpi-column">
             <div class="kpi-box">
-              Medições do sensor 1 nas ultimas horas<br />
+              Medições do sensor topo nos últimos 90 minutos<br />
               <table>
                 <thead>
                   <tr>
@@ -103,7 +103,7 @@
               </table>
             </div>
             <div class="kpi-box">
-              Medições do sensor 2 nas ultimas horas<br />
+              Medições do sensor meio nos últimos 90 minutos<br />
               <table>
                 <thead>
                   <tr>
@@ -132,7 +132,7 @@
               </table>
             </div>
             <div class="kpi-box">
-              Medições do sensor 3 nas ultimas horas<br />
+              Medições do sensor base nos últimos 90 minutos<br />
               <table>
                 <thead>
                   <tr>
@@ -186,96 +186,6 @@
               <canvas class="g2" id="chartUmid2"></canvas>
             </div>
           </div>
-
-          <div class="kpi-column">
-            <div class="kpi-box">
-              Medições do sensor 1 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">12°C</td>
-                    <td class="umid">61%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">18°C</td>
-                    <td class="umid">71%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">25°C</td>
-                    <td class="umid">79%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor 2 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">31°C</td>
-                    <td class="umid">54%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">34°C</td>
-                    <td class="umid">60%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">40°C</td>
-                    <td class="umid">62%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor 3 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">23°C</td>
-                    <td class="umid">64%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">24°C</td>
-                    <td class="umid">67%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">26°C</td>
-                    <td class="umid">80%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
 
         <div id="dashboard-row3" class="dashboard-row" style="display: none">
@@ -287,96 +197,6 @@
             <div class="chart-container">
               <h2>Umidade (%)</h2>
               <canvas class="g2" id="chartUmid3"></canvas>
-            </div>
-          </div>
-
-          <div class="kpi-column">
-            <div class="kpi-box">
-              Medições do sensor 1 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">12°C</td>
-                    <td class="umid">37%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">16°C</td>
-                    <td class="umid">48%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">22°C</td>
-                    <td class="umid">58%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor 2 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">30°C</td>
-                    <td class="umid">60%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">36°C</td>
-                    <td class="umid">63%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">38°C</td>
-                    <td class="umid">70%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor 3 nas ultimas horas<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">23°C</td>
-                    <td class="umid">74%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">24°C</td>
-                    <td class="umid">85%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">26°C</td>
-                    <td class="umid">90%</td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
