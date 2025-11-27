@@ -1,170 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/nav_footer.css" />
-    <link rel="stylesheet" href="styles/style_login.css" />
-    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="logo">
-          <img src="imagens/logo_sustentatech_deitado.svg" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/nav_footer.css" />
+  <link rel="stylesheet" href="styles/style_login.css" />
+  <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="index.html#sobre_nos">Sobre nós</a>
+        </li>
+        <li>
+          <a href="index.html#servicos">Nossos serviços</a>
+        </li>
+        <li>
+          <a href="#contato">Contato</a>
+        </li>
+        <li>
+          <a href="Simulador_V2.html">Simulador</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastrar</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tela-login">
+    <div class="card-login">
+      <div class="login-superior">
+        <a href="index.html" class="voltar">
+          <img src="imagens/icone_voltar.svg" width="50" height="50" alt="" />
+        </a>
+        <img src="imagens/logo_circular_sustentatech.svg" alt="" />
+      </div>
+      <p>Login</p>
+      <div class="formulario">
+        <input class="input" type="text" id="ipt_email" placeholder="Usuário" />
+        <input class="input" type="password" id="ipt_senha" placeholder="Senha" />
+        <br />
+        <p id="erroLogin" class="erroLogin">Usuário e/ou senha inválidos!</p>
+      </div>
+
+      <div class="button-login">
+        <button onclick="login()"><b>Entrar</b></button> <br />
+        <br />
+      </div>
+      <div class="cadastrar-se">
+        <a href="cadastro.html" style="color: #6b8e23; font-size: 18px"><b><u>Cadastrar-se</u></b></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="contato" class="footer">
+    <div class="container">
+      <div class="hr1">
+        <hr>
+      </div>
+
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg">
+      </div>
+
+      <div class="info_endereco">
+        <img src="imagens/logo_mapa.svg">
+        <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
+      </div>
+
+      <div class="info_contato">
+        <div class="img_tel">
+          <img src="imagens/logo_telefone.svg">
         </div>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="index.html">Inicial</a>
+        <div class="img_whts">
+          <img src="imagens/logo_whatsapp.svg">
+        </div>
+        <p>(11) 4228-8982</p>
+      </div>
+
+      <div class="sociais">
+        <div class="img_facebook">
+          <img src="imagens/logo_facebook.svg">
+        </div>
+        <div class="img_x">
+          <img src="imagens/loog_x.svg">
+        </div>
+
+        <div class="img_linkedin">
+          <img src="imagens/logo_linkedin.svg">
+        </div>
+
+        <div class="img_youtube">
+          <img src="imagens/logo_youtube.svg">
+        </div>
+      </div>
+
+      <div class="footer_navegacao">
+        <ul class="navegacao">
+          <!--<li class="agora">
+              <a href="#">Inicial</a>
+            </li> -->
+          <li>
+            <a href="#sobre_nos">Sobre nós</a>
           </li>
           <li>
-            <a href="index.html#sobre_nos">Sobre nós</a>
-          </li>
-          <li>
-            <a href="index.html#servicos">Nossos serviços</a>
-          </li>
-          <li>
-            <a href="#contato">Contato</a>
+            <a href="#servicos">Nossos serviços</a>
           </li>
           <li>
             <a href="Simulador_V2.html">Simulador</a>
           </li>
           <li>
-            <a href="cadastro.html">Cadastrar</a>
-          </li>
-          <li>
-            <a href="login.html">Login</a>
+            <a href="#contato">Contato</a>
           </li>
         </ul>
       </div>
-    </div>
-
-    <div class="tela-login">
-      <div class="card-login">
-        <div class="login-superior">
-          <a href="index.html" class="voltar">
-            <img src="imagens/icone_voltar.svg" width="50" height="50" alt="" />
-          </a>
-          <img src="imagens/logo_circular_sustentatech.svg" alt="" />
-        </div>
-        <p>Login</p>
-        <div class="formulario">
-          <input
-            class="input"
-            type="text"
-            id="ipt_usuario"
-            placeholder="Usuário"
-          />
-          <input class="input" type="password" id="ipt_senha" placeholder="Senha" />
-          <br />
-          <p id="erroLogin" class="erroLogin">Usuário e/ou senha inválidos!</p>
-        </div>
-
-        <div class="button-login">
-          <button onclick="login()"><b>Entrar</b></button> <br />
-          <br />
-        </div>
-        <div class="cadastrar-se">
-          <a href="cadastro.html" style="color: #6b8e23; font-size: 18px"
-            ><b><u>Cadastrar-se</u></b></a
-          >
-        </div>
+      <div class="hr2">
+        <hr>
       </div>
+
     </div>
+</body>
 
-
-    <div id="contato" class="footer">
-      <div class="container">
-        <div class="hr1">
-          <hr>
-        </div>
-
-        <div class="logo">
-          <img src="imagens/logo_sustentatech_deitado.svg">
-        </div>
-
-        <div class="info_endereco">
-          <img src="imagens/logo_mapa.svg">
-          <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
-        </div>
-
-        <div class="info_contato">
-          <div class="img_tel">
-            <img src="imagens/logo_telefone.svg">
-          </div>
-          <div class="img_whts">
-            <img src="imagens/logo_whatsapp.svg">
-          </div>
-          <p>(11) 4228-8982</p>
-        </div>
-
-        <div class="sociais">
-          <div class="img_facebook">
-            <img src="imagens/logo_facebook.svg">
-          </div>
-          <div class="img_x">
-            <img src="imagens/loog_x.svg">
-          </div>
-
-          <div class="img_linkedin">
-            <img src="imagens/logo_linkedin.svg">
-          </div>
-
-          <div class="img_youtube">
-            <img src="imagens/logo_youtube.svg">
-          </div>
-        </div>
-
-          <div class="footer_navegacao">
-              <ul class="navegacao">
-            <!--<li class="agora">
-              <a href="#">Inicial</a>
-            </li> -->
-            <li>
-              <a href="#sobre_nos">Sobre nós</a>
-            </li>
-            <li>
-              <a href="#servicos">Nossos serviços</a>
-            </li>
-            <li>
-              <a href="Simulador_V2.html">Simulador</a>
-            </li>
-            <li>
-              <a href="#contato">Contato</a>
-            </li>
-          </ul>
-        </div>
-        <div class="hr2">
-          <hr>
-        </div>
-        
-      </div>
-  </body>
 </html>
 
 <script>
   function login() {
-    var usuario = ipt_usuario.value;
-    var senha = ipt_senha.value;
-    var email = "teste@gmail.com";
-    var senhaCadastro = "teste123";
+    var emailVar = ipt_email.value;
+    var senhaVar = ipt_senha.value;
 
-    if (usuario != email || senha != senhaCadastro) {
+    if (emailVar == "" || senhaVar == "") {
       erroLogin.style.display = "block";
-      ipt_usuario.style.borderColor = "red";
+      ipt_email.style.borderColor = "red";
       ipt_senha.style.borderColor = "red";
     } else {
-      alert("Usuário logado com sucesso!");
-      erroLogin.style.display = "none";
-      ipt_usuario.style.borderColor = "black";
-      ipt_senha.style.borderColor = "black";
-      window.location.href = "Dashboard_geral.html";
+
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL = json.email;
+            sessionStorage.NOME = json.nome;
+            sessionStorage.EMPRESA = json.fkEmpresa;
+            sessionStorage.ID_EMPRESA = json.id;
+            sessionStorage.NUM_SILOS = json.silos;
+
+           
+            alert("Usuário logado com sucesso!");
+            erroLogin.style.display = "none";
+            ipt_email.style.borderColor = "black";
+            ipt_senha.style.borderColor = "black";
+            window.location = "/Dashboard_geral.html";
+
+          }).catch(function (erro) {
+            console.log(erro);
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.error(texto);
+            erroLogin.style.display = "block";
+            ipt_email.style.borderColor = "red";
+            ipt_senha.style.borderColor = "red";
+          });
+
+        }
+      })
     }
   }
 
   // Executa o botão login ao clicar a tecla ENTER
-  document.addEventListener('keydown', function(event) {
+  document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       login();
     }
