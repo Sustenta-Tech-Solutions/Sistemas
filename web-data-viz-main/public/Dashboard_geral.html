@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="adquirirDadosSilos()">
   <header>
     <div class="logo">
       <img src="imagens/logo_sustentatech_deitado.svg" />
@@ -118,32 +118,63 @@
 
 </html>
 <script>
-  function logout() {
-    sessionStorage.clear();
-    window.location.href = "login.html";
-  }
-
-  const silos = [
-    { id: 1, temp: 30, umid: 80 },
-    { id: 2, temp: 24, umid: 65 },
-    { id: 3, temp: 36, umid: 90 },
-    { id: 4, temp: 18, umid: 70 },
-    { id: 5, temp: 11, umid: 45 },
-    { id: 6, temp: 11, umid: 45 },
-    { id: 7, temp: 11, umid: 45 },
-    { id: 8, temp: 11, umid: 45 },
-    { id: 9, temp: 11, umid: 45 },
-    { id: 10, temp: 11, umid: 45 },
-    { id: 11, temp: 11, umid: 45 },
-    { id: 12, temp: 11, umid: 45 },
-    { id: 13, temp: 11, umid: 45 },
-    { id: 14, temp: 11, umid: 11 }
+  var silos = [
+    [],
+    [],
+    []
   ];
 
-  function getStatus(temp, umid) {
+  var alertas = [
+    [],
+    [],
+    []
+  ];
+
+  function adquirirDadosSilos() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var qtdSilos = sessionStorage.NUM_SILOS;
+
+    fetch(`/medidas/ultimas/${idEmpresa}&${qtdSilos}`, { cache: 'no-store' })
+      .then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            // resposta.reverse();
+            
+            if (silos[0].length > 0) {
+              silos.splice(0, silos.length)
+            }
+
+              for (let i = 0; i < resposta.length; i++) {
+                silos[0].push(`${i + 1}`)
+                silos[1].push(resposta[i].temperaturaMedia);
+                silos[2].push(resposta[i].umidadeMedia);
+              }
+            carregarSilos();
+    
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+
+    setTimeout(function () {
+      adquirirDadosSilos()
+    }, 6000000)
+  }
+
+
+
+  function getStatus(silo, temp, umid) {
     if (temp >= 28 || umid >= 75) {
+      alertas[0].push(silo)
       return "alert";
-    }else if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
+    } else if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
+      alertas.push(silo, temp, umid)
       return "attention";
     } else {
       return "ok";
@@ -154,10 +185,12 @@
   function carregarSilos() {
     const container = document.getElementById("silosContainer");
 
-    for (let i = 0; i < silos.length; i++) {
+    for (let i = 0; i < silos[0].length; i++) {
 
-      let silo = silos[i];
-      let status = getStatus(silo.temp, silo.umid);
+      let silo = silos[0][i];
+      var temp = silos[1][i];
+      var umid = silos[2][i];
+      let status = getStatus(silo, temp, umid);
 
       const card = document.createElement("div");
       card.classList.add("silo-card");
@@ -167,22 +200,25 @@
 
       const name = document.createElement("div");
       name.classList.add("silo-name");
-      name.textContent = "Silo " + silo.id;
+      name.textContent = "Silo " + silo;
 
       card.appendChild(icon);
       card.appendChild(name);
 
       card.onclick = function () {
-        alert(
-          "Silo " + silo.id +
-          "\nTemperatura: " + silo.temp + "°C" +
-          "\nUmidade: " + silo.umid + "%"
-        );
+        window.location = "/Dashboard_espec.html"
       };
 
       container.appendChild(card);
     }
+    console.log(alertas)
   }
 
-  carregarSilos();
+
+  function logout() {
+    sessionStorage.clear();
+    window.location.href = "login.html";
+  }
+
+
 </script>

@@ -67,7 +67,7 @@ header {
   padding: 10px 15px;
   margin: 5px 0;
   text-decoration: none;
-  text-align: left; /* ou center, se quiser */
+  text-align: left; 
   font-size: 0.9rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
   border: none;
   border-radius: 6px;
@@ -127,3 +127,32 @@ header {
 .forms_bobia h1 {
     margin-top: 10px;
 }
+
+
+#pergunta {
+  margin-top: 30px;
+  border-radius: 5px;
+  text-align: center;
+  height: 10vh;
+  width: 20vw;
+}
+
+.bobIa_button {
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(255, 179, 0);
+  padding: 15px 15px;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 1rem;
+  box-shadow: 3px 3px 8px rgba(225, 225, 44, 0.59);
+}
+
+.bobIa_button:hover {
+  background-color: #f1bd45;
+  border: 2px solid #323130;
+}
+
+/* #resposta {
+
+} */

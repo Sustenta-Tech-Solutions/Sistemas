@@ -173,13 +173,30 @@
             sessionStorage.EMPRESA = json.fkEmpresa;
             sessionStorage.ID_EMPRESA = json.id;
             sessionStorage.NUM_SILOS = json.silos;
+            var empresa = json.fkEmpresa;
 
-           
-            alert("Usuário logado com sucesso!");
+
+            // alert("Usuário logado com sucesso!");
             erroLogin.style.display = "none";
             ipt_email.style.borderColor = "black";
             ipt_senha.style.borderColor = "black";
-            window.location = "/Dashboard_geral.html";
+            
+            
+
+            if (empresa != 'SustentaTech') {
+              setTimeout(function () {
+                alert('Login realizado com sucesso!')
+                window.location = "/Dashboard_geral.html";
+              }, 1000)
+
+            } else {
+              alert('Login realizado com sucesso!')
+              setTimeout(function () {
+                window.location = "/telaAdm.html";
+              }, 1000)
+
+
+            }
 
           }).catch(function (erro) {
             console.log(erro);
@@ -200,11 +217,4 @@
       })
     }
   }
-
-  // Executa o botão login ao clicar a tecla ENTER
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-      login();
-    }
-  });
 </script>
