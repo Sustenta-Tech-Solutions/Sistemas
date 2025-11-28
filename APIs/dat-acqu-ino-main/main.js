@@ -87,6 +87,97 @@ const serial = async (
                 [sensorTemperatura + 10, sensorUmidade + 15]
             );
             console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (6, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (7, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (8, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (9, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (10, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (11, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (12, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (13, ?, ?)',
+                [sensorTemperatura, sensorUmidade]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (14, ?, ?)',
+                [sensorTemperatura - 10, sensorUmidade - 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (15, ?, ?)',
+                [sensorTemperatura + 6, sensorUmidade + 25]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (16, ?, ?)',
+                [sensorTemperatura + 3, sensorUmidade + 8]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (17, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (18, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (19, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (20, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (21, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (22, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (23, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
+            await poolBancoDados.execute(
+               'INSERT INTO registro (fkSensor, temperatura, umidade) VALUES (24, ?, ?)',
+                [sensorTemperatura + 10, sensorUmidade + 15]
+            );
         }
 
     });

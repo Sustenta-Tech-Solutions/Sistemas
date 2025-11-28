@@ -19,9 +19,9 @@
 
     <div class="main">
         <nav class="sidebar">
-            <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
-            <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
-            <a href="configuracao.html" class="button">Configurações</a>
+            <!-- <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
+            <a href="Dashboard_espec.html" class="button">Dashboard específica</a> -->
+            <a href="#" class="button">JIRA</a>
             <button class="logout" onclick="logout()">Sair</button>
         </nav>
 
@@ -30,7 +30,7 @@
                 <h1>BobIA</h1>
                 <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
                 <br><br>
-                <button onclick="gerarResposta()">Gerar Resposta</button>
+                <button onclick="gerarResposta()" class="bobIa_button">Gerar Resposta</button>
                 <h3>Resposta da IA:</h3>
                 <div id="resposta"></div>
             </div>
@@ -61,3 +61,11 @@
 </body>
 
 </html>
+
+<script>
+    function logout() {
+    sessionStorage.clear();
+    window.location.href = "login.html";
+  }
+
+</script>

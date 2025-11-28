@@ -50,6 +50,9 @@ INSERT INTO empresa (nomeEmpresa, cnpj, telefone, token) VALUES
     ('Atos', '31.259.291/4613-03', '(94)99701-7259', 'A7T0X2'),
     ('SPTech', '04.726.609/5142-02', '(44)99238-1547', 'A1K7W8');
     
+INSERT INTO empresa (nomeEmpresa, cnpj, telefone, token) VALUES
+	('SustentaTech', '13.223.008/9823-06', '(11)973239898', 'S8T3T5');
+    
 UPDATE empresa SET fkEndereco = 1
 	WHERE idEmpresa = 1;
 UPDATE empresa SET fkEndereco = 2
@@ -113,7 +116,27 @@ INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
 	('Topo', 1, 1),
     ('Centro', 1, 1),
     ('Base', 1, 1);
+
+INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
+	('Topo', 5, 1),
+    ('Centro', 5, 1),
+    ('Base', 5, 1);
+
+INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
+	('Topo', 6, 1),
+    ('Centro', 6, 1),
+    ('Base', 6, 1);
+
+INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
+	('Topo', 7, 1),
+    ('Centro', 7, 1),
+    ('Base', 7, 1);
     
+INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
+	('Topo', 8, 1),
+    ('Centro', 8, 1),
+    ('Base', 8, 1);
+ 
 INSERT INTO sensor (posicao, fkSilo, fkEmpresa) VALUES
 	('Topo', 2, 1),
     ('Centro', 2, 1),
@@ -199,7 +222,10 @@ DESC sensor;
 SELECT * FROM empresa;
 SELECT * FROM endereco;
 SELECT * FROM sensor;
+SELECT * FROM registro;
 SELECT * FROM silo;
+
+INSERT INTO registro
 SELECT * FROM usuario;
 
 --  --------------------------------
@@ -230,5 +256,42 @@ SELECT * FROM vw_autenticar WHERE emailUsuario = 'felipe@gmail.com' AND senha = 
 
 SELECT MAX(numero) FROM silo WHERE fkEmpresa = 1;
         
-
+        
+-- ----------------------------
+SELECT
+		AVG(registro.temperatura) AS temperaturaMedia,
+		AVG(registro.umidade) AS umidadeMedia,
+		HOUR(registro.dtHora) AS HoraDoDia,
+		s.fkSilo AS Silo,
+        s.fkEmpresa AS Empresa
+	FROM
+		registro
+	JOIN
+		sensor s ON registro.fkSensor = s.idSensor
+	GROUP BY
+		HoraDoDia,
+		Silo,
+        Empresa
+	ORDER BY
+		HoraDoDia DESC;
+    
+CREATE VIEW vw_mediaMedicoes AS 
+	SELECT
+		AVG(registro.temperatura) AS temperaturaMedia,
+		AVG(registro.umidade) AS umidadeMedia,
+		HOUR(registro.dtHora) AS HoraDoDia,
+		s.fkSilo AS Silo,
+        s.fkEmpresa AS Empresa
+	FROM
+		registro
+	JOIN
+		sensor s ON registro.fkSensor = s.idSensor
+	GROUP BY
+		HoraDoDia,
+		Silo,
+        Empresa
+	ORDER BY
+		HoraDoDia DESC;
+        
+SELECT * FROM vw_mediaMedicoes WHERE Empresa = 1;
 
