@@ -7,7 +7,6 @@
   <title>Dashboard_geral</title>
   <link rel="stylesheet" href="styles/dash_geral.css" />
   <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="adquirirDadosSilos()">
@@ -54,7 +53,7 @@
       <div>
         <div class="alert-count-box">
           <h3>Quantidade de alertas</h3>
-          <div class="alert-number">6</div>
+          <div class="alert-number" id="numAlertas">6</div>
         </div>
       </div>
 
@@ -74,46 +73,42 @@
               <th>Tipo</th>
               <th>Data e Hora</th>
               <th>Medição</th>
-              <th>Sensor</th>
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="alertasTableBody">
             <tr>
               <td>
                 <div class="alert-info">
                   <div class="alert-icon temp"></div>
                   <div>
-                    <strong>Temperatura alta</strong><br />
-                    <span>Silo 3</span>
+                    <strong></strong><br />
+                    <span></span>
                   </div>
                 </div>
               </td>
-              <td>14/10/2025 - 14:32</td>
-              <td>Temperatura: 40°C</td>
-              <td>Sensor topo</td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
               <td>
                 <div class="alert-info">
                   <div class="alert-icon hum"></div>
                   <div>
-                    <strong>Umidade baixa</strong><br />
-                    <span>Silo 1</span>
+                    <strong></strong><br />
+                    <span></span>
                   </div>
                 </div>
               </td>
-              <td>14/10/2025 - 13:20</td>
-              <td>Umidade: 16%</td>
-              <td>Sensor meio</td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
       </div>
     </main>
   </div>
-
-  <script src="Scripts/graphics.JS"></script>
 </body>
 
 </html>
@@ -124,11 +119,7 @@
     []
   ];
 
-  var alertas = [
-    [],
-    [],
-    []
-  ];
+  var alertas = [];
 
   function adquirirDadosSilos() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
@@ -139,19 +130,24 @@
         if (response.ok) {
           response.json().then(function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-            // resposta.reverse();
-            
+
+            console.log("resposta:", resposta)
             if (silos[0].length > 0) {
-              silos.splice(0, silos.length)
+              silos.forEach(arr => arr.length = 0);
+              alertas.length = 0;
             }
 
-              for (let i = 0; i < resposta.length; i++) {
-                silos[0].push(`${i + 1}`)
-                silos[1].push(resposta[i].temperaturaMedia);
-                silos[2].push(resposta[i].umidadeMedia);
-              }
+            for (let i = 0; i < resposta.length; i++) {
+              silos[0].push(`${i + 1}`)
+              silos[1].push(Number(parseFloat(resposta[i].temperaturaMedia).toFixed(2)));
+              silos[2].push(Number(parseFloat(resposta[i].umidadeMedia).toFixed(2))
+              );
+
+            }
             carregarSilos();
-    
+            carregarAlertas();
+
+
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
@@ -164,26 +160,49 @@
 
     setTimeout(function () {
       adquirirDadosSilos()
-    }, 6000000)
+    }, 600000)
   }
 
 
 
   function getStatus(silo, temp, umid) {
-    if (temp >= 28 || umid >= 75) {
-      alertas[0].push(silo)
+    if (temp >= 28) {
+      alertas.push({
+        tipo: "Temperatura alta",
+        valor: `${temp}°C`,
+        silo: `${silo}`,
+        data: new Date()
+      });
       return "alert";
-    } else if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
-      alertas.push(silo, temp, umid)
-      return "attention";
-    } else {
-      return "ok";
     }
+
+    if (umid >= 75) {
+      alertas.push({
+        tipo: "Umidade alta",
+        valor: `${umid}°C`,
+        silo: `${silo}`,
+        data: new Date()
+      });
+      return "alert";
+    }
+
+    if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
+      alertas.push({
+        tipo: temp >= 25 ? "Temperatura em atenção" : "Umidade em atenção",
+        silo,
+        valor: temp >= 25 ? `${temp}°C` : `${umid}%`,
+        data: new Date()
+      });
+      return "attention";
+    }
+
+    return "ok";
 
   }
 
   function carregarSilos() {
     const container = document.getElementById("silosContainer");
+    container.innerHTML = "";
 
     for (let i = 0; i < silos[0].length; i++) {
 
@@ -212,6 +231,40 @@
       container.appendChild(card);
     }
     console.log(alertas)
+  }
+
+  function carregarAlertas() {
+    const tbody = document.getElementById("alertasTableBody");
+    tbody.innerHTML = ""; // limpa antes de montar
+
+    let numAlertas = 0;
+    alertas.slice(-10).reverse().forEach(alerta => {
+      const tr = document.createElement("tr");
+      numAlertas++;
+
+      tr.innerHTML = `
+      <td>
+        <div class="alert-info">
+          <div class="alert-icon ${alerta.tipo.includes("Temperatura") ? "temp" : "hum"}"></div>
+          <div>
+            <strong>${alerta.tipo}</strong><br />
+            <span>Silo ${alerta.silo}</span>
+          </div>
+        </div>
+      </td>
+      <td>${formatarData(alerta.data)}</td>
+      <td>${alerta.valor}</td>
+    `;
+
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById("numAlertas").textContent = numAlertas;
+  }
+
+  function formatarData(data) {
+    return data.toLocaleDateString("pt-BR") + " - " +
+      data.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
   }
 
 
