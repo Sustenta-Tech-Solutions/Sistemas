@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard_espec</title>
-    <link rel="stylesheet" href="styles/dash_espec.css" />
-    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <img src="imagens/logo_sustentatech_deitado.svg" />
-      </div>
-      <div class="user">Olá, User</div>
-    </header>
 
-    <div class="container">
-      <nav class="sidebar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard_espec</title>
+  <link rel="stylesheet" href="styles/dash_espec.css" />
+  <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <nav class="sidebar">
+
+      <div class="div-user">Olá, User</div>
+
+      <div class="div-buttons">
+
         <a href="Dashboard_geral.html" class="button">Dashboard Geral</a>
         <a href="Dashboard_espec.html" class="button">Dashboard específica</a>
         <a href="configuracao.html" class="button">Configurações</a>
         <button class="logout" onclick="logout()">Sair</button>
-      </nav>
 
-      <main class="silo1">
-        <div id="div_sensor">
-          <h3 style="margin-top: 7px;" id="silo_num">Silo </h3><select id="select_sensor" class="select" onchange="trocar()">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-            </select>
-          <div id="div_select">
-            
-          </div>
+      </div>
+
+      <div class="div-logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+    </nav>
+
+    <main class="silo1">
+      <div id="div_sensor">
+
+        <div class="sensor-container">
+
+          <h3 id="silo_num">Silo</h3>
+
+          <select id="select_sensor" class="select" onchange="trocar()">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+
         </div>
 
         <div class="metricas">
-          <span>MÉTRICAS</span>
+          <h5>MÉTRICAS</h5>
           <div class="metricaTemperatura">
-            <img style="width: 15%" src="imagens/termometro-removebg-preview.png" alt="">
-            <p>Temperatura</p>
+
+            <span>Temperatura <img src="imagens/termometro-removebg-preview.png" alt=""></span>
+
             <div class="intervalos">
               <p style="color:green">Ideal: 14° a 24°</p>
               <p style="color:lab(69.48% 36.83 75.49)">Atenção: 10° a 13° ou 25° a 27° </p>
@@ -49,167 +60,176 @@
           </div>
 
           <div class="metricaUmidade">
-            <img style="width: 20%" src="imagens/umidade-removebg-preview.png" alt="">
-            <p>Umidade</p>
+
+            <span>Umidade <img style="width: 30px" src="imagens/umidade-removebg-preview.png"
+                alt="imagem de umidade"></span>
             <div class="intervalos">
               <p style="color:green">Ideal: 60% a 70%</p>
               <p style="color:lab(69.48% 36.83 75.49)">Atenção: 55% a 59% ou 71% a 74% </p>
               <p style="color:rgb(252, 0, 0)">Alerta: 0% a 50% ou 75%+</p>
             </div>
-            
+
           </div>
-      </div>
+
+        </div>
 
         <div class="alerts">
           <div class="kpi-box-alert">
-            Alertas de Temperatura<br />
+            <h4>Alertas de Temperatura</h4>
             <span id="alert_temp"></span>
           </div>
 
           <div class="kpi-box-alert">
-            Alertas de Umidade<br />
+            <h4>Alertas de Umidade</h4>
             <span id="alert_umid"></span>
           </div>
         </div>
 
-          <div class="kpi-column">
-            <div class="kpi-box">
-              Medições do sensor topo nos últimos 90 minutos<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">12°C</td>
-                    <td class="umid">55%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">22°C</td>
-                    <td class="umid">60%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">35°C</td>
-                    <td class="umid">75%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor meio nos últimos 90 minutos<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">31°C</td>
-                    <td class="umid">57%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">33°C</td>
-                    <td class="umid">60%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">35°C</td>
-                    <td class="umid">78%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="kpi-box">
-              Medições do sensor base nos últimos 90 minutos<br />
-              <table>
-                <thead>
-                  <tr>
-                    <th>Variação</th>
-                    <th>Temperatura</th>
-                    <th>Umidade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Mín:</td>
-                    <td class="temp">23°C</td>
-                    <td class="umid">66%</td>
-                  </tr>
-                  <tr>
-                    <td>Med:</td>
-                    <td class="temp">24°C</td>
-                    <td class="umid">60%</td>
-                  </tr>
-                  <tr>
-                    <td>Máx:</td>
-                    <td class="temp">26°C</td>
-                    <td class="umid">70%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      </div>
 
-          <div id="dashboard-row1" class="dashboard-row">
-          <div class="charts-area">
-            <div class="chart-container">
-              <h2>Temperatura (°C)</h2>
-              <canvas class="g1" id="chartTemp1"></canvas>
-            </div>
-            <div class="chart-container">
-              <h2>Umidade (%)</h2>
-              <canvas class="g2" id="chartUmid1"></canvas>
-            </div>
+
+
+
+
+      <div class="kpi-column">
+        <div class="kpi-box">
+          Medições do sensor topo nos últimos 90 minutos<br />
+          <table>
+            <thead>
+              <tr>
+                <th>Variação</th>
+                <th>Temperatura</th>
+                <th>Umidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mín:</td>
+                <td class="temp">12°C</td>
+                <td class="umid">55%</td>
+              </tr>
+              <tr>
+                <td>Med:</td>
+                <td class="temp">22°C</td>
+                <td class="umid">60%</td>
+              </tr>
+              <tr>
+                <td>Máx:</td>
+                <td class="temp">35°C</td>
+                <td class="umid">75%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="kpi-box">
+          Medições do sensor meio nos últimos 90 minutos<br />
+          <table>
+            <thead>
+              <tr>
+                <th>Variação</th>
+                <th>Temperatura</th>
+                <th>Umidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mín:</td>
+                <td class="temp">31°C</td>
+                <td class="umid">57%</td>
+              </tr>
+              <tr>
+                <td>Med:</td>
+                <td class="temp">33°C</td>
+                <td class="umid">60%</td>
+              </tr>
+              <tr>
+                <td>Máx:</td>
+                <td class="temp">35°C</td>
+                <td class="umid">78%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="kpi-box">
+          Medições do sensor base nos últimos 90 minutos<br />
+          <table>
+            <thead>
+              <tr>
+                <th>Variação</th>
+                <th>Temperatura</th>
+                <th>Umidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Mín:</td>
+                <td class="temp">23°C</td>
+                <td class="umid">66%</td>
+              </tr>
+              <tr>
+                <td>Med:</td>
+                <td class="temp">24°C</td>
+                <td class="umid">60%</td>
+              </tr>
+              <tr>
+                <td>Máx:</td>
+                <td class="temp">26°C</td>
+                <td class="umid">70%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="dashboard-row1" class="dashboard-row">
+        <div class="charts-area">
+          <div class="chart-container">
+            <h2>Temperatura (°C)</h2>
+            <canvas class="g1" id="chartTemp1"></canvas>
+          </div>
+          <div class="chart-container">
+            <h2>Umidade (%)</h2>
+            <canvas class="g2" id="chartUmid1"></canvas>
           </div>
         </div>
+      </div>
 
-        <div id="dashboard-row2" class="dashboard-row" style="display: none">
-          <div class="charts-area">
-            <div class="chart-container">
-              <h2>Temperatura (°C)</h2>
-              <canvas class="g1" id="chartTemp2"></canvas>
-            </div>
-            <div class="chart-container">
-              <h2>Umidade (%)</h2>
-              <canvas class="g2" id="chartUmid2"></canvas>
-            </div>
+      <div id="dashboard-row2" class="dashboard-row" style="display: none">
+        <div class="charts-area">
+          <div class="chart-container">
+            <h2>Temperatura (°C)</h2>
+            <canvas class="g1" id="chartTemp2"></canvas>
+          </div>
+          <div class="chart-container">
+            <h2>Umidade (%)</h2>
+            <canvas class="g2" id="chartUmid2"></canvas>
           </div>
         </div>
+      </div>
 
-        <div id="dashboard-row3" class="dashboard-row" style="display: none">
-          <div class="charts-area">
-            <div class="chart-container">
-              <h2>Temperatura (°C)</h2>
-              <canvas class="g1" id="chartTemp3"></canvas>
-            </div>
-            <div class="chart-container">
-              <h2>Umidade (%)</h2>
-              <canvas class="g2" id="chartUmid3"></canvas>
-            </div>
+      <div id="dashboard-row3" class="dashboard-row" style="display: none">
+        <div class="charts-area">
+          <div class="chart-container">
+            <h2>Temperatura (°C)</h2>
+            <canvas class="g1" id="chartTemp3"></canvas>
+          </div>
+          <div class="chart-container">
+            <h2>Umidade (%)</h2>
+            <canvas class="g2" id="chartUmid3"></canvas>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
 
-    <script src="Scripts/graphics_espec.JS"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        trocar();
-      });
-    </script>
-  </body>
+  <script src="Scripts/graphics_espec.JS"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      trocar();
+    });
+  </script>
+</body>
+
 </html>
 <script>
   function logout() {
