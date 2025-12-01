@@ -423,3 +423,25 @@ button:hover {
 .faq_item.ativo .faq_resposta {
   max-height: 300px;
 }
+
+.entreEmContato {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 300px;
+}
+
+.entreEmContato h2, p {
+  margin-bottom: 20px;
+}
+
+#btn_contato {
+  width: 200px;
+  height: 80px;
+  background-color:#e29b00;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+}
