@@ -437,6 +437,12 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.btn_contato:hover{
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #5c822a;
+  
+}
+
 #btn_contato {
   width: 200px;
   height: 80px;
