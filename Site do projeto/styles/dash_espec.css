@@ -24,7 +24,7 @@ body {
 
 .sidebar {
   background-color: #eae6de;
-  width: 200px;
+  width: 240px;
   min-width: 180px;
   display: flex;
   justify-content: space-between;
@@ -132,13 +132,13 @@ body {
 }
 
 main {
-  height: 100vh;
-  width: 240vh;
-  /* flex: 1; */
+  width: 100%;
+  height: auto;
+  flex: 1;
   padding: 15px;
   display: flex;
-  /* flex-direction: column; */
-  /* gap: 20px; */
+  flex-direction: column;
+  gap: 20px;
 
 }
 
@@ -353,7 +353,7 @@ canvas {
   border-radius: 12px;
   box-sizing: border-box;
   padding: 20px;
-  flex: 1 1 500px;
+  flex: 1 1 100%;
   max-width: 600px;
   min-width: 300px;
   display: flex;
@@ -361,6 +361,12 @@ canvas {
   justify-content: space-between;
   margin-bottom: 10px;
   transition: all 0.3s ease;
+}
+
+@media (min-width: 900px) {
+  .chart-container {
+    flex: 1 1 45%;
+  }
 }
 
 .chart-container:hover {
@@ -380,7 +386,7 @@ canvas {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .kpi-box {
@@ -397,7 +403,8 @@ canvas {
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  flex: 1 1 30%;
+  flex: 1 1 280px;
+  max-width: 420px;
   min-width: 250px;
   margin-bottom: 10px;
 }
