@@ -17,15 +17,7 @@ body {
   height: 100%;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #2a2721;
-  color: white;
-}
-
+ 
 .container {
   display: flex;
   min-height: 100vh;
@@ -33,12 +25,43 @@ header {
 
 .sidebar {
   background-color: #eae6de;
-  width: 200px;
+  width: 240px;
   min-width: 180px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
-  gap: 20px;
   padding: 20px 10px;
+}
+
+.sidebar .div-user {
+  height: 10vh;
+  width: 26vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.sidebar .div-buttons {
+  height: 60vh;
+  width: 26vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.sidebar .div-logo {
+  width: 27vh;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar .div-logo img {
+  height: 100%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
