@@ -1,24 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tela Inicial</title>
-    <link rel="stylesheet" href="styles/nav_footer.css" />
-    <link rel="stylesheet" href="styles/tela_inicial.css" />
-    <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
-    <script src="https://kit.fontawesome.com/44fdb15698.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="header">
-      <div class="container">
-        <div class="logo">
-          <img src="imagens/logo_sustentatech_deitado.svg" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tela Inicial</title>
+  <link rel="stylesheet" href="styles/nav_footer.css" />
+  <link rel="stylesheet" href="styles/tela_inicial.css" />
+  <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
+  <script src="https://kit.fontawesome.com/44fdb15698.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg" />
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="#sobre_nos">Sobre nós</a>
+        </li>
+        <li>
+          <a href="#servicos">Nossos serviços</a>
+        </li>
+        <li>
+          <a href="#contato">Contato</a>
+        </li>
+        <li>
+          <a href="Simulador_V2.html">Simulador</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastrar</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <div class="bloco1">
+      <div class="conteudo_esquerda">
+        <p>Boas-vindas à Sustenta Tech!</p>
+        <h1>Monitoramento dos silos de soja.</h1>
+        <h2>Acesso ao nível de temperatura e umidade local.</h2>
+        <a href="#faq"><button>DETALHES DO SERVIÇO</button></a>
+      </div>
+    </div>
+  </main>
+
+  <section id="sobre_nos">
+    <div class="sobre">
+      <h1>SustentaTech</h1>
+      <h2>Inovação para o Agronegócio</h2>
+    </div>
+    <div class="conteudo">
+      <div class="texto">
+        Criada em 2025, a Sustenta Tech é uma empresa dedicada a transformar o
+        pós-colheita do agronegócio brasileiro. Com uma tecnologia de
+        sensores, desenvolvemos sistemas de monitoramento em tempo real para
+        silos verticais de soja, ajudando cooperativas a reduzir em até 10%
+        das perdas causadas por condensação e deterioração. Nossa missão é
+        garantir qualidade, sustentabilidade e lucratividade, apoiando o
+        Brasil como potência agrícola global.
+      </div>
+      <img src="imagens/Ilustração_silos.svg" alt="Ilustração de silos" />
+    </div>
+  </section>
+
+  <section class="problemas">
+    <h1>Problemas no armazenamento</h1>
+    <div class="problemas_container">
+      <div class="texto_esquerda">
+        <h2>Proteja sua carga</h2>
+        <p>
+          O Brasil segue crescendo no setor agrícola, especialmente no plantio
+          de soja. Porém, após a colheita, surge um grande desafio de
+          armazenamento dos grãos. Nas cooperativas, o silo vertical é um dos
+          modelos mais utilizados, trazendo diversos benefícios. No entanto,
+          seu uso também pode gerar problemas como condensação, bolsas de
+          calor e proliferação de fungos. Essas situações aceleram a
+          deterioração dos grãos e podem causar prejuízos significativos,
+          impactando diretamente o lucro.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <img src="imagens/icone_bolsaDeCalor.svg" alt="Bolsa de Calor" />
+          <h3>Bolsa de Calor</h3>
+          <p>
+            Ocorre quando o calor gerado pela respiração dos grãos e pelo
+            ambiente não consegue se dissipar, fazendo os grãos iniciarem o
+            ciclo de deterioração.
+          </p>
         </div>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="index.html">Inicial</a>
-          </li>
+
+        <div class="card">
+          <img src="imagens/icone_condesação.svg" alt="Condensação" />
+          <h3>Condensação</h3>
+          <p>
+            Fenômeno que ocorre quando a temperatura externa cai, resfriando
+            as paredes do silo. O ar úmido entra em contato com a superfície
+            fria e se condensa em gotas de água, favorecendo a deterioração.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="imagens/icone_fungos.svg" alt="Fungos e insetos" />
+          <h3>Fungos e insetos</h3>
+          <p>
+            A combinação de calor e umidade no silo cria condições ideais para
+            a proliferação de fungos e insetos, acelerando a deterioração dos
+            grãos e reduzindo sua qualidade.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="beneficios">
+    <div class="beneficios_container">
+      <div class="beneficios_imagem">
+        <div class="fundo_amarelo">
+          <img src="imagens/ilustração_fazendeiro.svg" alt="Fazendeiro" />
+        </div>
+      </div>
+
+      <div class="beneficios_texto">
+        <h2>Melhores benefícios<br />para você</h2>
+        <p>
+          O período de armazenamento é decisivo para preservar a qualidade da
+          soja, e nossa missão é apoiar as cooperativas nesse processo,
+          oferecendo mais segurança, eficiência e inteligência para a gestão
+          dos silos.
+        </p>
+        <p>
+          Com nosso sistema de monitoramento em tempo real, as cooperativas
+          passam a ter controle preciso da temperatura e da umidade, recebendo
+          alertas automáticos que permitem agir de forma rápida e preventiva.
+        </p>
+        <p>
+          Assim, o armazenamento deixa de ser um ponto de risco e passa a ser
+          uma vantagem para toda a cooperativa, garantindo mais valor e
+          segurança na comercialização dos grãos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="resultados">
+    <div class="resultado_bloco verde">
+      <div class="resultado_texto">
+        <h3>Redução de Perdas</h3>
+        <div class="linha"></div>
+        <p>
+          Minimiza em até 10% das perdas por condensação, pragas e fungos já nos primeiros 3 meses.
+        </p>
+      </div>
+      <div class="resultado_icone">
+        <img src="imagens/redução_de_perdas.svg" alt="Silos" />
+      </div>
+    </div>
+
+    <div class="resultado_bloco amarelo">
+      <div class="resultado_texto">
+        <h3>Gestão Eficiente</h3>
+        <div class="linha"></div>
+        <p>
+          Interface web para monitoramento em tempo real, além de alertas
+          automáticos, otimizando operações.
+        </p>
+      </div>
+      <div class="resultado_icone">
+        <img src="imagens/gestão_eficiente.svg" alt="redução" />
+      </div>
+    </div>
+
+    <div class="resultado_bloco verde">
+      <div class="resultado_texto">
+        <h3>Preservar a Qualidade</h3>
+        <div class="linha"></div>
+        <p>
+          Permitir que as condições de armazenamento permaneçam dentro dos
+          níveis ideais.
+        </p>
+      </div>
+      <div class="resultado_icone">
+        <img src="imagens/preservar_qualidade.svg" alt="Qualidade" />
+      </div>
+    </div>
+
+    <div class="resultado_bloco amarelo">
+      <div class="resultado_texto">
+        <h3>Maximizar Lucros</h3>
+        <div class="linha"></div>
+        <p>
+          Possibilitar os grãos serem armazenados por mais tempo, aproveitando
+          preços de mercado mais favoráveis.
+        </p>
+      </div>
+      <div class="resultado_icone">
+        <img src="imagens/maximizar_lucros.svg" alt="Lucros" />
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>Dúvidas Frequentes</h2>
+
+    <div class="faq_item">
+      <button class="faq_pergunta">
+        1. Como entrar em contato?
+        <span class="seta">&#9662;</span>
+      </button>
+      <div class="faq_resposta">
+        <p>
+          Você pode entrar em contato através dos nossos contatos
+          no site ou pelas redes sociais oficiais da SustentaTech. Nossa
+          equipe está pronta para atender rapidamente!
+        </p>
+      </div>
+    </div>
+
+    <div class="faq_item">
+      <button class="faq_pergunta">
+        2. Como funciona nosso sensor?
+        <span class="seta">&#9662;</span>
+      </button>
+      <div class="faq_resposta">
+        <p>
+          Nossos sensores monitoram temperatura e umidade em tempo real dentro
+          dos silos, enviando os dados automaticamente para o nosso sistema
+          web.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq_item">
+      <button class="faq_pergunta">
+        3. Qual sensor usamos?
+        <span class="seta">&#9662;</span>
+      </button>
+      <div class="faq_resposta">
+        <p>
+          Utilizamos sensores de alta precisão desenvolvidos especificamente
+          para ambientes agrícolas, garantindo medições confiáveis e
+          durabilidade.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="entreEmContato" class="entreEmContato">
+    
+    <h2>Você pode entrar em contato conosco!</h2>
+    <p>Clique no botão abaixo para resolver problemas, tirar dúvidas ou contratar nosso serviço.</p>
+    <button class="btn_contato" onclick="entrarEmContato()" id="btn_contato"><b>Clique aqui!</b></button>
+
+  </section>
+
+  <div id="contato" class="footer">
+    <div class="container">
+      <div class="hr1">
+        <hr>
+      </div>
+
+      <div class="logo">
+        <img src="imagens/logo_sustentatech_deitado.svg">
+      </div>
+
+      <div class="info_endereco">
+        <img src="imagens/logo_mapa.svg">
+        <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
+      </div>
+
+      <div class="info_contato">
+        <div class="img_tel">
+          <img src="imagens/logo_telefone.svg">
+        </div>
+        <div class="img_whts">
+          <img src="imagens/logo_whatsapp.svg">
+        </div>
+        <p>(11) 4228-8982</p>
+      </div>
+
+      <div class="sociais">
+        <div class="img_facebook">
+          <img src="imagens/logo_facebook.svg">
+        </div>
+        <div class="img_x">
+          <img src="imagens/loog_x.svg">
+        </div>
+
+        <div class="img_linkedin">
+          <img src="imagens/logo_linkedin.svg">
+        </div>
+
+        <div class="img_youtube">
+          <img src="imagens/logo_youtube.svg">
+        </div>
+      </div>
+
+      <div class="footer_navegacao">
+        <ul class="navegacao">
+          <!--<li class="agora">
+              <a href="#">Inicial</a>
+            </li> -->
           <li>
             <a href="#sobre_nos">Sobre nós</a>
           </li>
@@ -26,301 +319,18 @@
             <a href="#servicos">Nossos serviços</a>
           </li>
           <li>
-            <a href="#contato">Contato</a> 
+            <a href="Simulador_V2.html">Simulador</a>
           </li>
           <li>
-            <a href="Simulador_V2.html">Simulador</a> 
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastrar</a> 
-          </li>
-          <li>
-            <a href="login.html">Login</a> 
+            <a href="#contato">Contato</a>
           </li>
         </ul>
       </div>
+      <div class="hr2">
+        <hr>
+      </div>
+
     </div>
-
-    <main>
-      <div class="bloco1">
-        <div class="conteudo_esquerda">
-          <p>Boas-vindas à Sustenta Tech!</p>
-          <h1>Monitoramento dos silos de soja.</h1>
-          <h2>Acesso ao nível de temperatura e umidade local.</h2>
-          <a href="#faq"><button>DETALHES DO SERVIÇO</button></a>
-        </div>
-      </div>
-    </main>
-
-    <section id="sobre_nos">
-      <div class="sobre">
-        <h1>SustentaTech</h1>
-        <h2>Inovação para o Agronegócio</h2>
-      </div>
-      <div class="conteudo">
-        <div class="texto">
-          Criada em 2025, a Sustenta Tech é uma empresa dedicada a transformar o
-          pós-colheita do agronegócio brasileiro. Com uma tecnologia de
-          sensores, desenvolvemos sistemas de monitoramento em tempo real para
-          silos verticais de soja, ajudando cooperativas a reduzir em até 10%
-          das perdas causadas por condensação e deterioração. Nossa missão é
-          garantir qualidade, sustentabilidade e lucratividade, apoiando o
-          Brasil como potência agrícola global.
-        </div>
-        <img src="imagens/Ilustração_silos.svg" alt="Ilustração de silos" />
-      </div>
-    </section>
-
-    <section class="problemas">
-      <h1>Problemas no armazenamento</h1>
-      <div class="problemas_container">
-        <div class="texto_esquerda">
-          <h2>Proteja sua carga</h2>
-          <p>
-            O Brasil segue crescendo no setor agrícola, especialmente no plantio
-            de soja. Porém, após a colheita, surge um grande desafio de
-            armazenamento dos grãos. Nas cooperativas, o silo vertical é um dos
-            modelos mais utilizados, trazendo diversos benefícios. No entanto,
-            seu uso também pode gerar problemas como condensação, bolsas de
-            calor e proliferação de fungos. Essas situações aceleram a
-            deterioração dos grãos e podem causar prejuízos significativos,
-            impactando diretamente o lucro.
-          </p>
-        </div>
-
-        <div class="cards">
-          <div class="card">
-            <img src="imagens/icone_bolsaDeCalor.svg" alt="Bolsa de Calor" />
-            <h3>Bolsa de Calor</h3>
-            <p>
-              Ocorre quando o calor gerado pela respiração dos grãos e pelo
-              ambiente não consegue se dissipar, fazendo os grãos iniciarem o
-              ciclo de deterioração.
-            </p>
-          </div>
-
-          <div class="card">
-            <img src="imagens/icone_condesação.svg" alt="Condensação" />
-            <h3>Condensação</h3>
-            <p>
-              Fenômeno que ocorre quando a temperatura externa cai, resfriando
-              as paredes do silo. O ar úmido entra em contato com a superfície
-              fria e se condensa em gotas de água, favorecendo a deterioração.
-            </p>
-          </div>
-
-          <div class="card">
-            <img src="imagens/icone_fungos.svg" alt="Fungos e insetos" />
-            <h3>Fungos e insetos</h3>
-            <p>
-              A combinação de calor e umidade no silo cria condições ideais para
-              a proliferação de fungos e insetos, acelerando a deterioração dos
-              grãos e reduzindo sua qualidade.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="servicos" class="beneficios">
-      <div class="beneficios_container">
-        <div class="beneficios_imagem">
-          <div class="fundo_amarelo">
-            <img src="imagens/ilustração_fazendeiro.svg" alt="Fazendeiro" />
-          </div>
-        </div>
-
-        <div class="beneficios_texto">
-          <h2>Melhores benefícios<br />para você</h2>
-          <p>
-            O período de armazenamento é decisivo para preservar a qualidade da
-            soja, e nossa missão é apoiar as cooperativas nesse processo,
-            oferecendo mais segurança, eficiência e inteligência para a gestão
-            dos silos.
-          </p>
-          <p>
-            Com nosso sistema de monitoramento em tempo real, as cooperativas
-            passam a ter controle preciso da temperatura e da umidade, recebendo
-            alertas automáticos que permitem agir de forma rápida e preventiva.
-          </p>
-          <p>
-            Assim, o armazenamento deixa de ser um ponto de risco e passa a ser
-            uma vantagem para toda a cooperativa, garantindo mais valor e
-            segurança na comercialização dos grãos.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="resultados">
-      <div class="resultado_bloco verde">
-        <div class="resultado_texto">
-          <h3>Redução de Perdas</h3>
-          <div class="linha"></div>
-          <p>
-            Minimiza em até 10% das perdas por condensação, pragas e fungos já nos primeiros 3 meses.
-          </p>
-        </div>
-        <div class="resultado_icone">
-          <img src="imagens/redução_de_perdas.svg" alt="Silos" />
-        </div>
-      </div>
-
-      <div class="resultado_bloco amarelo">
-        <div class="resultado_texto">
-          <h3>Gestão Eficiente</h3>
-          <div class="linha"></div>
-          <p>
-            Interface web para monitoramento em tempo real, além de alertas
-            automáticos, otimizando operações.
-          </p>
-        </div>
-        <div class="resultado_icone">
-          <img src="imagens/gestão_eficiente.svg" alt="redução" />
-        </div>
-      </div>
-
-      <div class="resultado_bloco verde">
-        <div class="resultado_texto">
-          <h3>Preservar a Qualidade</h3>
-          <div class="linha"></div>
-          <p>
-            Permitir que as condições de armazenamento permaneçam dentro dos
-            níveis ideais.
-          </p>
-        </div>
-        <div class="resultado_icone">
-          <img src="imagens/preservar_qualidade.svg" alt="Qualidade" />
-        </div>
-      </div>
-
-      <div class="resultado_bloco amarelo">
-        <div class="resultado_texto">
-          <h3>Maximizar Lucros</h3>
-          <div class="linha"></div>
-          <p>
-            Possibilitar os grãos serem armazenados por mais tempo, aproveitando
-            preços de mercado mais favoráveis.
-          </p>
-        </div>
-        <div class="resultado_icone">
-          <img src="imagens/maximizar_lucros.svg" alt="Lucros" />
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="faq">
-      <h2>Dúvidas Frequentes</h2>
-
-      <div class="faq_item">
-        <button class="faq_pergunta">
-          1. Como entrar em contato?
-          <span class="seta">&#9662;</span>
-        </button>
-        <div class="faq_resposta">
-          <p>
-            Você pode entrar em contato através dos nossos contatos
-            no site ou pelas redes sociais oficiais da SustentaTech. Nossa
-            equipe está pronta para atender rapidamente!
-          </p>
-        </div>
-      </div>
-
-      <div class="faq_item">
-        <button class="faq_pergunta">
-          2. Como funciona nosso sensor?
-          <span class="seta">&#9662;</span>
-        </button>
-        <div class="faq_resposta">
-          <p>
-            Nossos sensores monitoram temperatura e umidade em tempo real dentro
-            dos silos, enviando os dados automaticamente para o nosso sistema
-            web.
-          </p>
-        </div>
-      </div>
-
-      <div class="faq_item">
-        <button class="faq_pergunta">
-          3. Qual sensor usamos?
-          <span class="seta">&#9662;</span>
-        </button>
-        <div class="faq_resposta">
-          <p>
-            Utilizamos sensores de alta precisão desenvolvidos especificamente
-            para ambientes agrícolas, garantindo medições confiáveis e
-            durabilidade.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <div id="contato" class="footer">
-      <div class="container">
-        <div class="hr1">
-          <hr>
-        </div>
-
-        <div class="logo">
-          <img src="imagens/logo_sustentatech_deitado.svg">
-        </div>
-
-        <div class="info_endereco">
-          <img src="imagens/logo_mapa.svg">
-          <p>345 Faulconer Drive, Suite 4 • Charlottesville, CA, 12345</p>
-        </div>
-
-        <div class="info_contato">
-          <div class="img_tel">
-            <img src="imagens/logo_telefone.svg">
-          </div>
-          <div class="img_whts">
-            <img src="imagens/logo_whatsapp.svg">
-          </div>
-          <p>(11) 4228-8982</p>
-        </div>
-
-        <div class="sociais">
-          <div class="img_facebook">
-            <img src="imagens/logo_facebook.svg">
-          </div>
-          <div class="img_x">
-            <img src="imagens/loog_x.svg">
-          </div>
-
-          <div class="img_linkedin">
-            <img src="imagens/logo_linkedin.svg">
-          </div>
-
-          <div class="img_youtube">
-            <img src="imagens/logo_youtube.svg">
-          </div>
-        </div>
-
-          <div class="footer_navegacao">
-              <ul class="navegacao">
-            <!--<li class="agora">
-              <a href="#">Inicial</a>
-            </li> -->
-            <li>
-              <a href="#sobre_nos">Sobre nós</a>
-            </li>
-            <li>
-              <a href="#servicos">Nossos serviços</a>
-            </li>
-            <li>
-              <a href="Simulador_V2.html">Simulador</a>
-            </li>
-            <li>
-              <a href="#contato">Contato</a>
-            </li>
-          </ul>
-        </div>
-        <div class="hr2">
-          <hr>
-        </div>
-        
-      </div>
 
     <script>
       var perguntas = document.querySelectorAll(".faq_pergunta");
@@ -334,6 +344,13 @@
         });
         i++;
       }
+
+      function entrarEmContato(){
+
+        window.location();
+        
+      }
     </script>
-  </body>
+</body>
+
 </html>
