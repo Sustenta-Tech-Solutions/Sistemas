@@ -131,7 +131,6 @@
           response.json().then(function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-            console.log("resposta:", resposta)
             if (silos[0].length > 0) {
               silos.forEach(arr => arr.length = 0);
               alertas.length = 0;
@@ -166,6 +165,7 @@
 
 
   function getStatus(silo, temp, umid) {
+    // Status Temp
     if (temp >= 28) {
       alertas.push({
         tipo: "Temperatura alta",
@@ -174,18 +174,37 @@
         data: new Date()
       });
       return "alert";
-    }
-
-    if (umid >= 75) {
+    }else if (temp <= 10) {
       alertas.push({
-        tipo: "Umidade alta",
-        valor: `${umid}°C`,
+        tipo: "Temperatura baixa",
+        valor: `${temp}°C`,
         silo: `${silo}`,
         data: new Date()
       });
       return "alert";
     }
+    
 
+    // Status Umid
+    if (umid <= 55) {
+      alertas.push({
+        tipo: "Umidade Baixa",
+        valor: `${umid}%`,
+        silo: `${silo}`,
+        data: new Date()
+      });
+      return "alert";
+    }else if (umid >= 75) {
+      alertas.push({
+        tipo: "Umidade alta",
+        valor: `${umid}%`,
+        silo: `${silo}`,
+        data: new Date()
+      });
+      return "alert";
+    }
+    
+    // Status geral
     if ((temp >= 25 && temp < 28) || (umid >= 71 && umid < 75)) {
       alertas.push({
         tipo: temp >= 25 ? "Temperatura em atenção" : "Umidade em atenção",
@@ -203,7 +222,6 @@
   function carregarSilos() {
     const container = document.getElementById("silosContainer");
     container.innerHTML = "";
-
     for (let i = 0; i < silos[0].length; i++) {
 
       let silo = silos[0][i];
@@ -225,12 +243,11 @@
       card.appendChild(name);
 
       card.onclick = function () {
-        window.location = "/Dashboard_espec.html"
+        window.location = `/Dashboard_espec.html?siloId=${silo}`
       };
 
       container.appendChild(card);
     }
-    console.log(alertas)
   }
 
   function carregarAlertas() {
@@ -273,5 +290,5 @@
     window.location.href = "login.html";
   }
 
-
+  console.log(alertas)
 </script>

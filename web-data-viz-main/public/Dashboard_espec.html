@@ -38,10 +38,7 @@
 
           <h3 id="silo_num">Silo</h3>
 
-          <select id="select_sensor" class="select" onchange="trocar()">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+          <select id="select_silo" class="select" onchange="trocar()">
           </select>
 
         </div>
@@ -185,11 +182,11 @@
         <div class="charts-area">
           <div class="chart-container">
             <h2>Temperatura (°C)</h2>
-            <canvas class="g1" id="chartTemp1"></canvas>
+            <canvas class="g1" id="chartTemp"></canvas>
           </div>
           <div class="chart-container">
             <h2>Umidade (%)</h2>
-            <canvas class="g2" id="chartUmid1"></canvas>
+            <canvas class="g2" id="chartUmid"></canvas>
           </div>
         </div>
       </div>
@@ -206,37 +203,55 @@
 
 </html>
 <script>
-  var siloId = 1;
+  var siloId = 1; // Variável global para armazenar o ID do silo atual
+
+
+  function preencherSelect() {
+    const selectSilo = document.getElementById("select_silo");
+    // const qtdSilos = sessionStorage.NUM_SILOS;
+    const qtdSilos = 30;
+
+    selectSilo.innerHTML = '';
+
+    for (let i = 0; i < qtdSilos; i++) {
+      const siloId = i + 1;
+      const siloName = `${siloId}`;
+
+      const option = document.createElement('option');
+      option.value = siloId;
+      option.textContent = siloName;
+
+      selectSilo.appendChild(option);
+    }
+  }
+
   function logout() {
     window.location.href = "login.html";
   }
 
-  // Função para troca de dashboard(silo)
-  function trocar() {
-    var selecao = select_sensor.value;
-    siloId = selecao
-
-
-      //var siloNum = document.getElementById("silo_num");
-    //siloNum.textContent = "Silo " + selecao;
-
-    // Atualizar alerts
-    var alertasTemp = document.getElementById(`alert_temp`);
-    var alertasUmid = document.getElementById(`alert_umid`);
-
-    if (selecao == 1) {
-      alertasTemp.innerHTML = `5`;
-      alertasUmid.innerHTML = `2`;
-    } else if (selecao == 2) {
-      alertasTemp.innerHTML = `4`;
-      alertasUmid.innerHTML = `3`;
-    } else if (selecao == 3) {
-      alertasTemp.innerHTML = `4`;
-      alertasUmid.innerHTML = `4`;
-    }
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
   }
 
-  // Função para atualizar as cores das temperaturas e umidades
+  async function trocar() {
+    var selecao = select_silo.value;
+    siloId = selecao;
+    console.log("Trocando para Silo ID:", siloId);
+
+    if (currentChartTemp) {
+      currentChartTemp.destroy();
+    }
+    if (currentChartUmid) {
+      currentChartUmid.destroy();
+    }
+    await carregarGraficosSilo(siloId);
+
+
+    var alertasTemp = document.getElementById(`alert_temp`);
+    var alertasUmid = document.getElementById(`alert_umid`);
+  }
+
   function atualizarCoresTabela() {
     var tempCelas = document.querySelectorAll(".temp");
     var umidCelas = document.querySelectorAll(".umid");
@@ -267,8 +282,21 @@
       }
     }
   }
-  // Chama a função ao carregar a página
-  atualizarCoresTabela();
-  carregarGraficosSilo(siloId)
-  trocar();
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const selectSilo = document.getElementById("select_silo");
+    const idNaUrl = getQueryParam('siloId');
+    console.log("id na url:", idNaUrl)
+    if (idNaUrl) {
+      selectSilo.value = idNaUrl;
+      console.log("Silo da URL encontrado:", idNaUrl);
+    }
+
+    preencherSelect();
+    trocar();
+    atualizarCoresTabela();
+    carregarGraficosSilo(siloId);
+
+  });
 </script>
