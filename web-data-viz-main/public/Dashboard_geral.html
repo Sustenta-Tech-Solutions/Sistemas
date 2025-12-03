@@ -10,7 +10,7 @@
 </head>
 
 <body onload="adquirirDadosSilos()">
-  
+
 
   <div class="container">
     <nav class="sidebar">
@@ -32,34 +32,43 @@
     </nav>
 
     <main>
-      <div class="metricas">
-        <span>MÉTRICAS</span>
-        <div class="metricaTemperatura">
-          <img style="width: 20%" src="imagens/termometro-removebg-preview.png" alt="">
-          <p>Temperatura</p>
-          <div class="intervalos">
-            <p style="color:green">Ideal: 14° a 24°</p>
-            <p style="color:lab(69.48% 36.83 75.49)">Atenção: 10° a 13° ou 25° a 27° </p>
-            <p style="color:rgb(252, 0, 0)">Alerta: -10°C ou +28°C</p>
-          </div>
-        </div>
 
-        <div class="metricaUmidade">
-          <img style="width: 20%" src="imagens/umidade-removebg-preview.png" alt="">
-          <p>Umidade</p>
-          <div class="intervalos">
-            <p style="color:green">Ideal: 60% a 70%</p>
-            <p style="color:lab(69.48% 36.83 75.49)">Atenção: 55% a 59% ou 71% a 74% </p>
-            <p style="color:rgb(252, 0, 0)">Alerta: 0% a 50% ou 75%+</p>
+      <div id="div_metricas">
+
+        <div class="metricas">
+
+          <h5>MÉTRICAS</h5>
+          
+          <div class="metricaTemperatura">
+
+            <span>Temperatura <img src="imagens/termometro-removebg-preview.png" alt=""></span>
+
+            <div class="intervalos">
+              <p style="color:green">Ideal: 14° a 24°</p>
+              <p style="color:lab(69.48% 36.83 75.49)">Atenção: 10° a 13° ou 25° a 27° </p>
+              <p style="color:rgb(252, 0, 0)">Alerta: -10°C ou +28°C</p>
+            </div>
           </div>
 
-        </div>
-      </div>
+          <div class="metricaUmidade">
 
-      <div>
-        <div class="alert-count-box">
-          <h3>Quantidade de alertas</h3>
-          <div class="alert-number" id="numAlertas">6</div>
+            <span>Umidade <img style="width: 30px" src="imagens/umidade-removebg-preview.png"
+                alt="imagem de umidade"></span>
+            <div class="intervalos">
+              <p style="color:green">Ideal: 60% a 70%</p>
+              <p style="color:lab(69.48% 36.83 75.49)">Atenção: 55% a 59% ou 71% a 74% </p>
+              <p style="color:rgb(252, 0, 0)">Alerta: 0% a 50% ou 75%+</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div>
+          <div class="alert-count-box">
+            <h3>Quantidade de alertas</h3>
+            <div class="alert-number" id="numAlertas">6</div>
+          </div>
         </div>
       </div>
 

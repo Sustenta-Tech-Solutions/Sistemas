@@ -1,20 +1,18 @@
-@font-face {
-  font-family: "Montserrat";
-  src: url(../fontes/Montserrat-Regular.ttf);
+html,
+body {
+  height: 100%;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat";
 }
 
-html,
-body {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fontes/Montserrat-Regular.ttf);
 }
 
  
@@ -32,6 +30,7 @@ body {
   align-items: center;
   flex-direction: column;
   padding: 20px 10px;
+  flex: 0.2; /* ocupa o restante da largura */
 }
 
 .sidebar .div-user {
@@ -49,6 +48,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  
 }
 
 .sidebar .div-logo {
@@ -88,16 +88,16 @@ body {
   background-color: #ffa000;
   color: white;
   padding: 10px 15px;
-  margin: 5px 0;
   text-decoration: none;
   text-align: left; /* ou center, se quiser */
-  font-size: 0.9rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
+  font-size: 0.8rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
   border: none;
   border-radius: 6px;
   cursor: pointer; /* muda o ponteiro quando passa pelo botão */
   transition: background-color 0.2s; /* deixa a transição de pagina mais suave*/
   background-color: #ff8f00;
   border-left: 5px solid #2a2721;
+  flex: 0.1; /* ocupa o restante da largura */
 }
 
 .button.active {
@@ -126,31 +126,121 @@ body {
   background-color: #c9302c;
 }
 
-main {
+/* main {
   flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+} */
+main {
+  width: 100%;
+  height: auto;
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1; /* ocupa o restante da largura */
 }
 
-.main-content {
-  flex: 1; /* ocupa o restante da largura */
-  padding: 20px;
-  background-color: white;
+#div_metricas {
+  height: 16%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 0.2; /* ocupa o restante da largura */
+  
 }
+
+/* .main-content {
+  flex: 1; /* ocupa o restante da largura */
+  /* padding: 20px;
+  background-color: white;
+} */ 
 
 /*Metricas*/
-.metricas {
+/* .metricas {
   display: flex;
   flex-direction: row;
   /*justify-content: space-around;*/
+  /* align-items: center;
+  background-color: #f7f4f3; */
+  /*width: ;*/
+/* } */ 
+
+.metricas {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   background-color: #f7f4f3;
-  /*width: ;*/
+  border: 2px solid gray;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  flex: 0.9; /* ocupa o restante da largura */
+}
+
+.metricas h5 {
+  height: 100%;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .metricaTemperatura {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  flex: 1; /* ocupa o restante da largura */
+}
+
+.metricaTemperatura span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin: 0 0 15px 0;
+}
+
+.metricaTemperatura span img {
+  height: 14px;
+  width: 14px;
+}
+
+
+
+.metricaUmidade {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  flex: 1; /* ocupa o restante da largura */
+}
+
+.metricaUmidade span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin: 0 0 15px 0;
+}
+
+.metricaUmidade span img {
+  height: 14px;
+  width: 14px;
+}
+
+.metricas .intervalos p {
+  font-size: 0.7rem;
+  text-align: start;
+  font-weight: 600;
+}
+
+/* .metricaTemperatura {
   display: flex;
   text-align: center;
   align-items: center;
@@ -177,14 +267,14 @@ main {
 
 .metricas p {
   align-self: center;
-}
+} */
 
 .alert-count-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #000;
+  border: 2px solid gray;
   border-radius: 8px;
   background-color: #f7f4f3;
   padding: 10px;
@@ -262,55 +352,6 @@ main {
 .alert-icon.hum {
   background-color: #3bb2b8;
 }
-
-/*Metricas*/
-.metricas {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #f7f4f3;
-  border: 2px solid #000;
-  border-radius: 8px;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-  /*width: ;*/
-}
-
-.metricaTemperatura {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  width: 400px;
-  /*margin-right: 0px;*/
-}
-
-.metricaUmidade {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  width: 400px;
-}
-
-/*.metricaTemperatura .intervalos{
-  display: flex;
-  flex-direction: row;
-}*/
-
-.metricas p {
-  align-self: center;
-  font-size: 1rem;
-}
-
-.metricas span {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.intervalos p {
-  font-size: 1rem;
-  text-align: center;
-}
-
 
 .silos-grid {
   display: grid;
