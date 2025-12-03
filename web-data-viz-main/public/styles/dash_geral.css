@@ -90,7 +90,7 @@ body {
   padding: 10px 15px;
   text-decoration: none;
   text-align: left; /* ou center, se quiser */
-  font-size: 0.8rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
+  font-size: 0.9rem; /* rem == % da fonte da pagina (default 16px), escala junto com o tamanho da pagina */
   border: none;
   border-radius: 6px;
   cursor: pointer; /* muda o ponteiro quando passa pelo botão */
@@ -133,6 +133,7 @@ body {
   flex-direction: column;
   gap: 20px;
 } */
+ 
 main {
   width: 100%;
   height: auto;
@@ -180,6 +181,13 @@ main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
   flex: 0.9; /* ocupa o restante da largura */
+}
+
+.metricas:hover {
+
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .metricas h5 {
@@ -280,6 +288,12 @@ main {
   padding: 10px;
 }
 
+.alert-count-box:hover{
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 .alert-count-box h3 {
   font-size: 1rem;
   margin-bottom: 5px;
@@ -301,6 +315,12 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+}
+
+.alerts:hover {
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .alerts-header {

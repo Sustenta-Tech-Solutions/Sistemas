@@ -47,6 +47,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  
 }
 
 .sidebar .div-logo {
@@ -99,7 +100,8 @@ body {
   /* deixa a transição de pagina mais suave*/
   background-color: #ff8f00;
   border-left: 5px solid #2a2721;
-  flex: 0.1; /* ocupa o restante da largura */
+  flex: 0.1;
+  /* ocupa o restante da largura */
 }
 
 .button.active {
@@ -147,7 +149,7 @@ main {
   justify-content: space-around;
   align-items: center;
   margin: 0 0 10px 0;
-  
+
 }
 
 #div_sensor .sensor-container {
@@ -201,6 +203,13 @@ main {
   height: 100%;
   border: 2px solid grey;
   padding: 0 10px;
+}
+
+.metricas:hover {
+
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .metricas h5 {
@@ -261,7 +270,7 @@ main {
 }
 
 .metricas .intervalos p {
-   font-size: 0.7rem;
+  font-size: 0.7rem;
   text-align: start;
   font-weight: 600;
 }
@@ -275,6 +284,7 @@ main {
   max-width: 600px;
   /* controla a largura total do grupo */
 }
+
 
 .kpi-box-alert {
   flex: 1 1 250px;
@@ -293,6 +303,12 @@ main {
   border: 2px solid gray;
   border-radius: 8px;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kpi-box-alert:hover{
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .kpi-box-alert span {
@@ -348,7 +364,7 @@ canvas {
 
 .chart-container {
   background: linear-gradient(180deg, #fff, #f7f4f3);
-  border: 2px solid #000;
+  border: 2px solid gray;
   box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   box-sizing: border-box;
@@ -389,8 +405,11 @@ canvas {
   justify-content: center;
 }
 
+
+
+
 .kpi-box {
-  border: 2px solid #000;
+  border: 2px solid gray;
   border-radius: 8px;
   background-color: #f7f4f3;
   text-align: center;
@@ -409,6 +428,11 @@ canvas {
   margin-bottom: 10px;
 }
 
+.kpi-box:hover {
+  transform: translate(0, -2px);
+  transition: 0.3s;
+  cursor: pointer;
+}
 
 /* Cabeçalho estilo imagem 2 */
 
