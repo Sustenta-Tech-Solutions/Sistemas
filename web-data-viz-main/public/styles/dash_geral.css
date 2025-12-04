@@ -127,13 +127,7 @@ body {
   background-color: #c9302c;
 }
 
-/* main {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-} */
+
  
 main {
   width: 100%;
@@ -155,22 +149,6 @@ main {
   flex: 0.2; /* ocupa o restante da largura */
   
 }
-
-/* .main-content {
-  flex: 1; /* ocupa o restante da largura */
-  /* padding: 20px;
-  background-color: white;
-} */ 
-
-/*Metricas*/
-/* .metricas {
-  display: flex;
-  flex-direction: row;
-  /*justify-content: space-around;*/
-  /* align-items: center;
-  background-color: #f7f4f3; */
-  /*width: ;*/
-/* } */ 
 
 .metricas {
   display: flex;
@@ -213,6 +191,7 @@ main {
   align-items: center;
   font-size: 14px;
   margin: 0 0 15px 0;
+  font-weight: 600;
 }
 
 .metricaTemperatura span img {
@@ -236,6 +215,7 @@ main {
   align-items: center;
   font-size: 14px;
   margin: 0 0 15px 0;
+  font-weight: 600;
 }
 
 .metricaUmidade span img {
@@ -249,34 +229,6 @@ main {
   font-weight: 600;
 }
 
-/* .metricaTemperatura {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 500px;
-  margin-left: 50px;
-}
-
-.metricaUmidade {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-  margin-left: 50px;
-}
-
-.metricas span{
-  margin-left: 20px;
-}
-.metricas .metricaTemperatura p{
-  padding-right: 20px;
-}
-
-.metricas p {
-  align-self: center;
-} */
 
 .alert-count-box {
   display: flex;
