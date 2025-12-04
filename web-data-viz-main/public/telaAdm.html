@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="styles/telaAdm.css">
 </head>
 
-<body>
+<body onload="nome()">
 
     <header>
         <div class="logo">
             <img src="imagens/logo_sustentatech_deitado.svg" />
         </div>
-        <div class="user">Olá, User</div>
+        <div class="div-user"><span>Olá, </span> <span id="userName"></span></div>
     </header>
 
     <div class="main">
@@ -38,6 +38,11 @@
     </div>
 
     <script>
+
+        function nome(){
+            var nomeUsuario = sessionStorage.NOME;
+        document.getElementById("userName").textContent = nomeUsuario
+        }
 
         async function gerarResposta() {
             const pergunta = document.getElementById('pergunta').value;
