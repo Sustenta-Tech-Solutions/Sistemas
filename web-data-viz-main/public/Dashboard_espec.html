@@ -13,9 +13,9 @@
 <body>
 
   <div class="container">
-     <nav class="sidebar">
+    <nav class="sidebar">
 
-      <div class="div-user">Olá, User</div>
+      <div class="div-user"><span>Olá, </span> <span id="userName"></span></div>
 
       <div class="div-buttons">
 
@@ -204,8 +204,8 @@
 
   function preencherSelect() {
     const selectSilo = document.getElementById("select_silo");
-    // const qtdSilos = sessionStorage.NUM_SILOS;
-    const qtdSilos = 30;
+    const qtdSilos = sessionStorage.NUM_SILOS;
+    // const qtdSilos = 30;
 
     selectSilo.innerHTML = '';
 
@@ -243,44 +243,153 @@
     }
     await carregarGraficosSilo(siloId);
 
-
-    var alertasTemp = document.getElementById(`alert_temp`);
-    var alertasUmid = document.getElementById(`alert_umid`);
   }
 
-  function atualizarCoresTabela() {
-    var tempCelas = document.querySelectorAll(".temp");
-    var umidCelas = document.querySelectorAll(".umid");
+  // function atualizarCoresTabela() {
+  //   var tempCelas = document.querySelectorAll(".temp");
+  //   var umidCelas = document.querySelectorAll(".umid");
+  //   var alertTemp = 0;
+  //   var alertUmid = 0;
 
-    for (var i = 0; i < tempCelas.length; i++) {
-      var cel = tempCelas[i];
-      var valor = parseFloat(cel.textContent);
+  //   for (var i = 0; i < tempCelas.length; i++) {
+  //     var cel = tempCelas[i];
+  //     var valor = parseFloat(cel.textContent);
 
-      if (valor < 15) {
-        cel.style.color = "orange";
-      } else if (valor <= 28) {
-        cel.style.color = "green";
-      } else {
-        cel.style.color = "red";
+  //     if (valor < 15) {
+  //       cel.style.color = "orange";
+  //     } else if (valor <= 28) {
+  //       cel.style.color = "green";
+  //     } else {
+  //       cel.style.color = "red";
+  //       alertTemp++;
+  //     }
+  //   }
+
+  //   for (var i = 0; i < umidCelas.length; i++) {
+  //     var cel = umidCelas[i];
+  //     var valor = parseFloat(cel.textContent);
+
+  //     if (valor < 55) {
+  //       cel.style.color = "orange";
+  //     } else if (valor <= 74) {
+  //       cel.style.color = "green";
+  //     } else {
+  //       cel.style.color = "red";
+  //       alertUmid++;
+  //     }
+  //   }
+
+  //   document.getElementById("alert_temp").textContent = alertTemp
+  //   document.getElementById("alert_umid").textContent = alertUmid
+  //   console.log(alertTemp, alertUmid)
+  // }
+
+  function calcularEstatisticas(arr) {
+    let soma = 0;
+    let qtd = 0;
+    let min = null;
+    let max = null;
+
+    for (let i = 0; i < arr.length; i++) {
+      let valor = arr[i];
+
+      if (valor === null) {
+        continue;
       }
+
+      if (min === null || valor < min) {
+        min = valor;
+      }
+
+      if (max === null || valor > max) {
+        max = valor;
+      }
+
+      soma += valor;
+      qtd++;
     }
 
-    for (var i = 0; i < umidCelas.length; i++) {
-      var cel = umidCelas[i];
-      var valor = parseFloat(cel.textContent);
-
-      if (valor < 55) {
-        cel.style.color = "orange";
-      } else if (valor <= 74) {
-        cel.style.color = "green";
-      } else {
-        cel.style.color = "red";
-      }
+    // Se nenhum valor válido encontrado
+    if (qtd === 0) {
+      return { min: "-", med: "-", max: "-" };
     }
+
+    let med = (soma / qtd).toFixed(1);
+
+    return { min, med, max };
   }
+
+
+  function atualizarCoresTabela(dados) {
+    var nomeUsuario = sessionStorage.NOME;
+    document.getElementById("userName").textContent = nomeUsuario
+
+
+    var alertTemp = 0;
+    var alertUmid = 0;
+
+    const sensores = ["topo", "centro", "base"];
+
+    sensores.forEach((pos, i) => {
+      const tempArr = dados.temperatura[pos];
+      const umidArr = dados.umidade[pos];
+
+      const estatTemp = calcularEstatisticas(tempArr);
+      const estatUmid = calcularEstatisticas(umidArr);
+
+      const tabelaTemp = document.querySelectorAll(`.kpi-box:nth-child(${i + 1}) .temp`);
+      const tabelaUmid = document.querySelectorAll(`.kpi-box:nth-child(${i + 1}) .umid`);
+
+      tabelaTemp[0].textContent = estatTemp.min + "°C";
+      tabelaTemp[1].textContent = estatTemp.med + "°C";
+      tabelaTemp[2].textContent = estatTemp.max + "°C";
+
+      tabelaUmid[0].textContent = estatUmid.min + "%";
+      tabelaUmid[1].textContent = estatUmid.med + "%";
+      tabelaUmid[2].textContent = estatUmid.max + "%";
+
+      for (let j = 0; j < tabelaTemp.length; j++) {
+        const cel = tabelaTemp[j];
+        const valor = parseFloat(cel.textContent);
+
+        if (valor < 15) {
+          cel.style.color = "orange";
+        } else if (valor <= 28) {
+          cel.style.color = "green";
+        } else {
+          cel.style.color = "red";
+          alertTemp++
+        }
+      }
+
+      for (let j = 0; j < tabelaUmid.length; j++) {
+        const cel = tabelaUmid[j];
+        const valor = parseFloat(cel.textContent);
+
+        if (valor < 55) {
+          cel.style.color = "orange";
+        } else if (valor <= 74) {
+          cel.style.color = "green";
+        } else {
+          cel.style.color = "red";
+          alertUmid++
+        }
+      }
+    });
+
+    document.getElementById("alert_temp").textContent = alertTemp
+    document.getElementById("alert_umid").textContent = alertUmid
+  }
+
+  function entrarEmContato() {
+    window.location.href = "https://trello.com/b/3GundLzd/sustentatech";
+  }
+
+
 
 
   document.addEventListener("DOMContentLoaded", function () {
+    preencherSelect();
     const selectSilo = document.getElementById("select_silo");
     const idNaUrl = getQueryParam('siloId');
     console.log("id na url:", idNaUrl)
@@ -289,10 +398,14 @@
       console.log("Silo da URL encontrado:", idNaUrl);
     }
 
-    preencherSelect();
     trocar();
-    atualizarCoresTabela();
     carregarGraficosSilo(siloId);
 
   });
+
+  setInterval(() => {
+    if (siloId !== null) {
+      carregarGraficosSilo(siloId);
+    }
+  }, 3000);
 </script>

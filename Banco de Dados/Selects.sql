@@ -281,7 +281,7 @@ CREATE VIEW vw_mediaMedicoes AS
 	SELECT
 		AVG(registro.temperatura) AS temperaturaMedia,
 		AVG(registro.umidade) AS umidadeMedia,
-		HOUR(registro.dtHora) AS HoraDoDia,
+		registro.dtHora AS HoraDoDia,
 		s.fkSilo AS Silo,
         s.fkEmpresa AS Empresa
 	FROM
@@ -295,13 +295,13 @@ CREATE VIEW vw_mediaMedicoes AS
 	ORDER BY
 		HoraDoDia DESC;
         
-SELECT * FROM vw_mediaMedicoes WHERE Empresa = 1;
+SELECT * FROM vw_mediaMedicoes WHERE Empresa = 1 LIMIT 8;
 
 
 SELECT * FROM registro WHERE fkSensor = 1 AND fkEmpresa = 1;
 
 -- Supondo que você tenha o ID do silo que quer consultar
-SET @idSiloSelecionado = 1;
+SET @siloIdParametro = 1;
 
 -- Seleciona os 7 últimos registros de cada sensor do silo
 SELECT r.*
@@ -332,5 +332,28 @@ FROM registros_com_num
 WHERE rn <= 7
 ORDER BY posicao, dtHora Desc;
 
+SELECT *
+FROM (
+    SELECT
+        r.idRegistro,
+        r.fkSensor,
+        r.temperatura,
+        r.umidade,
+        r.dtHora,
+        s.posicao,
+        ROW_NUMBER() OVER (PARTITION BY r.fkSensor ORDER BY r.dtHora DESC) AS rn
+    FROM registro r
+    JOIN sensor s ON r.fkSensor = s.idSensor
+    WHERE s.fkSilo = @siloIdParametro -- <--- AQUI entra o ID dinâmico
+) AS registros_com_num
+WHERE rn <= 7
+ORDER BY posicao, dtHora Desc;
 
 
+
+SELECT * FROM registro WHERE fkSensor = 1 AND dtHora IN ('2025-11-28 13:23:21', '2025-11-28 14:29:00');
+
+SELECT *
+FROM registro
+WHERE fkSensor = 1 AND dtHora >= NOW() - INTERVAL 90 MINUTE 
+ORDER BY dtHora DESC LIMIT 7;

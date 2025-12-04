@@ -15,7 +15,7 @@
   <div class="container">
     <nav class="sidebar">
 
-      <div class="div-user">Olá, User</div>
+      <div class="div-user" ><span>Olá, </span> <span id="userName"></span></div>
 
       <div class="div-buttons">
 
@@ -266,6 +266,8 @@
   }
 
   function carregarAlertas() {
+    var nomeUsuario = sessionStorage.NOME;
+    document.getElementById("userName").textContent = nomeUsuario
     const tbody = document.getElementById("alertasTableBody");
     tbody.innerHTML = ""; // limpa antes de montar
 
@@ -300,7 +302,7 @@
   }
 
   function entrarEmContato() {
-    window.location();
+    window.location.href = "https://trello.com/b/3GundLzd/sustentatech";
   }
 
 

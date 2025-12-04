@@ -17,8 +17,8 @@ function formatarDadosParaGrafico(registrosAPI) {
 
         // --- Correção: Arredondar para o minuto mais próximo ---
         // Isso garante que sensores que registram em 10:46:01 e 10:46:03 sejam agrupados juntos.
-        dataHora.setSeconds(0, 0); 
-        const timestampArredondado = dataHora.toISOString(); 
+      const timestampArredondado = registro.dtHora;
+        // const timestampArredondado = dataHora.toISOString(); 
 
         if (!agrupadoPorMinuto[timestampArredondado]) {
             agrupadoPorMinuto[timestampArredondado] = { base: null, centro: null, topo: null };
@@ -83,6 +83,8 @@ async function carregarGraficosSilo(siloId) {
     console.log("Dados recebidos da API:", dadosAPI);
 
     dadosFormatados = formatarDadosParaGrafico(dadosAPI);
+
+    atualizarCoresTabela(dadosFormatados);
     console.log("Dados formatados para Chart.js:", dadosFormatados);
 
   } catch (error) {
@@ -131,7 +133,11 @@ async function carregarGraficosSilo(siloId) {
     },
     scales: { x: { grid: { display: false } }, y: { beginAtZero: false, grid: { color: "#0074D9", lineWidth: 1 }, ticks: { stepSize: 5 }, }, },
   });
+  
 }
+
+
+
 
 
 function adquirirDados(siloId){
@@ -144,3 +150,5 @@ function adquirirDados(siloId){
       }
     });
 }
+
+
