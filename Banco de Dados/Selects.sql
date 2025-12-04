@@ -300,37 +300,9 @@ SELECT * FROM vw_mediaMedicoes WHERE Empresa = 1 LIMIT 8;
 
 SELECT * FROM registro WHERE fkSensor = 1 AND fkEmpresa = 1;
 
--- Supondo que você tenha o ID do silo que quer consultar
-SET @siloIdParametro = 1;
+
 
 -- Seleciona os 7 últimos registros de cada sensor do silo
-SELECT r.*
-FROM registro r
-JOIN sensor s ON r.fkSensor = s.idSensor
-WHERE s.fkSilo = @idSiloSelecionado
-ORDER BY r.fkSensor, r.dtHora DESC LIMIT 7;
-
-WITH sensores_do_silo AS (
-    SELECT idSensor, posicao
-    FROM sensor
-    WHERE fkSilo = 3  -- id do silo selecionado
-)
-, registros_com_num AS (
-    SELECT
-        r.idRegistro,
-        r.fkSensor,
-        r.temperatura,
-        r.umidade,
-        r.dtHora,
-        s.posicao,
-        ROW_NUMBER() OVER (PARTITION BY r.fkSensor ORDER BY r.dtHora DESC) AS rn
-    FROM registro r
-    JOIN sensores_do_silo s ON r.fkSensor = s.idSensor
-)
-SELECT *
-FROM registros_com_num
-WHERE rn <= 7
-ORDER BY posicao, dtHora Desc;
 
 SELECT *
 FROM (
@@ -344,7 +316,7 @@ FROM (
         ROW_NUMBER() OVER (PARTITION BY r.fkSensor ORDER BY r.dtHora DESC) AS rn
     FROM registro r
     JOIN sensor s ON r.fkSensor = s.idSensor
-    WHERE s.fkSilo = @siloIdParametro -- <--- AQUI entra o ID dinâmico
+    WHERE s.fkSilo = 7 -- <--- AQUI entra o ID dinâmico
 ) AS registros_com_num
 WHERE rn <= 7
 ORDER BY posicao, dtHora Desc;
