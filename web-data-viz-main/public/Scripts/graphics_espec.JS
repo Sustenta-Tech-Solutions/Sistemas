@@ -3,6 +3,8 @@
 let currentChartTemp = null;
 let currentChartUmid = null;
 
+// graphics_espec.JS - NOVO CÓDIGO PARA formatarDadosParaGrafico
+
 function formatarDadosParaGrafico(registrosAPI) {
     const dadosFormatados = {
         horarios: [],
@@ -10,39 +12,37 @@ function formatarDadosParaGrafico(registrosAPI) {
         umidade: { topo: [], centro: [], base: [] }
     };
 
-    const agrupadoPorMinuto = {};
+    // 1. Agrupar os registros pelo timestamp exato (da API que já agrupou por minuto)
+    const agrupadoPorTempo = {}; 
 
     registrosAPI.forEach(registro => {
-        const dataHora = new Date(registro.dtHora);
+        const timestamp = registro.dtHoraMinuto; 
 
-        // --- Correção: Arredondar para o minuto mais próximo ---
-        // Isso garante que sensores que registram em 10:46:01 e 10:46:03 sejam agrupados juntos.
-      const timestampArredondado = registro.dtHora;
-        // const timestampArredondado = dataHora.toISOString(); 
-
-        if (!agrupadoPorMinuto[timestampArredondado]) {
-            agrupadoPorMinuto[timestampArredondado] = { base: null, centro: null, topo: null };
+        if (!agrupadoPorTempo[timestamp]) {
+            agrupadoPorTempo[timestamp] = { base: null, centro: null, topo: null };
         }
         
         const posicao = registro.posicao.toLowerCase();
-
-        if (posicao === 'base') agrupadoPorMinuto[timestampArredondado].base = registro;
-        else if (posicao === 'centro') agrupadoPorMinuto[timestampArredondado].centro = registro;
-        else if (posicao === 'topo') agrupadoPorMinuto[timestampArredondado].topo = registro;
+        
+        agrupadoPorTempo[timestamp][posicao] = {
+            temperatura: registro.temperaturaMedia,
+            umidade: registro.umidadeMedia
+        };
     });
 
-    // Ordena os timestamps únicos por minuto
-    const timestampsOrdenados = Object.keys(agrupadoPorMinuto).sort();
+    // 2. Ordenar e extrair para o formato final do Chart.js
+    const timestampsOrdenados = Object.keys(agrupadoPorTempo).sort();
 
+    // Use todos os registros, já que o SQL limita a 7
     timestampsOrdenados.forEach(timestamp => {
-        const grupo = agrupadoPorMinuto[timestamp];
+        const grupo = agrupadoPorTempo[timestamp];
         
+        // MUDANÇA AQUI: Formatar para mostrar apenas HH:mm
         const horaFormatada = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        
-        // Adiciona o horário ÚNICO ao array de labels
-        dadosFormatados.horarios.push(horaFormatada);
+        dadosFormatados.horarios.push(horaFormatada); 
+        // FIM DA MUDANÇA
 
-        // Adiciona os dados, preenchendo com 'null' se o sensor não tiver registro naquele minuto
+        // Adiciona os dados, lendo os novos campos de média e convertendo para float
         // Temperatura
         dadosFormatados.temperatura.base.push(grupo.base ? parseFloat(grupo.base.temperatura) : null);
         dadosFormatados.temperatura.centro.push(grupo.centro ? parseFloat(grupo.centro.temperatura) : null);
@@ -54,10 +54,12 @@ function formatarDadosParaGrafico(registrosAPI) {
         dadosFormatados.umidade.topo.push(grupo.topo ? parseFloat(grupo.topo.umidade) : null);
     });
     
-    console.log("Dados formatados (corrigido) para Chart.js:", dadosFormatados);
+    console.log("Dados formatados (agrupados via SQL, hora curta):", dadosFormatados);
 
     return dadosFormatados;
 }
+
+
 
 
 
@@ -99,7 +101,7 @@ async function carregarGraficosSilo(siloId) {
       labels: dadosFormatados.horarios,
       datasets: [
         { label: "Sensor topo", data: dadosFormatados.temperatura.topo, borderColor: "#005a9e", borderWidth: 2, tension: 0.3, },
-        { label: "Sensor centro", data: dadosFormatados.temperatura.centro, borderColor: "#f76b1c", borderWidth: 2, tension: 0.3, },
+        { label: "Sensor centro", data: dadosFormatados.temperatura.centro, borderColor: "#f76b1c", borderWidth : 2, tension: 0.3, },
         { label: "Sensor base", data: dadosFormatados.temperatura.base, borderColor: "#2e8b57", borderWidth: 2, tension: 0.3, },
       ],
     },
@@ -141,7 +143,8 @@ async function carregarGraficosSilo(siloId) {
 
 
 function adquirirDados(siloId){
-  return fetch(`/medidas/adquirirDados/${siloId}`, { cache: 'no-store'})
+  var fkEmpresa = sessionStorage.ID_EMPRESA;
+  return fetch(`/medidas/adquirirDados/${siloId}/${fkEmpresa}`, { cache: 'no-store'})
     .then(function (response){
       if(response.ok) {
         return response.json(); 

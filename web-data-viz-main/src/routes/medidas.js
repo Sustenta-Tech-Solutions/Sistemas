@@ -11,7 +11,7 @@ router.get("/tempo-real/:idAquario", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.get("/adquirirDados/:siloId", function (req, res){
+router.get("/adquirirDados/:siloId/:fkEmpresa", function (req, res){
     medidaController.adquirirDados(req, res);
 })
 
