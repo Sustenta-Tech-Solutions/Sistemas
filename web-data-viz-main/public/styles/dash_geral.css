@@ -15,22 +15,23 @@ body {
   src: url(../fontes/Montserrat-Regular.ttf);
 }
 
- 
 .container {
   display: flex;
   min-height: 100vh;
 }
 
 .sidebar {
-  background-color: #eae6de;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
   width: 240px;
-  min-width: 180px;
+  background-color: #eae6de;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  justify-content: space-between;
   padding: 20px 10px;
-  flex: 0.2; /* ocupa o restante da largura */
+  z-index: 1000;
 }
 
 .sidebar .div-user {
@@ -49,7 +50,6 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  
 }
 
 .sidebar .div-logo {
@@ -127,13 +127,13 @@ body {
   background-color: #c9302c;
 }
 
-
- 
 main {
   width: 100%;
+  margin-left: 240px; /* Desconta a sidebar */
+  margin-top: 2px; /* Altura das métricas iniciais */
+  padding: 20px;
   height: auto;
   flex: 1;
-  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -147,7 +147,6 @@ main {
   justify-content: space-around;
   align-items: center;
   flex: 0.2; /* ocupa o restante da largura */
-  
 }
 
 .metricas {
@@ -163,7 +162,6 @@ main {
 }
 
 .metricas:hover {
-
   transform: translate(0, -2px);
   transition: 0.3s;
   cursor: pointer;
@@ -199,8 +197,6 @@ main {
   width: 14px;
 }
 
-
-
 .metricaUmidade {
   display: flex;
   justify-content: space-evenly;
@@ -229,7 +225,6 @@ main {
   font-weight: 600;
 }
 
-
 .alert-count-box {
   display: flex;
   flex-direction: column;
@@ -241,7 +236,7 @@ main {
   padding: 10px;
 }
 
-.alert-count-box:hover{
+.alert-count-box:hover {
   transform: translate(0, -2px);
   transition: 0.3s;
   cursor: pointer;
@@ -328,46 +323,46 @@ main {
 
 .silos-grid {
   display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 20px;
-    padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .silo-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    cursor: pointer;
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .silo-icon {
-    width: 60px;
-    height: 80px;
-    margin: auto;
-    border-radius: 8px;
-    background-image: url("../imagens/imgSilos.png");
-    background-size: cover;
-    background-position: center;
-    transition: 0.45s;
+  width: 60px;
+  height: 80px;
+  margin: auto;
+  border-radius: 8px;
+  background-image: url("../imagens/imgSilos.png");
+  background-size: cover;
+  background-position: center;
+  transition: 0.45s;
 }
 
 /* Cores de alerta */
 .ok {
-    box-shadow: 0 0 12px #32cd32;
+  box-shadow: 0 0 12px #32cd32;
 }
 
 .attention {
-    box-shadow: 0 0 12px #ffae00;
+  box-shadow: 0 0 12px #ffae00;
 }
 
 .alert {
-    box-shadow: 0 0 12px #ff3b3b;
+  box-shadow: 0 0 12px #ff3b3b;
 }
 
 .silo-name {
-    margin-top: 8px;
-    font-weight: bold;
+  margin-top: 8px;
+  font-weight: bold;
 }
