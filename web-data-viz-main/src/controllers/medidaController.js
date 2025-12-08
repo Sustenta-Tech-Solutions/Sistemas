@@ -42,8 +42,9 @@ function buscarMedidasEmTempoReal(req, res) {
 
 function adquirirDados(req , res){
     var siloId = req.params.siloId;
+    var fkEmpresa = req.params.fkEmpresa;
 
-    medidaModel.adquirirDados(siloId).then(function (resultado){
+    medidaModel.adquirirDados(siloId, fkEmpresa).then(function (resultado){
         if (resultado.length > 0){
             res.status(200).json(resultado);
         } else {

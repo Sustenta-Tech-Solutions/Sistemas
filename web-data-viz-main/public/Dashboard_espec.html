@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles/dash_espec.css" />
   <link rel="icon" href="imagens/logo_circular_sustentatech.svg" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="cdn.jsdelivr.net"></script>
 </head>
 
 <body>
@@ -316,8 +317,14 @@
 
     let med = (soma / qtd).toFixed(1);
 
-    return { min, med, max };
+    // MUDANÇAS AQUI: Arredonde min e max para 1 casa decimal usando toFixed(1)
+    return { 
+        min: min.toFixed(1), 
+        med: med, // med já estava formatado
+        max: max.toFixed(1) 
+    };
   }
+
 
 
   function atualizarCoresTabela(dados) {

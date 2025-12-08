@@ -15,7 +15,7 @@
   <div class="container">
     <nav class="sidebar">
 
-      <div class="div-user" ><span>Olá, </span> <span id="userName"></span></div>
+      <div class="div-user"><span>Olá, </span> <span id="userName"></span></div>
 
       <div class="div-buttons">
 
@@ -268,33 +268,37 @@
   function carregarAlertas() {
     var nomeUsuario = sessionStorage.NOME;
     document.getElementById("userName").textContent = nomeUsuario
-    const tbody = document.getElementById("alertasTableBody");
-    tbody.innerHTML = ""; // limpa antes de montar
 
-    let numAlertas = 0;
-    alertas.slice(-10).reverse().forEach(alerta => {
+    const tbody = document.getElementById("alertasTableBody");
+    tbody.innerHTML = "";
+
+      const totalAlertas = alertas.length;
+
+    const ultimosAlertas = alertas.slice(-10).reverse();
+
+    ultimosAlertas.forEach(alerta => {
       const tr = document.createElement("tr");
-      numAlertas++;
 
       tr.innerHTML = `
-      <td>
-        <div class="alert-info">
-          <div class="alert-icon ${alerta.tipo.includes("Temperatura") ? "temp" : "hum"}"></div>
-          <div>
-            <strong>${alerta.tipo}</strong><br />
-            <span>Silo ${alerta.silo}</span>
+        <td>
+          <div class="alert-info">
+            <div class="alert-icon ${alerta.tipo.includes("Temperatura") ? "temp" : "hum"}"></div>
+            <div>
+              <strong>${alerta.tipo}</strong><br />
+              <span>Silo ${alerta.silo}</span>
+            </div>
           </div>
-        </div>
-      </td>
-      <td>${formatarData(alerta.data)}</td>
-      <td>${alerta.valor}</td>
-    `;
+        </td>
+        <td>${formatarData(alerta.data)}</td>
+        <td>${alerta.valor}</td>
+      `;
 
       tbody.appendChild(tr);
     });
 
-    document.getElementById("numAlertas").textContent = numAlertas;
+    document.getElementById("numAlertas").textContent = totalAlertas;
   }
+
 
   function formatarData(data) {
     return data.toLocaleDateString("pt-BR") + " - " +
